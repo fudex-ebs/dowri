@@ -33,12 +33,23 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
+                      <li class="nav-item">
 
+                          <form class="form-inline" action="{{route('reservation.find')}}">
+
+                            <input type="text" name="reservation_number"class="form-control mb-2 mr-sm-2" placeholder="reservation number">
+                            <button type="submit" class="btn btn-primary mb-2">find</button>
+                          </form>
+                      </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
+                        <li class="nav-item">
+                            <a class="nav-link" href="/reservation/cancel">cancel reservation</a>
+                        </li>
+
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>

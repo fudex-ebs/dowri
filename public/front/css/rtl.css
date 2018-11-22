@@ -1,0 +1,189 @@
+@import url(http://fonts.googleapis.com/earlyaccess/droidarabickufi.css);
+
+body {
+	font-family: 'Droid Arabic Kufi', Arial, sans-serif !important;
+}
+h1, h2, h3, h4, h5, h6 , p, address,.btn,button,.tp-caption,label{
+	font-family: 'Droid Arabic Kufi', Arial, sans-serif !important;
+}
+.navbar-nav > li > a {
+	font-family: 'Droid Arabic Kufi', Arial, sans-serif !important;
+}
+
+.theme-search-area-form .col-md-1, .theme-search-area-form .col-md-2,
+.theme-search-area-form .col-md-3, .theme-search-area-form .col-md-4,
+ .theme-search-area-form .col-md-5,.theme-search-area-form .col-md-6{
+	float: right;
+}
+ .theme-search-area-section-icon{
+	left: initial !important;
+	right: 0px !important;
+}
+ .theme-search-area-section-input{
+	padding-left: 0px !important;
+	padding-right: 42.30769230769231px !important;
+	direction: rtl;
+}
+@media (min-width: 768px){
+	.navbar-nav > li{
+		float: right !important;
+	}
+
+}
+.theme-search-area-options-list label{
+	float: right !important;
+	padding-right: 14px !important;
+}
+.theme-search-area-options-list .btn:before{
+	left: initial !important;
+	right: 3px !important;
+	
+}
+.navbar-nav > li{
+	direction: rtl;
+}
+.navbar-nav > li a i{
+	padding: 0 10px 0 10px;
+}
+.navbar-theme .navbar-right > li:first-child > a{
+	margin-right: 0px !important;
+}
+.theme-search-area-options-list label{
+	float: right !important;
+	padding-right: 14px !important;
+}
+.theme-search-area-options-list .btn:before{
+	left: initial !important;
+	right: 3px !important;
+	
+}
+#sample-1 .banner{
+	direction: rtl;
+}
+#sample-1 .theme-mobile-app-section{
+	direction: rtl;
+}
+#sample-1 .theme-mobile-app-btn{
+	direction: ltr;
+}
+ .theme-footer-section ul li{
+	text-align: right !important;
+}
+ .theme-footer-section .theme-footer-section-title{
+	text-align: right;
+}
+ #mainFooter .col-md-4,#mainFooter .col-md-8{
+	float: right;
+}
+#sample-1 .theme-mobile-app-btn-list > li{
+	margin-right: 0px;
+}
+/*search result page*/
+@media (min-width: 992px){
+	#sample-1-sr .theme-search-area-stacked .theme-search-area-section-inner {
+		border-left: none !important;
+		border-right: 1px solid #d9d9d9;
+		border-color: rgba(255,255,255,0.5);
+	}
+}
+#sample-1-sr .theme-search-area-stacked .theme-search-area-submit-curved{
+	border-radius: 3px 0 0 3px !important;
+}
+#sample-1-sr .theme-search-results-sign-in{
+	direction: rtl;
+}
+#sample-1-sr .theme-search-results-sign-in-icon{
+	left: initial;
+	right: 20px;
+}
+#sample-1-sr .theme-search-results-sign-in-btn{
+	right: initial;
+	left: 20px;
+}
+#sample-1-sr .theme-search-results-sign-in-title{
+	padding-left: initial;
+	padding-right: 37px;
+}
+#sample-1-sr .theme-search-results-sidebar-section-title{
+	direction: rtl;
+}
+#sample-1-sr .theme-search-results-sidebar-section{
+	direction: rtl;
+}
+#sample-1-sr .theme-search-results-sidebar-section.checky .theme-search-results-sidebar-section-checkbox-list-amount{
+	right: initial;
+	left: 0px;
+}
+#sample-1-sr .icheck{
+	float: right;
+	margin: 0 0 0 10px;
+}
+#sample-1-sr .theme-search-results-sidebar-section.search .fa-search{
+	left: 0;
+	right: initial;
+	border-radius: 3px 0 0 3px;
+}
+#sample-1-sr .theme-search-results-sidebar-section.search .theme-search-results-sidebar-section-search-input{
+	padding: 1px 10px 1px 50px;
+}
+#sample-1-sr .theme-search-results-item-body .theme-search-results-item-hotel-stars li{
+	float: right;
+}
+#sample-1-sr .theme-search-results-item-body .theme-search-results-item-title{
+	direction: rtl !important;
+}
+#sample-1-sr .theme-search-results-item-body .theme-search-results-item-hotel-rating{
+	direction: rtl;
+}
+#sample-1-sr .theme-search-results-item-body .theme-search-results-item-location{
+	direction: rtl;
+}
+#sample-1-sr .theme-search-results-item-body .theme-search-results-item-location i{
+	margin: 0 0 0 3px;
+}
+#sample-1-sr .theme-search-results-item-body .theme-search-results-item-flight-section-meta-time{
+	direction: rtl;
+}
+#sample-1-sr .row.res-bod{
+	direction: rtl;
+}
+
+#sample-1-sr .theme-search-results-item-tabs .nav li{
+	float: right;
+}
+#sample-1-sr .theme-search-results-item-extend-close{
+	right: initial;
+	left: 0px;
+}
+#sample-1-sr .theme-search-results-item-tabs .nav > li:first-child{
+	margin: 0 0 0 10px;
+}
+#sample-1-sr .theme-search-results-item-tabs .nav > li:last-child{
+	margin: 0 10px 0 0;
+}
+#sample-1-sr .theme-search-results-item-tabs-details-desc{
+	direction: rtl;
+}
+#sample-1-sr .theme-search-results-item-tabs-map-title{
+	direction: rtl;
+}
+#sample-1-sr .theme-search-results-item-tabs-map-phone{
+	direction: rtl;
+}
+#sample-1-sr .theme-reviews{
+	direction: rtl;
+}
+#sample-1-sr .theme-reviews-item .col-md-3,#sample-1-sr .theme-reviews-item .col-md-9{
+	float: right;
+}
+#success .theme-payment-success-subtitle{
+	direction: rtl !important;
+}
+#success .theme-payment-success-box{
+	direction: rtl !important;
+}
+
+#success .theme-payment-success-box li span{
+	left: 0px !important;
+	right: initial !important;
+}

@@ -1,0 +1,6 @@
+#m_table_1_wrapper .text-left .dataTables_filter{
+	display: none !important;
+}
+.m-portlet{
+	height: fill-content !important;
+}

@@ -1,0 +1,55 @@
+#sample-1 .theme-hero-text-title-xl{
+	font-size: 60px !important;
+	letter-spacing: 0.1px !important;
+	font-weight: bold !important;
+	line-height: 1.6;
+
+}
+ .theme-footer-section ul li a{
+	color: #626262 !important;
+	opacity: 1;
+}
+ .theme-footer-section ul li a:hover{
+	color: #000 !important;
+
+}
+ .theme-footer-brand > img{
+	height: : 50px;
+	width: auto;
+}
+#sample-1-sr .theme-search-results-item-body .theme-search-results-item-title{
+	margin-bottom: 5px;
+	height: initial;
+}
+#sample-1-sr .theme-search-results-item-body .theme-search-results-item-flight-section-meta-time{
+	margin-bottom: 20px;
+}
+#sample-1-sr .theme-search-results-item-bookmark-bottom{
+	color: #111;
+}
+#sample-1-sr .theme-search-results-item-bookmark-bottom span{
+	font-size: 13px;
+	font-weight: 500;
+}
+#sample-1-sr .theme-search-results-item-hotel-stars .fa{
+	display: inline-block;
+}
+.c-yellow{
+	color: #ffff00;
+}
+#sample-1-sr .theme-search-area select option{
+	background: #fff;
+	color: #595959;
+}
+/* @media (max-width: 768px){
+	html{
+		display: none;
+	}
+
+} */
+.hide{
+	display: none !important;
+}
+.theme-search-area-form .row{
+	margin-bottom: 10px;
+}

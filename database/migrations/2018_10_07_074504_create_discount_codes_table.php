@@ -20,6 +20,7 @@ class CreateDiscountCodesTable extends Migration
             $table->date('start_date');
             $table->date('end_date');
             $table->integer('amount');
+            $table->enum('sttus',['active','inactive'])->default('active');
             $table->timestamps();
         });
     }

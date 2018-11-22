@@ -17,10 +17,13 @@ class CreateInspectionCentersTable extends Migration
             $table->increments('id');
             $table->string('slug');
             $table->string('name');
-            $table->string('city');
-            $table->string('hourly_capacity');
+            $table->string('name_en');
+            $table->integer('city_id');
+            $table->integer('hourly_capacity');
             $table->string('mobile_number');
-            $table->email('email');
+            $table->string('email');
+            $table->string('ad_img')->nullable();
+            $table->enum('status',['active','inactive'])->default('inactive');
             $table->timestamps();
         });
     }

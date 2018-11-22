@@ -21,6 +21,7 @@ class CreateReservationsTable extends Migration
             $table->integer('inspection_center_id');
             $table->date('date');
             $table->string('time_period');
+            $table->enum('status',['valid','in_valid'])->default('in_valid');
             $table->timestamps();
         });
     }
