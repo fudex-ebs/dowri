@@ -13,7 +13,7 @@
             <div class="input-group input remove-icon">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                        <img src="/front2/images/name.png" alt="">
+                        <img src="{{ asset('/front2/images/name.png') }}" alt="">
                     </div>
                     <input type="text" class="form-control" placeholder="اسم الاول" name="first_name" required>
                 </div>
@@ -23,7 +23,7 @@
             <div class="input-group input remove-icon">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                        <img src="/front2/images/name.png" alt="">
+                        <img src="{{ asset('/front2/images/name.png') }}" alt="">
                     </div>
                     <input type="text" class="form-control" placeholder="اسم الاخير" name="last_name" required>
                 </div>
@@ -34,7 +34,7 @@
             <div class="input-group input remove-icon">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                        <img src="/front2/images/mobile.png" alt="">
+                        <img src="{{ asset('/front2/images/mobile.png') }}" alt="">
                     </div>
                     <input type="text" class="form-control" placeholder="رقم الجوال"  name="mobile_number" id="mobile_number" required>
                 </div>
@@ -45,7 +45,7 @@
             <div class="input-group input remove-icon">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                        <img src="/front2/images/email.png" alt="">
+                        <img src="{{ asset('/front2/images/email.png') }}" alt="">
                     </div>
                     <input type="text" class="form-control" placeholder="البريد الالكتروني" name="email" required>
                 </div>
@@ -56,7 +56,7 @@
             <div class="input-group input remove-icon">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                        <img src="/front2/images/board-number.png" alt="">
+                        <img src="{{ asset('/front2/images/board-number.png') }}" alt="">
                     </div>
                     <input type="text" class="form-control" placeholder="رقم اللوحة مثال:(ح ب ر - 1636)" name="plate_number" required>
                 </div>
@@ -67,7 +67,7 @@
             <div class="input-group input remove-icon">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                        <img src="/front2/images/vin-number.png" alt="">
+                        <img src="{{ asset('/front2/images/vin-number.png') }}" alt="">
                     </div>
                     <input type="text" class="form-control" placeholder="رقم الشاصيه" name="serial_number" required>
                 </div>
@@ -77,7 +77,7 @@
             <div class="input-group input remove-icon">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                        <img src="/front2/images/vin-number.png" alt="">
+                        <img src="{{ asset('/front2/images/vin-number.png') }}" alt="">
                     </div>
                     <select class="form-control custom-select my-select" name="manufacture_year" required>
                       <option selected disabled>الموديل</option>
@@ -92,7 +92,7 @@
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                        <img src="/front2/images/cars.png" alt=""> </div>
+                        <img src="{{ asset('/front2/images/cars.png') }}" alt=""> </div>
                 </div>
                 <select id="inputState" class="form-control custom-select my-select" name="model" required>
                     <option selected disabled>شركة المصنعة</option>
@@ -108,7 +108,7 @@
             <div class="input-group input remove-icon">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                        <img src="/front2/images/vin-number.png" alt="">
+                        <img src="{{ asset('/front2/images/vin-number.png') }}" alt="">
                     </div>
                     <input type="text" class="form-control" placeholder="تاريخ انتهاء الاستمارة" name="register_expire_date" id="datepicker" required>
                 </div>
@@ -120,7 +120,7 @@
             <div class="input-group">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                        <img src="/front2/images/cars.png" alt=""> </div>
+                        <img src="{{ asset('/front2/images/cars.png') }}" alt=""> </div>
                 </div>
                 <select id="inputState" class="form-control custom-select my-select" name="car_type_id" required>
                     <option selected disabled>نوع السيارة</option>
@@ -136,7 +136,7 @@
             <div class="input-group input remove-icon">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
-                        <img src="/front2/images/vin-number.png" alt="">
+                        <img src="{{ asset('/front2/images/vin-number.png') }}" alt="">
                     </div>
                     <input type="text" class="form-control" placeholder="كود تخفيض" name="discount_code" required>
                 </div>
@@ -157,7 +157,7 @@
     <div class="flex-row">
         <div class="col-md-12">
             <a href="javascript:void(0)">
-                <img src="/front2/images/ad.png" alt="">
+                <img src="{{ asset('/front2/images/ad.png') }}" alt="">
             </a>
         </div>
     </div>

@@ -5,14 +5,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="/front2/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{{asset('/front2/css/font-awesome.min.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700" rel="stylesheet">
-    <link rel="stylesheet" href="/front2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/front2/css/bootstrap-rtl.css">
+    <link rel="stylesheet" href="{{asset('/front2/css/bootstrap.min.css')}}">
+    <link rel="stylesheet" href="{{asset('/front2/css/bootstrap-rtl.css')}}">
 
-    <link rel="stylesheet" type="text/css" href="/front2/plugins/menu/webslidemenu-ar.css">
-    <link href="/front2/css/datepicker.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="/front2/css/rtl.css">
+    <link rel="stylesheet" type="text/css" href="{{asset('/front2/plugins/menu/webslidemenu-ar.css')}}">
+    <link href="{{asset('/front2/css/datepicker.min.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{{asset('/front2/css/rtl.css')}}">
     @yield('page_css')
     <title>دوري</title>
 </head>
@@ -38,7 +38,7 @@
                 <ul class="wsmenu-list">
                     <li aria-haspopup="true">
                         <a href="{{url('/')}}" class="active menuhomeicon">
-                            <img src="/front2/images/logo.png" class="align-middle" alt="" width="60px">
+                            <img src="{{asset('/front2/images/logo.png')}}" class="align-middle" alt="" width="60px">
                         </a>
                     </li>
                     <li aria-haspopup="true"><a href="#">من نحن</a></li>
@@ -52,7 +52,7 @@
 
 
                 <a href="javascript:void(0)" class="reserve">
-                    <strong><img src="/front2/images/call.png" alt="">92000666</strong>
+                    <strong><img src="{{asset('/front2/images/call.png')}}" alt="">92000666</strong>
                 </a>
 
         </div>
@@ -73,7 +73,7 @@
     <!--start Footer-->
     <footer class="d-flex flex-lg-row flex-column justify-content-md-between justify-content-center align-items-start">
         <div class="logo mb-3 order-lg-1 order-2">
-            <img src="/front2/images/vision2030.png" alt="">
+            <img src="{{asset('/front2/images/vision2030.png')}}" alt="">
         </div>
 
         <div class="middle-footer order-2 text-center">
@@ -82,37 +82,37 @@
 
                 <li class="list-inline-item">
                     <span class="align-bottom">اختر الوقت المناسب</span>
-                    <img src="/front2/images/pay-ico.png" alt="">
+                    <img src="{{asset('/front2/images/pay-ico.png')}}" alt="">
                 </li>
                 <li class="list-inline-item">
                     <span class="align-bottom">احجز</span>
-                    <img src="/front2/images/pay-ico.png" alt="">
+                    <img src="{{asset('/front2/images/pay-ico.png')}}" alt="">
                 </li>
                 <li class="list-inline-item">
                     <span class="align-bottom">ادفع</span>
-                    <img src="/front2/images/pay-ico.png" alt="">
+                    <img src="{{asset('/front2/images/pay-ico.png')}}" alt="">
                 </li>
                 <li class="list-inline-item">
                     <span class="align-bottom">احضر في موعدك</span>
-                    <img src="/front2/images/pay-ico.png" alt="">
+                    <img src="{{asset('/front2/images/pay-ico.png')}}" alt="">
                 </li>
             </ul>
             </div>
             <ul class="list-inline mb-4">
                 <li class="list-inline-item">
-                    <img src="/front2/images/visa.png" alt="">
+                    <img src="{{asset('/front2/images/visa.png')}}" alt="">
                 </li>
                 <li class="list-inline-item">
-                    <img src="/front2/images/mastercard.png" alt="">
+                    <img src="{{asset('/front2/images/mastercard.png')}}" alt="">
                 </li>
                 <li class="list-inline-item">
-                    <img src="/front2/images/maestro.png" alt="">
+                    <img src="{{asset('/front2/images/maestro.png')}}" alt="">
                 </li>
                 <li class="list-inline-item">
-                    <img src="/front2/images/JCB-57.png" alt="">
+                    <img src="{{asset('/front2/images/JCB-57.png')}}" alt="">
                 </li>
                 <li class="list-inline-item">
-                    <img src="/front2/images/JCB.png" alt="">
+                    <img src="{{asset('/front2/images/JCB.png')}}" alt="">
                 </li>
             </ul>
             <footer class="copyright">
@@ -123,19 +123,19 @@
         </div>
 
         <button class="btn btn-secondary  order-lg-3 order-first" type="submit">
-            <span><img src="/front2/images/x-ico.png" alt="" class="align-middle ml-1"></span> الغاء الحجز
+            <span><img src="{{asset('/front2/images/x-ico.png')}}" alt="" class="align-middle ml-1"></span> الغاء الحجز
         </button>
     </footer>
     <!--End Footer-->
 </div>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="/front2/js/jquery.min.js"></script>
-<script src="/front2/js/popper.min.js"></script>
-<script src="/front2/js/bootstrap.min.js"></script>
-<script src="/front2/plugins/menu/webslidemenu.js"></script>
-<script src="/front2/js/datepicker.min.js" type="text/javascript"></script>
-<script src="/front2/js/custom.js"></script>
+<script src="{{asset('/front2/js/jquery.min.js')}}"></script>
+<script src="{{asset('/front2/js/popper.min.js')}}"></script>
+<script src="{{asset('/front2/js/bootstrap.min.js')}}"></script>
+<script src="{{asset('/front2/plugins/menu/webslidemenu.js')}}"></script>
+<script src="{{asset('/front2/js/datepicker.min.js')}}" type="text/javascript"></script>
+<script src="{{asset('/front2/js/custom.js')}}"></script>
 @yield('page_js')
 
 </body>

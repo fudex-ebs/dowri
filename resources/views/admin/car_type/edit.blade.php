@@ -1,6 +1,6 @@
 @extends('layouts.admin',['page' => 'car_type'])
 @section('page_css')
-  <link href="/metronic/assets/vendors/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+  <link href="{{asset('/metronic/assets/vendors/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
 <div class="m-grid__item m-grid__item--fluid m-wrapper">
@@ -74,6 +74,6 @@
 @endsection
 @section('page_js')
 
-  <script src="/js/admin/custom.js" type="text/javascript"></script>
+  <script src="{{asset('/js/admin/custom.js')}}" type="text/javascript"></script>
 
 @endsection

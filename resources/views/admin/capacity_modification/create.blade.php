@@ -1,6 +1,6 @@
 @extends('layouts.admin',['page'=> 'capacity_modification'])
 @section('page_css')
-  <link href="/metronic/assets/vendors/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+  <link href="{{asset('/metronic/assets/vendors/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
 <div class="m-grid__item m-grid__item--fluid m-wrapper">

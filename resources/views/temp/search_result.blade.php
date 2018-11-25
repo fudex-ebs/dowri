@@ -78,7 +78,7 @@
     <div class="flex-row">
         <div class="col-md-12">
             <a href="javascript:void(0)">
-                <img src="/front2/images/ad.png" alt="">
+                <img src="{{ asset('/front2/images/ad.png') }}" alt="">
             </a>
         </div>
     </div>

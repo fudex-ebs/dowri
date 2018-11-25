@@ -8,7 +8,7 @@
     <div class="row">
         <div class="col-md-12">
             <div class="text-center eye">
-                <img src="/front2/images/eye-full.png" class="img-fluid home-img" alt="" >
+                <img src="{{ asset('/front2/images/eye-full.png') }}" class="img-fluid home-img" alt="" >
             </div>
 
         </div>
@@ -21,12 +21,12 @@
 
         <div class="form-row form-row d-flex justify-content-md-center">
             <div class=" mb-md-0 mb-3 col-lg-1 col-md-1 col-sm-6 col-12" style="text-align:center">
-                <img src="/front2/images/fahs.png" alt="" width="60px">
+                <img src="{{ asset('/front2/images/fahs.png') }}" alt="" width="60px">
             </div>
             <div class="form-group mb-md-0 mb-3 col-lg-3 col-md-3 col-sm-6 col-12">
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <div class="input-group-text"><img src="/front2/images/city.png" alt=""> </div>
+                        <div class="input-group-text"><img src="{{ asset('/front2/images/city.png') }}" alt=""> </div>
                     </div>
                     <select id="city" class="form-control custom-select my-select">
                         <option selected disabled >اختر المدينة</option>
@@ -41,7 +41,7 @@
             <div class="form-group mb-md-0 mb-3 col-lg-3 col-md-3 col-sm-6 col-12">
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <div class="input-group-text"><img src="/front2/images/city.png" alt=""> </div>
+                        <div class="input-group-text"><img src="{{ asset('/front2/images/city.png') }}" alt=""> </div>
                     </div>
                     <select id="center" class="form-control custom-select my-select">
                         <option selected disabled class="disabled">اختر المركز</option>
@@ -57,7 +57,7 @@
                 <div class="input-group remove-icon">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
-                            <img src="/front2/images/calender-ico.png" alt="">
+                            <img src="{{ asset('/front2/images/calender-ico.png') }}" alt="">
                         </div>
                         <input type="text" class="form-control " id="datepicker" placeholder="اختر لتاريخ">
                     </div>
@@ -66,7 +66,7 @@
             </div>
             <div class="form-group mb-md-0 mb-3 col-lg-2 col-md-12 col-sm-6 col-12">
                 <button id="submit" class="btn btn-primary  mt-lg-0 mt-md-2 ml-lg-2 m-0 float-lg-right float-md-left  float-sm-right float-left">
-                    <img src="/front2/images/search-ico.png" alt="" class="align-middle" >
+                    <img src="{{ asset('/front2/images/search-ico.png') }}" alt="" class="align-middle" >
                     <span>ابحث عن موعد</span>
                 </button>
             </div>

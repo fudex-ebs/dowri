@@ -9,7 +9,7 @@
         <table class=" table   table-bordered success-table shadow p-3 mb-5 bg-white rounded ">
         <thead class=" red">
           <tr class="red">
-            <th class="red" colspan="2" scope="col" ><img src="/front2/images/right.png">  تم الحجز بنجاح</th>
+            <th class="red" colspan="2" scope="col" ><img src="{{ asset('/front2/images/right.png') }}">  تم الحجز بنجاح</th>
             </tr>
         </thead>
         <tbody>
@@ -51,9 +51,9 @@
       </div>
 
        <div class=" mb-12 col-md-6 col-sm-12 col-12  myl justify-content-md-center text-center  m-auto print-warp">
-         <a href="{{route('reservation.download',['reservation' => $reservation->slug])}}" ><img src="/front2/images/pdf.png"> تحميل التذكرة</a>
-         <a href="{{route('reservation.print',['reservation' => $reservation->slug])}}"  target="_blank"><img src="/front2/images/print.png"> طباعة التذكرة</a>
-         <a href="{{route('reservation.cancel',['reservation_slug' => $reservation->slug])}}"  target="_blank"><img src="/front2/images/x-ico.png" width="30px"> الغاء الحجز</a>
+         <a href="{{route('reservation.download',['reservation' => $reservation->slug])}}" ><img src="{{ asset('/front2/images/pdf.png') }}"> تحميل التذكرة</a>
+         <a href="{{route('reservation.print',['reservation' => $reservation->slug])}}"  target="_blank"><img src="{{ asset('/front2/images/print.png') }}"> طباعة التذكرة</a>
+         <a href="{{route('reservation.cancel',['reservation_slug' => $reservation->slug])}}"  target="_blank"><img src="{{ asset('/front2/images/x-ico.png') }}" width="30px"> الغاء الحجز</a>
        </div>
     </section>
 <!--End Eye animation -->
@@ -63,7 +63,7 @@
     <div class="flex-row">
         <div class="col-md-12">
             <a href="javascript:void(0)">
-                <img src="/front2/images/ad.png" alt="">
+                <img src="{{ asset('/front2/images/ad.png') }}" alt="">
             </a>
         </div>
     </div>

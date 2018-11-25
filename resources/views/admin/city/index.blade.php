@@ -1,6 +1,6 @@
 @extends('layouts.admin',['page' => 'city'])
 @section('page_css')
-  <link href="/metronic/assets/vendors/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
+  <link href="{{asset('/metronic/assets/vendors/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
 @endsection
 @section('content')
 <div class="m-grid__item m-grid__item--fluid m-wrapper">
@@ -103,7 +103,7 @@
 </div>
 @endsection
 @section('page_js')
-  <script src="/metronic/assets/vendors/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
+  <script src="{{asset('/metronic/assets/vendors/custom/datatables/datatables.bundle.js')}}" type="text/javascript"></script>
   <script type="text/javascript">
   $(document).ready( function () {
       $('#m_table_55').DataTable({
