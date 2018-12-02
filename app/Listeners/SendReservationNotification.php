@@ -33,6 +33,6 @@ class SendReservationNotification
     public function handle(ReservationCreated $event)
     {
         SendSms($event->reservation->user->mobile_number,' لقد تم تاكيد حجزك بتاريخ'.$event->reservation->date.'|'.time_format($event->reservation->time_period));
-        // Mail::to(['address' => $event->reservation->user->email])->send(new ReservationCreatedMail($event->reservation));
+        Mail::to(['address' => $event->reservation->user->email])->send(new ReservationCreatedMail($event->reservation));
     }
 }

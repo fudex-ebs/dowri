@@ -23,6 +23,11 @@ class Reservation extends BaseModel
         return $this->belongsTo('App\User');
     }
 
+    public function payment()
+    {
+        return $this->hasOne('App\Models\Payment');
+    }
+
     public function car()
     {
         return $this->belongsTo('App\Models\Car');

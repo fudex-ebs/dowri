@@ -38,7 +38,7 @@
                 <div class="row">
                   <div class="form-group col-md-12">
                       <label>name arabic</label>
-                      <input type="text" name="name" class="form-control" value="{{$car_type->name_ar}}"/>
+                      <input type="text" name="name_ar" class="form-control" value="{{$car_type->name_ar}}"/>
                   </div>
                 </div>
                 <div class="row">

@@ -10,4 +10,19 @@ class City extends Model
       'name_ar',
       'name_en',
   ];
+
+  public function inspection_centers()
+  {
+      return $this->hasMany('App\Models\InspectionCenter');
+  }
+
+
+    public static function boot() {
+        parent::boot();
+
+        static::deleting(function($city) {
+             $city->inspection_centers()->delete();
+
+        });
+    }
 }

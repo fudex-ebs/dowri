@@ -51,10 +51,14 @@ Route::group(['prefix' => 'admin','middleware' => 'admin' ], function () {
     Route::get('/discount_code/index', 'DiscountCodeController@index')->name('DiscountCode.index');
     Route::post('/discount_code/create', 'DiscountCodeController@store')->name('DiscountCode.store');
     Route::get('/discount_code/{DiscountCode}/delete', 'DiscountCodeController@destroy')->name('DiscountCode.delete');
+    Route::get('/discount_code/{DiscountCode}/edit', 'DiscountCodeController@edit')->name('DiscountCode.edit');
+    Route::post('/discount_code/{DiscountCode}/edit', 'DiscountCodeController@update')->name('DiscountCode.update');
     // cities controller
     Route::get('/city/index', 'CityController@index')->name('city.index');
     Route::post('/city/create', 'CityController@store')->name('city.store');
     Route::get('/city/{city}/delete', 'CityController@destroy')->name('city.delete');
+    Route::get('/city/{city}/edit', 'CityController@edit')->name('city.edit');
+    Route::post('/city/{city}/edit', 'CityController@update')->name('city.update');
     // car_type controller
     Route::get('/car_type/index', 'CarTypeController@index')->name('car_type.index');
     Route::post('/car_type/create', 'CarTypeController@store')->name('car_type.store');

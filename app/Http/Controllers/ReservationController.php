@@ -46,6 +46,9 @@ class ReservationController extends Controller
         return view('temp.home',['InspectionCenters' => $InspectionCenters,'cities' => $cities]);
     }
     public function check($center_id,$date){
+      if(date_is_friday($date)){
+        return redirect()->back()->with('status','friday not avalble');
+      }
       return view('temp.search_result',['center_id' => $center_id ,'date' => $date,'ReservationService' => $this->ReservationService]);
     }
     public function reserve($center_id,$date,$time_period){

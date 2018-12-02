@@ -373,5 +373,11 @@ class PayTabs
 		//soon
 	}
 
+	public function refound()
+	{
+		# code...
+		//soon
+	}
+
 }
 ?>

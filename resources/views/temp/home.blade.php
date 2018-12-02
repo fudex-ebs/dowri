@@ -85,7 +85,10 @@
       $("#center option[city_id='"+selected_city_id+"']").removeClass('hide');
 
     });
+
+    var disabledDays = [0, 6];
     $('#datepicker').datepicker({
+        disableDaysOfWeek: [5],
         uiLibrary: 'bootstrap4',
         format: 'yyyy-mm-dd',
         minDate: new Date(),

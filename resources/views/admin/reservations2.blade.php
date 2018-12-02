@@ -154,7 +154,7 @@
 <input type="text" name="my_events" id="my_events" value="{{$reservations->toJson()}}" hidden>
 @endsection
 @section('page_js')
-<script src="'/metronic/assets/vendors/custom/fullcalendar/fullcalendar.bundle.js')}}" type="text/javascript"></script>
+<script src="{{asset('/metronic/assets/vendors/custom/fullcalendar/fullcalendar.bundle.js')}}" type="text/javascript"></script>
 <script src="{{asset('/metronic/assets/demo/default/custom/components/calendar/basic.js')}}" type="text/javascript"></script>
 <script src="{{asset('/metronic/assets/vendors/custom/datatables/datatables.bundle.js')}}" type="text/javascript"></script>
 <script src="{{asset('/js/admin/custom.js')}}" type="text/javascript"></script>

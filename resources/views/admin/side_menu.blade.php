@@ -53,6 +53,16 @@
           </span>
         </a>
       </li>
+      <li class="m-menu__item city" aria-haspopup="true">
+        <a href="{{route('car_type.index')}}" class="m-menu__link ">
+          <i class="m-menu__link-icon flaticon-line-graph"></i>
+          <span class="m-menu__link-title">
+            <span class="m-menu__link-wrap">
+              <span class="m-menu__link-text">car type</span>
+            </span>
+          </span>
+        </a>
+      </li>
 
 
     </ul>

@@ -38,6 +38,14 @@ class InspectionCenter extends BaseModel
         return $this->hasMany('App\Models\Reservation','inspection_center_id');
     }
 
+    public static function boot() {
+        parent::boot();
+
+        static::deleting(function($inspection_center) {
+             $inspection_center->reservations()->delete();
+
+        });
+    }
 
     public function capacity($date,$time_period)
     {

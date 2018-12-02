@@ -80,7 +80,7 @@
                         <img src="{{ asset('/front2/images/vin-number.png') }}" alt="">
                     </div>
                     <select class="form-control custom-select my-select" name="manufacture_year" required>
-                      <option selected disabled>الموديل</option>
+                      <option selected disabled value="">الموديل</option>
                       @for($counter_year = date("Y");$counter_year >= 1990 ; $counter_year--)
                       <option >{{$counter_year}}</option>
                       @endfor
@@ -95,7 +95,7 @@
                         <img src="{{ asset('/front2/images/cars.png') }}" alt=""> </div>
                 </div>
                 <select id="inputState" class="form-control custom-select my-select" name="model" required>
-                    <option selected disabled>شركة المصنعة</option>
+                    <option selected disabled value="">شركة المصنعة</option>
                     <option name="toyota">تيوتا</option>
                     <option name="hyundai">هونداي</option>
 
@@ -122,10 +122,10 @@
                     <div class="input-group-text">
                         <img src="{{ asset('/front2/images/cars.png') }}" alt=""> </div>
                 </div>
-                <select id="inputState" class="form-control custom-select my-select" name="car_type_id" required>
-                    <option selected disabled>نوع السيارة</option>
+                <select id="car_type" class="form-control custom-select my-select" name="car_type_id" required>
+                    <option selected disabled value="">نوع السيارة</option>
                     @foreach($car_types as $car_type)
-                    <option value="{{$car_type->id}}">{{$car_type->name_ar}}</option>
+                    <option value="{{$car_type->id}}" car_type_price="{{$car_type->price}}" >{{$car_type->name_ar}}</option>
                     @endforeach
 
                 </select>
@@ -138,14 +138,14 @@
                     <div class="input-group-text">
                         <img src="{{ asset('/front2/images/vin-number.png') }}" alt="">
                     </div>
-                    <input type="text" class="form-control" placeholder="كود تخفيض" name="discount_code" required>
+                    <input type="text" class="form-control" placeholder="كود تخفيض" name="discount_code" >
                 </div>
             </div>
         </div>
 
     </div>
     <div class="text-center mt-md-2 mt-2">
-        <button type="button" class="btn btn-danger">سعر التذكرة/ <strong> 100 </strong> ريال </button>
+        <button type="button" id="btn-price" class="btn btn-danger ">سعر التذكرة/ <strong> # </strong> ريال </button>
         <button class="btn btn-info">ادفع الان</button>
     </div>
 </form>
@@ -177,6 +177,9 @@
           rightIcon: '<i class="fa fa-angle-down"></i>'
       }
   });
+  $("#car_type").change(function(){
+    $("#btn-price strong").text($("#car_type option:selected").attr("car_type_price"));
+  })
 
   $("#mobile_number").keypress(function (e){
     if( (e.which < 48 || e.which > 57)){

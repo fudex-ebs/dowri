@@ -40,6 +40,7 @@
                             <div class="row time_period_warp">
                               <?php $time_periods = get_time_periods()?>
                               @foreach($time_periods as $time_period)
+                              @if(!$ReservationService->time_period_is_hidden($date,$time_period,$center_id))
                               <div class="col-md-3">
                                 <a href="{{route('reservation.create',['center_id' => $center_id ,'date' => $date,'time' =>$time_period])}}" class="{!! $ReservationService->check_availability($date,$time_period,$center_id) ? 'active' : 'disable' !!}">
                                   <div class="time_period">
@@ -48,13 +49,14 @@
                                   </div>
                                 </a>
                               </div>
+                              @endif
                               @endforeach
 
                             </div>
                             <div class="color-des">
 
-                              <span class="alert-box c-box" ></span>&nbsp;<strong>متاح</strong>&nbsp;&nbsp;
-                              <span class="success-box c-box"></span>&nbsp;<strong>غير متاح</strong>
+                              <span class="alert-box c-box" ></span>&nbsp;<strong>غير متاح</strong>&nbsp;&nbsp;
+                              <span class="success-box c-box"></span>&nbsp;<strong>متاح</strong>
                             </div>
 
                           </div>

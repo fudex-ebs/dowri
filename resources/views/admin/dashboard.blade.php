@@ -32,7 +32,7 @@
     				            All Customs Value
     				        </span>
     				        <span class="m-widget24__stats m--font-brand">
-    				            $18M
+    				            {{$ReservationService->total_sale_value()}}
     				        </span>
 
 
@@ -51,7 +51,7 @@
     				            Customer Review
     				        </span>
     				        <span class="m-widget24__stats m--font-info">
-    				            1349
+    				            {{$ReservationService->total_sale_number()}}
     				        </span>
     				        <div class="m--space-10"></div>
 
@@ -70,7 +70,7 @@
     				            Fresh Order Amount
     				        </span>
     				        <span class="m-widget24__stats m--font-danger">
-    				            567
+                        {{$ReservationService->total_cancel_number()}}
     				        </span>
     				        <div class="m--space-10"></div>
     				    </div>
@@ -94,33 +94,33 @@
                   <div class="m-widget1__item">
                     <div class="row m-row--no-padding align-items-center">
                       <div class="col">
-                        <h3 class="m-widget1__title">today sales number</h3>
+                        <h3 class="m-widget1__title">for today reservation number</h3>
 
                       </div>
                       <div class="col m--align-right">
-                        <span class="m-widget1__number m--font-brand">$17,800</span>
+                        <span class="m-widget1__number m--font-brand">{{$ReservationService->reservation_count_for( Carbon\Carbon::now()->format('Y-m-d'), Carbon\Carbon::now()->format('Y-m-d'))}}</span>
                       </div>
                     </div>
                   </div>
                   <div class="m-widget1__item">
                     <div class="row m-row--no-padding align-items-center">
                       <div class="col">
-                        <h3 class="m-widget1__title">today sales value</h3>
+                        <h3 class="m-widget1__title">for last 7 days</h3>
 
                       </div>
                       <div class="col m--align-right">
-                        <span class="m-widget1__number m--font-brand">$17,800</span>
+                        <span class="m-widget1__number m--font-brand">{{$ReservationService->reservation_count_for( Carbon\Carbon::now()->subDays(7)->format('Y-m-d'),Carbon\Carbon::now()->format('Y-m-d') )}}</span>
                       </div>
                     </div>
                   </div>
                   <div class="m-widget1__item">
                     <div class="row m-row--no-padding align-items-center">
                       <div class="col">
-                        <h3 class="m-widget1__title">today sales number</h3>
+                        <h3 class="m-widget1__title">for last 30 days</h3>
 
                       </div>
                       <div class="col m--align-right">
-                        <span class="m-widget1__number m--font-brand">$17,800</span>
+                        <span class="m-widget1__number m--font-brand">{{$ReservationService->reservation_count_for( Carbon\Carbon::now()->subDays(30)->format('Y-m-d'),Carbon\Carbon::now()->format('Y-m-d') )}}</span>
                       </div>
                     </div>
                   </div>
@@ -129,61 +129,6 @@
 
                 <!--end:: Widgets/Stats2-1 -->
               </div>
-
-              <div class="col-xl-6">
-
-                <!--begin:: Widgets/Profit Share-->
-                <div class="m-widget1">
-                  <div class="m-widget1__item">
-                    <div class="row m-row--no-padding align-items-center">
-                      <div class="col">
-                        <h3 class="m-widget1__title">today sales number</h3>
-
-                      </div>
-                      <div class="col m--align-right">
-                        <span class="m-widget1__number m--font-brand">$17,800</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="m-widget1__item">
-                    <div class="row m-row--no-padding align-items-center">
-                      <div class="col">
-                        <h3 class="m-widget1__title">last 7 days</h3>
-
-                      </div>
-                      <div class="col m--align-right">
-                        <span class="m-widget1__number m--font-brand">$17,800</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="m-widget1__item">
-                    <div class="row m-row--no-padding align-items-center">
-                      <div class="col">
-                        <h3 class="m-widget1__title">last 30 days</h3>
-
-                      </div>
-                      <div class="col m--align-right">
-                        <span class="m-widget1__number m--font-brand">$17,800</span>
-                      </div>
-                    </div>
-                  </div>
-
-                </div>
-
-                <!--end:: Widgets/Profit Share-->
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-
-    </div>
-    <div class="row">
-      <div class="col-xl-12">
-        <div class="m-portlet">
-          <div class="m-portlet__body  m-portlet__body--no-padding">
-            <div class="row m-row--no-padding m-row--col-separator-xl">
               <div class="col-xl-6">
 
                 <!--begin:: Widgets/Stats2-1 -->
@@ -191,116 +136,43 @@
                   <div class="m-widget1__item">
                     <div class="row m-row--no-padding align-items-center">
                       <div class="col">
-                        <h3 class="m-widget1__title">for today sales number</h3>
+                        <h3 class="m-widget1__title">on today reservation number</h3>
 
                       </div>
                       <div class="col m--align-right">
-                        <span class="m-widget1__number m--font-brand">$17,800</span>
+                        <span class="m-widget1__number m--font-brand">{{$ReservationService->reservation_count_on( Carbon\Carbon::now()->format('Y-m-d'),Carbon\Carbon::now()->format('Y-m-d'))}}</span>
                       </div>
                     </div>
                   </div>
                   <div class="m-widget1__item">
                     <div class="row m-row--no-padding align-items-center">
                       <div class="col">
-                        <h3 class="m-widget1__title">for today sales value</h3>
+                        <h3 class="m-widget1__title">on last 7 days</h3>
 
                       </div>
                       <div class="col m--align-right">
-                        <span class="m-widget1__number m--font-brand">$17,800</span>
+                        <span class="m-widget1__number m--font-brand">{{$ReservationService->reservation_count_on( Carbon\Carbon::now()->subDays(7)->format('Y-m-d') , Carbon\Carbon::now()->format('Y-m-d'))}}</span>
                       </div>
                     </div>
                   </div>
                   <div class="m-widget1__item">
                     <div class="row m-row--no-padding align-items-center">
                       <div class="col">
-                        <h3 class="m-widget1__title">for today sales value</h3>
+                        <h3 class="m-widget1__title">on last 30 days</h3>
 
                       </div>
                       <div class="col m--align-right">
-                        <span class="m-widget1__number m--font-brand">$17,800</span>
+                        <span class="m-widget1__number m--font-brand">{{$ReservationService->reservation_count_on( Carbon\Carbon::now()->subDays(30)->format('Y-m-d'),Carbon\Carbon::now()->format('Y-m-d') )}}</span>
                       </div>
                     </div>
                   </div>
-                  <div class="m-widget1__item">
-                    <div class="row m-row--no-padding align-items-center">
-                      <div class="col">
-                        <h3 class="m-widget1__title">for today sales value</h3>
-
-                      </div>
-                      <div class="col m--align-right">
-                        <span class="m-widget1__number m--font-brand">$17,800</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="m-widget1__item">
-                    <div class="row m-row--no-padding align-items-center">
-                      <div class="col">
-                        <h3 class="m-widget1__title">for today sales value</h3>
-
-                      </div>
-                      <div class="col m--align-right">
-                        <span class="m-widget1__number m--font-brand">$17,800</span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="m-widget1__item">
-                    <div class="row m-row--no-padding align-items-center">
-                      <div class="col">
-                        <h3 class="m-widget1__title">for today sales value</h3>
-
-                      </div>
-                      <div class="col m--align-right">
-                        <span class="m-widget1__number m--font-brand">$17,800</span>
-                      </div>
-                    </div>
-                  </div>
-
-
 
                 </div>
 
                 <!--end:: Widgets/Stats2-1 -->
               </div>
 
-              <div class="col-xl-6">
 
-                <!--begin:: Widgets/Profit Share-->
-                <div class="m-widget14">
-                  <div class="m-widget14__header">
-                    <h3 class="m-widget14__title">
-                      Profit Share
-                    </h3>
-                    <span class="m-widget14__desc">
-                      Profit Share between customers
-                    </span>
-                  </div>
-                  <div class="row  align-items-center">
-                    <div class="col">
-                      <div id="m_chart_profit_share" class="m-widget14__chart" style="height: 160px">
-                        <div class="m-widget14__stat">45</div>
-                      </div>
-                    </div>
-                    <div class="col">
-                      <div class="m-widget14__legends">
-                        <div class="m-widget14__legend">
-                          <span class="m-widget14__legend-bullet m--bg-accent"></span>
-                          <span class="m-widget14__legend-text">37% Sport Tickets</span>
-                        </div>
-                        <div class="m-widget14__legend">
-                          <span class="m-widget14__legend-bullet m--bg-warning"></span>
-                          <span class="m-widget14__legend-text">47% Business Events</span>
-                        </div>
-                        <div class="m-widget14__legend">
-                          <span class="m-widget14__legend-bullet m--bg-brand"></span>
-                          <span class="m-widget14__legend-text">19% Others</span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <!--end:: Widgets/Profit Share-->
-              </div>
             </div>
           </div>
         </div>
@@ -309,7 +181,6 @@
 
     </div>
 
-    <!--End::Section-->
 
   </div>
 </div>

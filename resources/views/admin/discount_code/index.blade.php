@@ -56,7 +56,7 @@
                   <td>{{$code->start_date}}</td>
                   <td>{{$code->end_date}}</td>
                   <td>{{$code->amount}}</td>
-                  <td><a href="{{route('DiscountCode.delete',['slug' => $code->slug])}}">delete</a></td>
+                  
                 </tr>
                 @endforeach
               </tbody>

@@ -50,7 +50,7 @@
                   <th scope="row">{{$count+1}}</th>
                   <td>{{$city->name_en}}</td>
                   <td>{{$city->name_ar}}</td>
-                  <td><a href="{{route('city.delete',['id' => $city->id])}}">delete</a></td>
+                  
                 </tr>
                 @endforeach
               </tbody>

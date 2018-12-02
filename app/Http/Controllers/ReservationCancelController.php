@@ -54,6 +54,7 @@ class ReservationCancelController extends Controller
         $reservation_cancel = ReservationCancel::whereslug( $slug )->first();
         if($reservation_cancel && $reservation_cancel->varify_code == $request->get('verify_code')){
           $reservation_cancel->update(['status' => 'verified']);
+          $reservation_cancel->reservation->update(['status' => 'in_valid']);
           return redirect()->route('home')->with('status','your reservation has been canceled');
         }
         return redirect()->back()->with('status','your entered wrong code please try again');

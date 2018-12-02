@@ -11,6 +11,7 @@ use App\Models\InspectionCenter;
 use App\Models\Payment;
 use App\Models\DiscountCode;
 use App\Models\Discount;
+use App\Models\ReservationCancel;
 use Log;
 use Carbon\Carbon;
 use App\PayTabs\PayTabs;
@@ -88,6 +89,15 @@ class ReservationService{
 
     }
 
+    public function time_period_is_hidden($date,$time_period,$inspection_center_id){
+      $inspection_center = InspectionCenter::find($inspection_center_id);
+      if($inspection_center->has_capacity_modifications_at_date($date) && $inspection_center->capacity_modifications->where('date',$date)->first()->$time_period == '-1'){
+          return true;
+      }
+      return false;
+    }
+
+
     public function check_weekend_availability($date,$time_period){
       $my_date = new Carbon($date);
       if($my_date->dayOfWeek == 5){
@@ -128,6 +138,36 @@ class ReservationService{
         return redirect()->away($pay_page->payment_url);
       }
       return ;
+    }
+
+    //
+    public function total_sale_number(){
+        $total_sale_number = Reservation::where('status','valid')->count();
+        return $total_sale_number;
+    }
+
+    public function total_sale_value(){
+        $total_sale_value = 0;
+        $reservations = Reservation::where('status','valid')->get()->all();
+        foreach ($reservations as $key => $reservation) {
+          $total_sale_value += $reservation->car->car_type->price;
+        }
+        return $total_sale_value;
+
+    }
+
+    public function total_cancel_number(){
+      $total_cancel_number = ReservationCancel::where('status','verified')->count();
+      return $total_cancel_number;
+    }
+
+    public function reservation_count_for($from_date,$to_date){
+      $reservation_number_count = Reservation::whereBetween('date', [$from_date, $to_date])->where('status','valid')->count();
+      return $reservation_number_count;
+    }
+    public function reservation_count_on($from_date,$to_date){
+      $reservation_number_count = Reservation::whereBetween('created_at', [$from_date, $to_date])->where('status','valid')->count();
+      return $reservation_number_count;
     }
 
 

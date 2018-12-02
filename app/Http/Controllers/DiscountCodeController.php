@@ -55,9 +55,9 @@ class DiscountCodeController extends Controller
      * @param  \App\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function edit(Reservation $reservation)
+    public function edit(DiscountCode $DiscountCode)
     {
-        //
+        return view('admin.car_type.edit',['discount_code' => $DiscountCode]);
     }
 
     /**
@@ -67,9 +67,10 @@ class DiscountCodeController extends Controller
      * @param  \App\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Reservation $reservation)
+    public function update(Request $request, DiscountCode $DiscountCode)
     {
-        //
+      $carType->update($request->all());
+      return redirect()->route('DiscountCode.index')->with('status','car type updated');
     }
 
     /**

@@ -35,13 +35,14 @@
 
           </div>
           <div class="m-portlet__body">
-            <table class="table table-striped- table-bordered table-hover table-checkable" id="m_table_55">
+            <table class="table table-striped- table-bordered table-hover table-checkable text-center" id="m_table_55">
               <thead>
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">name english</th>
                   <th scope="col">name arabic</th>
                   <th scope="col">price</th>
+                  <th scope="col"></th>
                 </tr>
               </thead>
               <tbody>
@@ -52,7 +53,12 @@
                   <td>{{$car_type->name_en}}</td>
                   <td>{{$car_type->name_ar}}</td>
                   <td>{{$car_type->price}}</td>
-                  <td><a href="{{route('car_type.delete',['id' => $car_type->id])}}">delete</a><a href="{{route('car_type.edit',['id' => $car_type->id])}}">edit</a></td>
+                  <td class="text-center">
+                    
+                    <a href="{{route('car_type.edit',['id' => $car_type->id])}}" class="m-portlet__nav-link btn btn-success m-btn m-btn--icon m-btn--icon-only m-btn--pill   m-dropdown__toggle" title="edit "><i class="la la-edit"></i></a>
+                  </td>
+
+
                 </tr>
                 @endforeach
               </tbody>

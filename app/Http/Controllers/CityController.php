@@ -59,7 +59,7 @@ class CityController extends Controller
      */
     public function edit(City $city)
     {
-        //
+        return view('admin.city.edit',['city' => $city]);
     }
 
     /**
@@ -71,7 +71,8 @@ class CityController extends Controller
      */
     public function update(Request $request, City $city)
     {
-        //
+      $city->update($request->all());
+      return redirect()->route('city.index')->with('status','city updated');
     }
 
     /**
