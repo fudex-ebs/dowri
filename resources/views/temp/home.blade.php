@@ -14,6 +14,15 @@
         </div>
     </div>
 </section>
+@if (session('cancel_done'))
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        swal ( "إلغاء الحجز" ,  "تم إلغاء عمليه الحجز بنجاح" ,  "success" )
+    </script>
+    @php
+    Session::forget('cancel_done');
+    @endphp
+@endif
 <!--End Eye animation -->
 
 <!--Start Form-->

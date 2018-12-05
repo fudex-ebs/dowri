@@ -61,13 +61,12 @@
       </div>
 
        <div class=" mb-12 col-md-6 col-sm-12 col-12  myl justify-content-md-center text-center  m-auto print-warp">
-         <a href="{{route('reservation.download',['reservation' => $reservation->slug])}}" ><img src="{{ asset('/front2/images/pdf.png') }}"> تحميل التذكرة</a>
-         <a href="{{route('reservation.print',['reservation' => $reservation->slug])}}"  target="_blank"><img src="{{ asset('/front2/images/print.png') }}"> طباعة التذكرة</a>
-         @if (session('cancel'))
-            <a href="{{route('reservation.cancel',['reservation_slug' => $reservation->slug])}}" ><img src="{{ asset('/front2/images/x-ico.png') }}" width="30px"> الغاء الحجز</a>
-         @else
-           <a href="{{route('reservation.cancel',['reservation_slug' => $reservation->slug])}}" target="_blank"><img src="{{ asset('/front2/images/x-ico.png') }}" width="30px"> الغاء الحجز</a>
-         @endif
+            <a href="{{route('reservation.download',['reservation' => $reservation->slug])}}" ><img src="{{ asset('/front2/images/pdf.png') }}"> تحميل التذكرة</a>
+            <a href="{{route('reservation.print',['reservation' => $reservation->slug])}}"  target="_blank"><img src="{{ asset('/front2/images/print.png') }}"> طباعة التذكرة</a>
+{{--            <a href="{{route('reservation.cancel',['reservation_slug' => $reservation->slug])}}" ><img src="{{ asset('/front2/images/x-ico.png') }}" width="30px"> الغاء الحجز</a>--}}
+            {{--Cancel without confirmed --}}
+           <a href="{{route('reservation.cancel',['reservation_slug' => $reservation->slug])}}" ><img src="{{ asset('/front2/images/x-ico.png') }}" width="30px"> الغاء الحجز</a>
+
        </div>
     </section>
 <!--End Eye animation -->

@@ -6,6 +6,7 @@ use App\Models\InspectionCenter;
 use App\Models\Payment;
 use App\Models\CarType;
 use App\Models\City;
+use App\Models\ReservationConfirm;
 use App\Services\Reservation\ReservationService;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreReservationRequest;
@@ -181,14 +182,33 @@ class ReservationController extends Controller
     {
         $reservation = $this->ReservationService->get_reservation_by_slug($request->get('reservation_number'));
         if($reservation){
-            $reservation_confirm = $this->ReservationService->create_code($reservation);
-            if( $reservation_confirm){
-                return view('temp.confirm_code',['ReservationConfirm' => $reservation_confirm]);
+//            return $reservation;
+            $exist = ReservationConfirm::where('reservation_id',$reservation->id)->first();
+            if(!empty($exist) && $exist->status == "verified"){
+                  return redirect()->route('reservation.show',['Reservation' => $reservation]);
+
+            }else{
+                $reservation_confirm = $this->ReservationService->create_code($reservation);
+//            return $reservation_confirm ;
+                if($reservation_confirm){
+                    return view('temp.confirm_code',['ReservationConfirm' => $reservation_confirm]);
+                }
             }
-//          return redirect()->route('reservation.show',['Reservation' => $reservation]);
-//            return redirect()->route('reservation.cancel_verify',['Reservation' => $reservation]);
+
         }
         return redirect()->back()->with('status','reservation not found');
+    }
+    public function confirm (Request $request ,$id){
+            $reservation_confirm = ReservationConfirm::find($id);
+        if($reservation_confirm && $reservation_confirm->confirm_code == $request->verify_code){
+            $reservation_confirm->update(['status' => 'verified']);
+            $reservation  = Reservation::where('id' , $reservation_confirm->reservation_id)->first();
+            return redirect()->route('reservation.show',['Reservation' => $reservation]);
+        }else{
+            return view('temp.confirm_code',['error' => "كود التفعيل غير صحيح" ,'ReservationConfirm' => $reservation_confirm]);
+
+        }
+//        return $reservation_confirm ;
     }
 
 }

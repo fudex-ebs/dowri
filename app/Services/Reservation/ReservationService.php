@@ -173,12 +173,20 @@ class ReservationService{
 
     //Reservation confirm
     public function create_code($reservation){
-        $reservationConfirm = ReservationConfirm::create([
-            'slug' => uniqid(),
-            'confirm_code' => rand (0,99999),
-            'reservation_id' => $reservation->id,
-            'status' => 'unverified',
-        ]);
+        $exist = ReservationConfirm::where('reservation_id' ,$reservation->id )->first();
+        if(empty($exist)){
+            $reservationConfirm = ReservationConfirm::create([
+                'slug' => uniqid(),
+                'confirm_code' => rand (0,99999),
+                'reservation_id' => $reservation->id,
+                'status' => 'unverified',
+            ]);
+        }else{
+           $id = ReservationConfirm::where('reservation_id' ,$reservation->id )
+                ->update(['confirm_code' => rand (0,99999)]);
+           $reservationConfirm = ReservationConfirm::find($id);
+        }
+
         $this->send_confirm_code($reservationConfirm);
         return $reservationConfirm ;
     }

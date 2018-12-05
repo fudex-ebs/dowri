@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Reservation;
 use App\Services\Inspection\InspectionCenterService;
 use Illuminate\Http\Request;
 use App\Models\InspectionCenter;
@@ -103,5 +104,16 @@ class InspectionCenterController extends Controller
     public function destroy(InspectionCenter $inspectionCenter)
     {
         //
+    }
+
+    public function list_reservations($slug){
+        $center = InspectionCenter::whereslug($slug)->first();
+        if($center){
+            $center_reservations = Reservation::where('inspection_center_id', $center->id)->get();
+//            return $center_reservations;
+            return view('admin.inspection_center.list_reservations',['center_reservations' => $center_reservations ,'center_name'=>$center->name_en]);
+        }
+        return redirect()->back()->with('status','no center');
+
     }
 }

@@ -27,13 +27,11 @@ Route::get('/reservation/{Reservation}/download', 'ReservationController@downloa
 Route::get('/reservation/{Reservation}/print', 'ReservationController@print')->name('reservation.print');
 Route::post('/reservation/find', 'ReservationController@find')->name('reservation.find');
 
-Route::post('/reservation/{ReservationConfirm}/confirm', 'ReservationCancelController@confirm')->name('reservation.confirm_code');
-Route::get('/reservation/{reservation_slug}/cancel', 'ReservationCancelController@create')->name('reservation.cancel');
+Route::post('/reservation/{ReservationConfirm}/confirm', 'ReservationController@confirm')->name('reservation.confirm_code');
+//Route::get('/reservation/{reservation_slug}/cancel', 'ReservationCancelController@create')->name('reservation.cancel');
 Route::get('/reservation_cancel/{ReservationCancel}/verify', 'ReservationCancelController@verify')->name('reservation.cancel_verify');
 Route::post('/reservation_cancel/{ReservationCancel}/verify', 'ReservationCancelController@post_verify')->name('reservation.cancel_verify_post');
-
-
-
+Route::get('/reservation/{reservation_slug}/cancel', 'ReservationCancelController@cancel_reserve')->name('reservation.cancel');
 
 
 Auth::routes();
@@ -46,6 +44,8 @@ Route::group(['prefix' => 'admin','middleware' => 'admin' ], function () {
     Route::post('/inspection_center/store', 'InspectionCenterController@store')->name('inspection_center.store');
     Route::get('/inspection_center/{inspection_center}/edit', 'InspectionCenterController@edit')->name('inspection_center.edit');
     Route::post('/inspection_center/{inspection_center}/update', 'InspectionCenterController@update')->name('inspection_center.update');
+    Route::get('/inspection_center/{inspection_center}/list', 'InspectionCenterController@list_reservations')->name('inspection_center.list');
+
     // capasity controller
     Route::get('/capacity_modification/{inspection_center_id}/{date}', 'CapacityModificationController@create')->name('capacity_modification.create');
     Route::post('/capacity_modification/{inspection_center_id}/{date}', 'CapacityModificationController@store')->name('capacity_modification.store');

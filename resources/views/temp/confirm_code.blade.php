@@ -5,6 +5,18 @@
 @section('content')
     <!--Start Form-->
     <section class="suitable">
+        @if (isset($error))
+            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                <strong>{{$error}}</strong>
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+
+            {{--@php--}}
+            {{--Session::forget('code_error');--}}
+            {{--@endphp--}}
+        @endif
         <h2>خدمة الرسائل</h2>
         <div class=" mb-12 col-md-6 col-sm-6 col-12  myl">
             <ul   class="list-unstyled mylist " >
@@ -12,7 +24,7 @@
                 <li>سوف تتلقى رسالة نصية بكود التفعيل صالحة لمرة واحدة فقط </li>
 
             </ul>
-            <form method="post" action="{{route('reservation.confirm_code',['ReservationConfirm' => $ReservationConfirm])}}" enctype="multipart/form-data">
+            <form method="post" action="{{route('reservation.confirm_code',['Reservation' => $ReservationConfirm])}}" enctype="multipart/form-data">
                 <input type='hidden' name='_token' value="{!! csrf_token() !!}">
                 <div class="form-row form-row d-flex justify-content-md-start">
 

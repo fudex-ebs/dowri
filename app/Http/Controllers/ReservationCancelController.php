@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\ReservationConfirm;
 use App\Services\Reservation\ReservationCancelService;
 
 use App\Models\Reservation;
@@ -65,6 +66,31 @@ class ReservationCancelController extends Controller
           return redirect()->route('home')->with('status','your reservation has been canceled');
         }
         return redirect()->back()->with('status','your entered wrong code please try again');
+    }
+    public function cancel_reserve($slug)
+    {
+        $reservation = Reservation::whereslug( $slug )->first();
+//        return $reservation ;
+        if($reservation){
+            $current_date = Carbon::now() ;
+            $reservation_date = new Carbon($reservation->date);
+            $hour_diff = round((strtotime($reservation_date) - strtotime($current_date))/3600, 1);
+            if($hour_diff <= 24){
+                return redirect()->back()->with('cancel','إلغاء عمليه الحجز غير مفعله  ');
+            }else{
+                $check_confirm = ReservationConfirm::where('reservation_id' , $reservation->id)->first();
+                if($check_confirm && $check_confirm->status == "verified"){
+                    $reservation->update(['status' => 'in_valid']);
+                    return redirect()->route('home')->with('cancel_done','your reservation has been canceled');
+                }else{
+                    return redirect()->back()->with('cancel','إلغاء عمليه الحجز غير مفعله  ');
+                }
+            }
+        }else{
+            return redirect()->route('home')->with('status','no reservation ');
+        }
+
+
     }
 
     /**
