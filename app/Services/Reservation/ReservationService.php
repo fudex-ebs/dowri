@@ -12,6 +12,7 @@ use App\Models\Payment;
 use App\Models\DiscountCode;
 use App\Models\Discount;
 use App\Models\ReservationCancel;
+use App\Models\ReservationConfirm;
 use Log;
 use Carbon\Carbon;
 use App\PayTabs\PayTabs;
@@ -168,6 +169,23 @@ class ReservationService{
     public function reservation_count_on($from_date,$to_date){
       $reservation_number_count = Reservation::whereBetween('created_at', [$from_date, $to_date])->where('status','valid')->count();
       return $reservation_number_count;
+    }
+
+    //Reservation confirm
+    public function create_code($reservation){
+        $reservationConfirm = ReservationConfirm::create([
+            'slug' => uniqid(),
+            'confirm_code' => rand (0,99999),
+            'reservation_id' => $reservation->id,
+            'status' => 'unverified',
+        ]);
+        $this->send_confirm_code($reservationConfirm);
+        return $reservationConfirm ;
+    }
+    public function send_confirm_code($reservationConfirm){
+        $msg = 'رمز التأكيد هو '.$reservationConfirm->confirm_code;
+        $mobile_number = $reservationConfirm->reservation->user->mobile_number;
+        SendSms($mobile_number,$msg);
     }
 
 

@@ -134,7 +134,7 @@ button.btn.btn-primary {
     background: #c60751;
     border:0 none;
     color:#fff;
-    width: 152px;
+    width: 175px;
     height: 53px;
     margin-right: 20px;
 }
@@ -147,7 +147,7 @@ button.btn.btn-primary img {
 }
 button.btn.btn-primary:hover {
     background: #e41d6a;
-    width: 152px;
+    width: 175px;
     height: 53px;
     margin-left: 20px;
 }

@@ -268,6 +268,12 @@ width: 100%;
   left: 0;
   position: absolute;
 }
+.ticket-design .rightSection .infos_3 .times {
+  position: absolute;
+  text-align: center;
+  margin: 10px;
+}
+
     </style>
 
     <title>دوري</title>
@@ -316,7 +322,7 @@ width: 100%;
       <div class="infos">
         <div class="places">
           <div class="box">
-            <small>الوقت والتاريخ</small>
+            <small> الحجز لوقت و تاريخ</small>
             <strong>{{$reservation->date}} | {{time_format($reservation->time_period)}}</strong>
           </div>
         </div>
@@ -342,11 +348,25 @@ width: 100%;
           </div>
         </div>
         <div class="times">
+          <div class="box">
+            <small>حٌجز فى تاريخ</small>
+            <strong>{{$reservation->created_at->format('d-m-Y')}} </strong>
+          </div>
+        </div>
+        <div class="times">
 
             <img src="data:image/png;base64, {!! base64_encode(QrCode::format('png')->size(100)->generate($reservation->slug)) !!} " style="position: absolute;left: 0;float:left">
 
         </div>
       </div>
+      @if(isset($reservation->inspection_center->ad_img))
+        <div class=" infos_3">
+          <div class="times">
+              <img src="{{$reservation->img_code}}" style="width: 300px;height: 300px;">
+          </div>
+        </div>
+      @endif
+
 
     </div>
   </div>

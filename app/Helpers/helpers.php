@@ -178,3 +178,8 @@ function SendSms($mobile_number,$msg){
     return $mydate->englishDayOfWeek == 'Friday' ? true : false;
 
   }
+    function date_is_sat($date){
+        $mydate = new Carbon\Carbon($date);
+        return $mydate->englishDayOfWeek == 'Saturday' ? true : false;
+
+    }

@@ -12,7 +12,10 @@
 
     <link rel="stylesheet" type="text/css" href="{{asset('/front2/plugins/menu/webslidemenu-ar.css')}}">
     <link href="{{asset('/front2/css/datepicker.min.css')}}" rel="stylesheet" type="text/css" />
+
     <link rel="stylesheet" type="text/css" href="{{asset('/front2/css/rtl.css')}}">
+    <link href="{{asset('/front2/css/bootstrap-datetimepicker.css')}}" rel="stylesheet" type="text/css" />
+
     @yield('page_css')
     <title>دوري</title>
 </head>
@@ -130,12 +133,24 @@
 </div>
 
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+{{--<script src="{{asset('/front2/js/moment-with-locales.min.js')}}"></script>--}}
+{{--<script src="https://raw.githubusercontent.com/xsoh/moment-hijri/master/moment-hijri.js"></script>--}}
+
 <script src="{{asset('/front2/js/jquery.min.js')}}"></script>
 <script src="{{asset('/front2/js/popper.min.js')}}"></script>
 <script src="{{asset('/front2/js/bootstrap.min.js')}}"></script>
 <script src="{{asset('/front2/plugins/menu/webslidemenu.js')}}"></script>
 <script src="{{asset('/front2/js/datepicker.min.js')}}" type="text/javascript"></script>
+{{-- Hijri Calender --}}
+
 <script src="{{asset('/front2/js/custom.js')}}"></script>
+<script src="{{asset('/hjri/jquery.calendars.min.js')}}"></script>
+<script src="{{asset('/hjri/jquery.calendars.ummalqura.min.js')}}"></script>
+{{--<script src="{{asset('/hjri/jquery.calendars.ummalqura-ar.js')}}"></script>--}}
+<script src="{{asset('/hjri/bootstrap-calendars.min.js')}}"></script>
+<script src="{{asset('/hjri/bootstrap-datetimepicker.min.js')}}" type="text/javascript"></script>
+<script src="https://rawgit.com/abdennour/hijri-date/master/cdn/hijri-date-latest.js" type="text/javascript" ></script>
+
 @yield('page_js')
 
 </body>

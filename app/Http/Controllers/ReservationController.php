@@ -49,7 +49,11 @@ class ReservationController extends Controller
       if(date_is_friday($date)){
         return redirect()->back()->with('status','friday not avalble');
       }
-      return view('temp.search_result',['center_id' => $center_id ,'date' => $date,'ReservationService' => $this->ReservationService]);
+      if(date_is_sat($date)){
+          $is_sat = "true";
+      }else{ $is_sat = "false";}
+//      return $is_sat;
+      return view('temp.search_result',['center_id' => $center_id ,'date' => $date,'ReservationService' => $this->ReservationService , "is_sat" =>$is_sat]);
     }
     public function reserve($center_id,$date,$time_period){
       $car_types = CarType::all();
@@ -98,7 +102,16 @@ class ReservationController extends Controller
      */
     public function download(Reservation $Reservation)
     {
-        $pdf = PDF::loadView('pdf.ticket',['reservation' => $Reservation]);
+        if(isset($Reservation->inspection_center->ad_img)){
+            $path = public_path()."/adds/" . $Reservation->inspection_center->ad_img;
+            $type = pathinfo($path, PATHINFO_EXTENSION);
+            $data = file_get_contents($path);
+            $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+            $Reservation->img_code = $base64;
+        }
+
+
+        $pdf = PDF::loadView('pdf.ticket',['reservation' => $Reservation ]);
         return $pdf->download('ticket.pdf');
     }
     public function print(Reservation $Reservation)
@@ -127,6 +140,7 @@ class ReservationController extends Controller
     public function check_availability(Request $request)
     {
         if( $this->ReservationService->check_availability($request->get('date'),$request->get('time_period'),$request->get('inspection_center_id')) ){
+
           return 'availabe';
         }
         return 'not_availabe';
@@ -167,7 +181,12 @@ class ReservationController extends Controller
     {
         $reservation = $this->ReservationService->get_reservation_by_slug($request->get('reservation_number'));
         if($reservation){
-          return redirect()->route('reservation.show',['Reservation' => $reservation]);
+            $reservation_confirm = $this->ReservationService->create_code($reservation);
+            if( $reservation_confirm){
+                return view('temp.confirm_code',['ReservationConfirm' => $reservation_confirm]);
+            }
+//          return redirect()->route('reservation.show',['Reservation' => $reservation]);
+//            return redirect()->route('reservation.cancel_verify',['Reservation' => $reservation]);
         }
         return redirect()->back()->with('status','reservation not found');
     }

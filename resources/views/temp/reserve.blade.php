@@ -5,7 +5,7 @@
 @section('content')
 <!--Start Form-->
 <section class="suitable">
-    <h2>املاء بياناتك</h2>
+    <h2>املء بياناتك</h2>
     <form method="post" action="{{route('reservation.store',['center_id' => $center_id ,'date' => $date,'time' =>$time])}}" enctype="multipart/form-data">
     <input type='hidden' name='_token' value="{!! csrf_token() !!}">
     <div class="form-row form-row d-flex justify-content-md-center">
@@ -116,6 +116,7 @@
         </div>
 
 
+
         <div class="form-group mb-3 col-md-4 col-12">
             <div class="input-group">
                 <div class="input-group-prepend">
@@ -142,7 +143,28 @@
                 </div>
             </div>
         </div>
-
+    </div>
+    <div class="text-center mt-md-2 mt-2">
+        <ul style="list-style: none">
+            {{--<li>لا يحق استخدام الموقع للأشخاص الغير قادرين على تمثيل أنفسهم قانونياً  </li>--}}
+            {{--<li>لا يجوز لك بتاتاً أن تنتهك او تحاول انتهاك الحماية الأمنية للموقع الإلكتروني  </li>--}}
+            <li><a href="{{URL::to('tos')}}" target="_blank">تصفح الشروط واﻻحكام </a></li>
+        </ul>
+        <input type="checkbox" name="tos_agree" required/><strong> الموافقه على الشروط واﻻحكام </strong>
+        {{--@if ($errors->any())--}}
+            {{--<div class="alert alert-danger">--}}
+                {{--<ul>--}}
+                    {{--@foreach ($errors->all() as $error)--}}
+                        {{--<li>{{ $error }}</li>--}}
+                    {{--@endforeach--}}
+                {{--</ul>--}}
+            {{--</div>--}}
+        {{--@endif--}}
+        {{--@if (session('status'))--}}
+            {{--<div class="alert alert-success">--}}
+                {{--{{ session('status') }}--}}
+            {{--</div>--}}
+        {{--@endif--}}
     </div>
     <div class="text-center mt-md-2 mt-2">
         <button type="button" id="btn-price" class="btn btn-danger ">سعر التذكرة/ <strong> # </strong> ريال </button>
@@ -169,17 +191,34 @@
 @endsection
 @section('page_js')
 <script>
-  $('#datepicker').datepicker({
-      uiLibrary: 'bootstrap4',
-      format: 'yyyy-mm-dd',
-      minDate: new Date(),
-      icons: {
-          rightIcon: '<i class="fa fa-angle-down"></i>'
-      }
-  });
+    $(document).ready(function() {
+        const nowGreg = new Date();
+        const nowHijri = nowGreg.toHijri();
+        console.log(new Date());
+        $('#datepicker').datetimepicker({
+            // uiLibrary: 'bootstrap4',
+            locale: {
+                calender: 'ummalqura',
+                lang: 'ar'
+            },
+            format: 'YYYY-MM-DD',
+
+        });
+    });
+
+    // $('#datepicker').datepicker({
+    //             uiLibrary: 'bootstrap4',
+    //     //
+    //             format:'yyyy-mm-dd',
+    //     //         format: 'DD/MM/YYYY',
+    //             minDate: new Date(),
+    //             icons: {
+    //                 rightIcon: '<i class="fa fa-angle-down"></i>'
+    //             }
+    //         });
   $("#car_type").change(function(){
     $("#btn-price strong").text($("#car_type option:selected").attr("car_type_price"));
-  })
+  });
 
   $("#mobile_number").keypress(function (e){
     if( (e.which < 48 || e.which > 57)){

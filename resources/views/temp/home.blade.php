@@ -21,7 +21,7 @@
 
         <div class="form-row form-row d-flex justify-content-md-center">
             <div class=" mb-md-0 mb-3 col-lg-1 col-md-1 col-sm-6 col-12" style="text-align:center">
-                <img src="{{ asset('/front2/images/fahs.png') }}" alt="" width="60px">
+                <img src="{{ asset('/front2/images/fahs.png') }}" alt="" width="80px">
             </div>
             <div class="form-group mb-md-0 mb-3 col-lg-3 col-md-3 col-sm-6 col-12">
                 <div class="input-group">

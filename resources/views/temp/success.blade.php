@@ -4,7 +4,17 @@
 @endsection
 @section('content')
 <!--Start Form-->
+
   <section class="suitable">
+    @if (session('cancel'))
+      <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+      <script>
+          swal ( "إلغاء الحجز" ,  "إلغاء عمليه الحجز غير مفعله" ,  "error" )
+      </script>
+      {{--@php--}}
+        {{--Session::forget('key');--}}
+      {{--@endphp--}}
+    @endif
       <div class=" mb-12 col-md-6 col-sm-12 col-12  myl justify-content-md-center text-center  m-auto">
         <table class=" table   table-bordered success-table shadow p-3 mb-5 bg-white rounded ">
         <thead class=" red">
@@ -53,7 +63,11 @@
        <div class=" mb-12 col-md-6 col-sm-12 col-12  myl justify-content-md-center text-center  m-auto print-warp">
          <a href="{{route('reservation.download',['reservation' => $reservation->slug])}}" ><img src="{{ asset('/front2/images/pdf.png') }}"> تحميل التذكرة</a>
          <a href="{{route('reservation.print',['reservation' => $reservation->slug])}}"  target="_blank"><img src="{{ asset('/front2/images/print.png') }}"> طباعة التذكرة</a>
-         <a href="{{route('reservation.cancel',['reservation_slug' => $reservation->slug])}}"  target="_blank"><img src="{{ asset('/front2/images/x-ico.png') }}" width="30px"> الغاء الحجز</a>
+         @if (session('cancel'))
+            <a href="{{route('reservation.cancel',['reservation_slug' => $reservation->slug])}}" ><img src="{{ asset('/front2/images/x-ico.png') }}" width="30px"> الغاء الحجز</a>
+         @else
+           <a href="{{route('reservation.cancel',['reservation_slug' => $reservation->slug])}}" target="_blank"><img src="{{ asset('/front2/images/x-ico.png') }}" width="30px"> الغاء الحجز</a>
+         @endif
        </div>
     </section>
 <!--End Eye animation -->

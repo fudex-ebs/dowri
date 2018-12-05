@@ -10,7 +10,7 @@
                 <ul class="nav nav-tabs terms-tabs" id="myTab" role="tablist">
                   <?php $mydate = new Carbon\Carbon($date)?>
                     <li class="nav-item col p-0">
-                        <a class="nav-link " id="Saturday-tab"href="{{route('reservation.check',['center_id'=>$center_id,'date' => $mydate->subDays(3)->format('Y-m-d') ])}}" role="tab" aria-controls="Saturday" aria-selected="true">{{$mydate->format('d-m-Y')}}</a>
+                        <a class="nav-link " id="Saturday-tab" href="{{route('reservation.check',['center_id'=>$center_id,'date' => $mydate->subDays(3)->format('Y-m-d') ])}}" role="tab" aria-controls="Saturday" aria-selected="true">{{$mydate->format('d-m-Y')}}</a>
                     </li>
                     <li class="nav-item col p-0">
                         <a class="nav-link" id="Sunday-tab"  href="{{route('reservation.check',['center_id'=>$center_id,'date' => $mydate->addDays(1)->format('Y-m-d') ])}}" role="tab" aria-controls="Sunday" aria-selected="false">{{$mydate->format('d-m-Y')}}</a>
@@ -38,17 +38,33 @@
                       <form>
                           <div class="container">
                             <div class="row time_period_warp">
-                              <?php $time_periods = get_time_periods()?>
+                              <?php $time_periods = get_time_periods(); ?>
                               @foreach($time_periods as $time_period)
                               @if(!$ReservationService->time_period_is_hidden($date,$time_period,$center_id))
-                              <div class="col-md-3">
-                                <a href="{{route('reservation.create',['center_id' => $center_id ,'date' => $date,'time' =>$time_period])}}" class="{!! $ReservationService->check_availability($date,$time_period,$center_id) ? 'active' : 'disable' !!}">
-                                  <div class="time_period">
-                                      <span class="glyphicon glyphicon-time"></span>
-                                      {{time_format($time_period)}}
-                                  </div>
-                                </a>
-                              </div>
+                                  @if($is_sat == "true")
+                                      @foreach(sat_work_hours() as $slot)
+                                            @if($time_period == $slot)
+                                                  <div class="col-md-3 ">
+                                                              <a href="{{route('reservation.create',['center_id' => $center_id ,'date' => $date,'time' =>$time_period])}}" class="{!! $ReservationService->check_availability($date,$time_period,$center_id) ? 'active' : 'disable' !!}">
+                                                                  <div class="time_period">
+                                                                      <span class="glyphicon glyphicon-time"></span>
+                                                                      {{time_format($time_period)}}
+                                                                  </div>
+                                                              </a>
+                                                          </div>
+                                            @endif
+                                      @endforeach
+                                  @else
+                                          <div class="col-md-3 ">
+                                                  <a href="{{route('reservation.create',['center_id' => $center_id ,'date' => $date,'time' =>$time_period])}}" class="{!! $ReservationService->check_availability($date,$time_period,$center_id) ? 'active' : 'disable' !!}">
+                                                      <div class="time_period">
+                                                          <span class="glyphicon glyphicon-time"></span>
+                                                          {{time_format($time_period)}}
+                                                      </div>
+                                                  </a>
+                                              </div>
+                                  @endif
+
                               @endif
                               @endforeach
 

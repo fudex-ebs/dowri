@@ -11,6 +11,7 @@
 |
 */
 Route::get('/test', 'ReservationController@test');
+Route::get('/tos', 'HomeController@tosList');
 Route::post('/paytabs_respond', 'ReservationController@paytabs_respond');
 
 Route::post('/reservation/check_availability', 'ReservationController@check_availability');
@@ -26,6 +27,7 @@ Route::get('/reservation/{Reservation}/download', 'ReservationController@downloa
 Route::get('/reservation/{Reservation}/print', 'ReservationController@print')->name('reservation.print');
 Route::post('/reservation/find', 'ReservationController@find')->name('reservation.find');
 
+Route::post('/reservation/{ReservationConfirm}/confirm', 'ReservationCancelController@confirm')->name('reservation.confirm_code');
 Route::get('/reservation/{reservation_slug}/cancel', 'ReservationCancelController@create')->name('reservation.cancel');
 Route::get('/reservation_cancel/{ReservationCancel}/verify', 'ReservationCancelController@verify')->name('reservation.cancel_verify');
 Route::post('/reservation_cancel/{ReservationCancel}/verify', 'ReservationCancelController@post_verify')->name('reservation.cancel_verify_post');

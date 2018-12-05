@@ -7,7 +7,7 @@ use App\Services\Reservation\ReservationCancelService;
 use App\Models\Reservation;
 use App\Models\ReservationCancel;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 class ReservationCancelController extends Controller
 {
     protected $ReservationCancelService;
@@ -30,12 +30,19 @@ class ReservationCancelController extends Controller
     public function create($reservation_slug)
     {
       $reservation = Reservation::whereslug( $reservation_slug )->first();
-      if($reservation && $reservation->valid()){
-        $reservation_cancel = $this->ReservationCancelService->create($reservation);
-        return redirect()->route('reservation.cancel_verify', ['ReservationCancel' => $reservation_cancel]);
-      }
-      return redirect()->back()->with('status','reservation not valid');
+      $current_date = Carbon::now() ;
+      $reservation_date = new Carbon($reservation->date);
+      $hour_diff = round((strtotime($reservation_date) - strtotime($current_date))/3600, 1);
+        if($hour_diff <= 24){
+            return redirect()->back()->with('cancel','إلغاء عمليه الحجز غير مفعله  ');
 
+        }else{
+            if($reservation && $reservation->valid()){
+                $reservation_cancel = $this->ReservationCancelService->create($reservation);
+                return redirect()->route('reservation.cancel_verify', ['ReservationCancel' => $reservation_cancel]);
+            }
+            return redirect()->back()->with('status','reservation not valid');
+        }
     }
 
     /**

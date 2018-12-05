@@ -40,7 +40,8 @@ class StoreReservationRequest extends FormRequest
            'password.required' => 'Password is required!',
            'email.required' => 'email is required!',
            'plate_number.required' => 'plate_number is required!',
-           'serial_number.required' => 'serial_number is required!'
+           'serial_number.required' => 'serial_number is required!',
+           'tos_agree.required' => 'tos_agree is required!',
        ];
    }
 }
