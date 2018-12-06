@@ -11,9 +11,27 @@
       <script>
           swal ( "إلغاء الحجز" ,  "إلغاء عمليه الحجز غير مفعله" ,  "error" )
       </script>
-      {{--@php--}}
-        {{--Session::forget('key');--}}
-      {{--@endphp--}}
+      @php
+        Session::forget('cancel');
+      @endphp
+    @endif
+    @if (session('cancel_update'))
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script>
+            swal ( "تعديل الحجز" ,  "تعديل عمليه الحجز غير مفعله" ,  "error" )
+        </script>
+        @php
+            Session::forget('cancel_update');
+        @endphp
+    @endif
+    @if (session('update'))
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script>
+            swal ( "تعديل الحجز" ,  "تعديل عمليه الحجز تمت بنجاح" ,  "success" )
+        </script>
+        @php
+            Session::forget('update');
+        @endphp
     @endif
       <div class=" mb-12 col-md-6 col-sm-12 col-12  myl justify-content-md-center text-center  m-auto">
         <table class=" table   table-bordered success-table shadow p-3 mb-5 bg-white rounded ">
@@ -66,6 +84,7 @@
 {{--            <a href="{{route('reservation.cancel',['reservation_slug' => $reservation->slug])}}" ><img src="{{ asset('/front2/images/x-ico.png') }}" width="30px"> الغاء الحجز</a>--}}
             {{--Cancel without confirmed --}}
            <a href="{{route('reservation.cancel',['reservation_slug' => $reservation->slug])}}" ><img src="{{ asset('/front2/images/x-ico.png') }}" width="30px"> الغاء الحجز</a>
+           <a href="{{route('reservation.edit',['reservation_slug' => $reservation->slug])}}" ><img src="{{ asset('/front2/images/code.png') }}" width="30px"> تعديل الحجز</a>
 
        </div>
     </section>

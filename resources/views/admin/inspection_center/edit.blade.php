@@ -232,9 +232,9 @@
               <div class="m-portlet__body">
                   <a class="col-lg-12 col-md-12 col-sm-12">
                       <a href="{{route('inspection_center.list',['center_slug' => $inspection_center->slug])}}" ><i class="fa fa-link"></i>   show All</a>
-                  </div>
               </div>
           </div>
+      </div>
       </div>
 
 

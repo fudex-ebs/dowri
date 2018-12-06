@@ -10,11 +10,13 @@ use App\Models\ReservationConfirm;
 use App\Services\Reservation\ReservationService;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreReservationRequest;
+use App\Http\Requests\UpdateReservationRequest;
 use App\Events\ReservationCreated;
 use Carbon\Carbon;
 use PDF;
 use Log;
 use App\PayTabs\PayTabs;
+use Session;
 
 class ReservationController extends Controller
 {
@@ -140,6 +142,7 @@ class ReservationController extends Controller
 
     public function check_availability(Request $request)
     {
+//        return $request;
         if( $this->ReservationService->check_availability($request->get('date'),$request->get('time_period'),$request->get('inspection_center_id')) ){
 
           return 'availabe';
@@ -209,6 +212,58 @@ class ReservationController extends Controller
 
         }
 //        return $reservation_confirm ;
+    }
+    public function  edit($slug){
+        $reservation = Reservation::whereslug($slug)->first();
+        if($reservation){
+            $current_date = Carbon::now() ;
+            $reservation_date = new Carbon($reservation->date);
+            $hour_diff = round((strtotime($reservation_date) - strtotime($current_date))/3600, 1);
+            if($hour_diff <= 24){
+                return redirect()->back()->with('cancel_update','تعديل عمليه الحجز غير مفعله  ');
+            }else{
+                //
+                $car_types = CarType::all();
+                $cities = City::all();
+                $centers = InspectionCenter::all();
+                $date = $reservation->date ;
+                if(date_is_sat($date)){
+                    $periods = sat_work_hours();
+                }else{
+                    $periods = get_time_periods();
+                }
+                $new_periods = [];
+                foreach ($periods as $period){
+                    if($period == $reservation->time_period ){
+                        array_push($new_periods, $period) ;
+                    }else{
+                        $result = $this->ReservationService->check_availability($date,$period,$reservation->inspection_center_id);
+                        if($result == true){
+                            array_push($new_periods, $period) ;
+                        }
+                    }
+
+                }
+//                return count($new_periods) ;
+                return view('reservation.edit',['reservation' => $reservation ,"car_types" => $car_types ,'cities'=>$cities,'centers'=>$centers ,'periods'=>$new_periods]);
+            }
+
+        }
+        return redirect()->back()->with('status','reservation not found');
+
+
+    }
+    public function update($slug ,UpdateReservationRequest $request ){
+//        return $request->all();
+        $reservation = Reservation::whereslug($slug)->first();
+        $data = $request->all();
+        $reservation_update = $this->ReservationService->update($reservation,$data);
+        if( $reservation_update){
+            Session::put('update' , 'update done');
+            return redirect()->route('reservation.show',['Reservation' => $reservation ]);
+
+        }
+        return redirect()->back()->with('status','reservation not found');
     }
 
 }

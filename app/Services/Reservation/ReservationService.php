@@ -166,6 +166,7 @@ class ReservationService{
       $reservation_number_count = Reservation::whereBetween('date', [$from_date, $to_date])->where('status','valid')->count();
       return $reservation_number_count;
     }
+
     public function reservation_count_on($from_date,$to_date){
       $reservation_number_count = Reservation::whereBetween('created_at', [$from_date, $to_date])->where('status','valid')->count();
       return $reservation_number_count;
@@ -190,11 +191,41 @@ class ReservationService{
         $this->send_confirm_code($reservationConfirm);
         return $reservationConfirm ;
     }
+
     public function send_confirm_code($reservationConfirm){
         $msg = 'رمز التأكيد هو '.$reservationConfirm->confirm_code;
         $mobile_number = $reservationConfirm->reservation->user->mobile_number;
         SendSms($mobile_number,$msg);
     }
 
+    //update reservation
+    public function update($reservation , $data){
+        $car = Car::where('id', $reservation->car_id)->first();
+        $user = User::where('id', $reservation->user_id)->first();
+//        return $data ;
+        $reservation->update([
+            'inspection_center_id' => $data['reserve_center_id'],
+            'date' => $data['reserve_date'],
+            'time_period' => $data['reserve_period']
+        ]);
+        $user->update([
+            'name' => $data['first_name'].' '.$data['last_name'],
+            'mobile_number' => $data['mobile_number'],
+            'email' => $data['email'],
+        ]);
+        $car->update([
+            'plate_number' => $data['plate_number'],
+            'serial_number' => $data['serial_number'],
+            'car_type_id' => $data['car_type_id'],
+            'manufacture_year' => $data['manufacture_year'],
+            'model' => $data['model'],
+            'register_expire_date' => $data['register_expire_date']
+        ]);
+
+        return "Reservation user data and car data updated";
+
+
+
+    }
 
 }

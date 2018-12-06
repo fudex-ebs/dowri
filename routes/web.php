@@ -26,6 +26,10 @@ Route::get('/reservation/{Reservation}/show', 'ReservationController@show')->nam
 Route::get('/reservation/{Reservation}/download', 'ReservationController@download')->name('reservation.download');
 Route::get('/reservation/{Reservation}/print', 'ReservationController@print')->name('reservation.print');
 Route::post('/reservation/find', 'ReservationController@find')->name('reservation.find');
+//Update routes
+Route::get('/reservation/{Reservation}/edit', 'ReservationController@edit')->name('reservation.edit');
+Route::post('/reservation/{Reservation}/update', 'ReservationController@update')->name('reservation.update');
+
 
 Route::post('/reservation/{ReservationConfirm}/confirm', 'ReservationController@confirm')->name('reservation.confirm_code');
 //Route::get('/reservation/{reservation_slug}/cancel', 'ReservationCancelController@create')->name('reservation.cancel');
