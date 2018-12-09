@@ -15,6 +15,8 @@
 
     <link rel="stylesheet" type="text/css" href="{{asset('/front2/css/rtl.css')}}">
     <link href="{{asset('/front2/css/bootstrap-datetimepicker.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{{asset('/front/css/dev.css')}}">
+
 
     @yield('page_css')
     <title>دوري</title>
@@ -150,8 +152,13 @@
 <script src="{{asset('/hjri/bootstrap-calendars.min.js')}}"></script>
 <script src="{{asset('/hjri/bootstrap-datetimepicker.min.js')}}" type="text/javascript"></script>
 <script src="https://rawgit.com/abdennour/hijri-date/master/cdn/hijri-date-latest.js" type="text/javascript" ></script>
-
+{{-- form validation --}}
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
 @yield('page_js')
-
+    <script>
+        $.validate({
+            modules : 'location, date, security, file',
+        });
+    </script>
 </body>
 </html>

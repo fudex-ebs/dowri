@@ -71,6 +71,7 @@ class ReservationController extends Controller
      */
     public function store(StoreReservationRequest $request,$center_id,$date,$time_period)
     {
+//        dd($request->all());
         if( $this->ReservationService->check_availability($date,$time_period,$center_id) ){
           $dataArray = array_merge($request->all(),['date' => $date,'time_period' =>$time_period,'inspection_center_id' => $center_id]);
           $reservation = $this->ReservationService->create($dataArray);
@@ -227,25 +228,22 @@ class ReservationController extends Controller
                 $cities = City::all();
                 $centers = InspectionCenter::all();
                 $date = $reservation->date ;
-                if(date_is_sat($date)){
-                    $periods = sat_work_hours();
-                }else{
-                    $periods = get_time_periods();
-                }
+                $periods = get_time_periods();
+//                return $periods;
                 $new_periods = [];
-                foreach ($periods as $period){
-                    if($period == $reservation->time_period ){
-                        array_push($new_periods, $period) ;
-                    }else{
-                        $result = $this->ReservationService->check_availability($date,$period,$reservation->inspection_center_id);
-                        if($result == true){
-                            array_push($new_periods, $period) ;
-                        }
-                    }
-
-                }
+//                foreach ($periods as $period){
+//                    if($period == $reservation->time_period ){
+//                        array_push($new_periods, $period) ;
+//                    }else{
+//                        $result = $this->ReservationService->check_availability($date,$period,$reservation->inspection_center_id);
+//                        if($result == true){
+//                            array_push($new_periods, $period) ;
+//                        }
+//                    }
+//
+//                }
 //                return count($new_periods) ;
-                return view('reservation.edit',['reservation' => $reservation ,"car_types" => $car_types ,'cities'=>$cities,'centers'=>$centers ,'periods'=>$new_periods]);
+                return view('reservation.edit',['reservation' => $reservation ,"car_types" => $car_types ,'cities'=>$cities,'centers'=>$centers ,'periods'=>$periods]);
             }
 
         }
@@ -253,6 +251,7 @@ class ReservationController extends Controller
 
 
     }
+
     public function update($slug ,UpdateReservationRequest $request ){
 //        return $request->all();
         $reservation = Reservation::whereslug($slug)->first();

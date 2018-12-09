@@ -1,0 +1,8 @@
+.jq-error{
+    color:red;
+    font-weight: bold;
+    font-size: 12px;
+}
+.listed_table{
+    padding:90px;
+}

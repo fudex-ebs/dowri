@@ -36,6 +36,7 @@ Route::post('/reservation/{ReservationConfirm}/confirm', 'ReservationController@
 Route::get('/reservation_cancel/{ReservationCancel}/verify', 'ReservationCancelController@verify')->name('reservation.cancel_verify');
 Route::post('/reservation_cancel/{ReservationCancel}/verify', 'ReservationCancelController@post_verify')->name('reservation.cancel_verify_post');
 Route::get('/reservation/{reservation_slug}/cancel', 'ReservationCancelController@cancel_reserve')->name('reservation.cancel');
+Route::get('/inspection_center/{inspection_center}/list', 'InspectionCenterController@list_reservations')->name('inspection_center.list');
 
 
 Auth::routes();
@@ -48,7 +49,7 @@ Route::group(['prefix' => 'admin','middleware' => 'admin' ], function () {
     Route::post('/inspection_center/store', 'InspectionCenterController@store')->name('inspection_center.store');
     Route::get('/inspection_center/{inspection_center}/edit', 'InspectionCenterController@edit')->name('inspection_center.edit');
     Route::post('/inspection_center/{inspection_center}/update', 'InspectionCenterController@update')->name('inspection_center.update');
-    Route::get('/inspection_center/{inspection_center}/list', 'InspectionCenterController@list_reservations')->name('inspection_center.list');
+//    Route::get('/inspection_center/{inspection_center}/list', 'InspectionCenterController@list_reservations')->name('inspection_center.list');
 
     // capasity controller
     Route::get('/capacity_modification/{inspection_center_id}/{date}', 'CapacityModificationController@create')->name('capacity_modification.create');

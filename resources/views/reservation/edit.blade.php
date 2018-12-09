@@ -21,7 +21,7 @@
                     </ul>
                 </div>
 
-            @endif
+        @endif
         <form method="post" action="{{route('reservation.update',['slug' => $reservation->slug ])}}" enctype="multipart/form-data">
             <input type='hidden' name='_token' value="{!! csrf_token() !!}">
             <div class="form-row form-row d-flex justify-content-md-center">
@@ -282,6 +282,26 @@
                 },
                 format: 'YYYY-MM-DD',
 
+            });
+            $('#datepicker1').change(function(){
+               var new_date = $(this).val();
+                var days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+                var d = new Date(new_date);
+                var dayName = days[d.getDay()];
+
+                if(dayName == "Saturday"){
+                    var periods = [
+                        'p_14_00','p_14_15','p_14_30','p_14_45',
+                        'p_15_00','p_15_15','p_15_30','p_15_45',
+                        'p_16_00','p_16_15','p_16_30','p_16_45'];
+
+                    $.each( periods, function( key, value ) {
+                        $("#time_period option[value=" + value + "]").hide();
+                    });
+                }else{
+                    $("#time_period").children('option').show();
+
+                }
             });
 
             $('#time_period').change(function(){
