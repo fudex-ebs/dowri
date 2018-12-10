@@ -109,6 +109,7 @@
               <thead>
                 <tr>
                   <th scope="col">#</th>
+                  <th scope="col">Reservation number</th>
                   <th scope="col">name</th>
                   <th scope="col">mobile number</th>
                   <th scope="col">email</th>
@@ -125,6 +126,7 @@
                 @foreach($reservations as $count => $reservation)
                 <tr>
                   <th scope="row">{{$count+1}}</th>
+                  <th scope="col">{{$reservation->slug}}</th>
                   <td>{{$reservation->user->name}}</td>
                   <td>{{$reservation->user->mobile_number}}</td>
                   <td>{{$reservation->user->email}}</td>

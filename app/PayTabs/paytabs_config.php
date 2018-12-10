@@ -1,8 +1,8 @@
 <?php
 
 return array(
-  'merchant_email' => 'mohmd.a@fudex.com.sa',
-	'secret_key' => 'v7JVcAA4J4SAOoqcWCLsXmZTj3naBiv7pf3CPDGzIz9xXzJUcun9Rm3aqqk2IQa85dKVQruy1E6YePTqkgzbDDl43F6MwgUBtFxk',
+	'merchant_email' => 'moosabukhamsin@fudex.com.sa',
+	'secret_key' => 'A0Wm8o5rQ39vnGnf2RG58LCHZulRC2Vc3SycgED6HNC4uZkwR0BZLeHLI2Cl5xx8p6lFKYMsMowgnQMfRnfDCWolZ1G4yedYlyE5',
 	'site_url' => "http://bsamat.com",
 	'return_url' => "http://127.0.0.1:8000/paytabs_respond",
 	'ip_merchant' => "78.95.181.137",

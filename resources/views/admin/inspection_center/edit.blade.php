@@ -100,6 +100,7 @@
               <thead>
                 <tr>
                   <th scope="col">#</th>
+                  <th scope="col">Reservation number</th>
                   <th scope="col">name</th>
                   <th scope="col">mobile number</th>
                   <th scope="col">email</th>
@@ -110,17 +111,18 @@
                 </tr>
               </thead>
               <tbody>
-                @foreach($inspection_center->reservations as $count => $reservation)
-                <tr>
-                  <th scope="row">{{$count+1}}</th>
-                  <td>{{$reservation->user->name}}</td>
-                  <td>{{$reservation->user->mobile_number}}</td>
-                  <td>{{$reservation->user->email}}</td>
-                  <td>{{$reservation->car->plate_number}}</td>
-                  <td>{{$reservation->car->serial_number}}</td>
-                  <td>{{$reservation->date}}</td>
-                  <td>{{$reservation->time_period}}</td>
-                </tr>
+                @foreach($inspection_center->valid_reservations as $count => $reservation)
+                        <tr>
+                          <th scope="row">{{$count+1}}</th>
+                          <th scope="col">{{$reservation->slug}}</th>
+                          <td>{{$reservation->user->name}}</td>
+                          <td>{{$reservation->user->mobile_number}}</td>
+                          <td>{{$reservation->user->email}}</td>
+                          <td>{{$reservation->car->plate_number}}</td>
+                          <td>{{$reservation->car->serial_number}}</td>
+                          <td>{{$reservation->date}}</td>
+                          <td>{{$reservation->time_period}}</td>
+                        </tr>
                 @endforeach
               </tbody>
             </table>

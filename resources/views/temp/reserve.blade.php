@@ -72,7 +72,9 @@
                     <div class="input-group-text">
                         <img src="{{ asset('/front2/images/board-number.png') }}" alt="">
                     </div>
-                    <input type="text" class="form-control" placeholder="رقم اللوحة مثال:(ح ب ر - 1636)" name="plate_number" value="{{ old('plate_number') }}"
+                    <input type="text" class="form-control" placeholder="رقم اللوحة الجزء 1 :(ح ب ر)" name="plate_number_1" value="{{ old('plate_number_1') }}"
+                           data-validation="required" data-validation-error-msg-required="<span class='jq-error'>رقم اللوحه مطلوب</span>"><span>-</span>
+                    <input type="text" class="form-control" placeholder="رقم اللوحة الجزء 2 :(1636)" name="plate_number_2" value="{{ old('plate_number_2') }}"
                            data-validation="required" data-validation-error-msg-required="<span class='jq-error'>رقم اللوحه مطلوب</span>">
                 </div>
             </div>

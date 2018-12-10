@@ -33,7 +33,7 @@ class ReservationController extends Controller
      */
     public function index()
     {
-      $reservations = Reservation::all();
+      $reservations = Reservation::where('status','valid')->get();
       return view('admin.reservations2',['reservations' => $reservations]);
     }
 

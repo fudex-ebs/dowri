@@ -22,7 +22,7 @@
                 </div>
 
         @endif
-        <form method="post" action="{{route('reservation.update',['slug' => $reservation->slug ])}}" enctype="multipart/form-data">
+        <form method="post" action="{{route('reservation.update',['slug' => $reservation->slug ])}}" enctype="multipart/form-data" novalidate>
             <input type='hidden' name='_token' value="{!! csrf_token() !!}">
             <div class="form-row form-row d-flex justify-content-md-center">
                 {{-- center data --}}
@@ -62,7 +62,7 @@
                             <div class="input-group-text">
                                 <img src="{{ asset('/front2/images/vin-number.png') }}" alt="">
                             </div>
-                            <input type="text" class="form-control" placeholder="اختر لتاريخ" name="reserve_date" id="datepicker1" value="{{$reservation->date}}" required>
+                            <input type="text" class="form-control" placeholder="اختر لتاريخ" name="reserve_date" id="datepicker1" value="{{$reservation->date}}" data-validation="required" data-validation-error-msg-required="<span class='jq-error'>التاريخ مطلوب</span>" >
                         </div>
                     </div>
                 </div>
@@ -92,7 +92,7 @@
                             <div class="input-group-text">
                                 <img src="{{ asset('/front2/images/name.png') }}" alt="">
                             </div>
-                            <input type="text" class="form-control" placeholder="اسم الاول" name="first_name" value="{{$names[0]}}" required>
+                            <input type="text" class="form-control" placeholder="اسم الاول" name="first_name" value="{{$names[0]}}" data-validation="required" data-validation-error-msg-required="<span class='jq-error'>اﻻسم اﻻول مطلوب</span>">
                         </div>
                     </div>
                 </div>
@@ -102,7 +102,7 @@
                             <div class="input-group-text">
                                 <img src="{{ asset('/front2/images/name.png') }}" alt="">
                             </div>
-                            <input type="text" class="form-control" placeholder="اسم الاخير" name="last_name" value="{{$names[1]}}" required>
+                            <input type="text" class="form-control" placeholder="اسم الاخير" name="last_name" value="{{$names[1]}}" data-validation="required" data-validation-error-msg-required="<span class='jq-error'>اﻻسم اﻻخير مطلوب</span>">
                         </div>
                     </div>
                 </div>
@@ -113,7 +113,7 @@
                             <div class="input-group-text">
                                 <img src="{{ asset('/front2/images/mobile.png') }}" alt="">
                             </div>
-                            <input type="text" class="form-control" placeholder="رقم الجوال"  name="mobile_number" id="mobile_number" value="{{$reservation->user->mobile_number}}" required>
+                            <input type="text" class="form-control" placeholder="رقم الجوال"  name="mobile_number" id="mobile_number" value="{{$reservation->user->mobile_number}}"  data-validation="required" data-validation-error-msg-required="<span class='jq-error'>رقم الجوال مطلوب</span>" >
                         </div>
                     </div>
                 </div>
@@ -124,7 +124,7 @@
                             <div class="input-group-text">
                                 <img src="{{ asset('/front2/images/email.png') }}" alt="">
                             </div>
-                            <input type="text" class="form-control" placeholder="البريد الالكتروني" name="email" value="{{$reservation->user->email}}" required>
+                            <input type="text" class="form-control" placeholder="البريد الالكتروني" name="email" value="{{$reservation->user->email}}" data-validation="required" data-validation-error-msg-required="<span class='jq-error'>البريد اﻷلكترونى مطلوب</span>" >
                         </div>
                     </div>
                 </div>
@@ -135,7 +135,11 @@
                             <div class="input-group-text">
                                 <img src="{{ asset('/front2/images/board-number.png') }}" alt="">
                             </div>
-                            <input type="text" class="form-control" placeholder="رقم اللوحة مثال:(ح ب ر - 1636)" name="plate_number" value="{{$reservation->car->plate_number}}" required>
+                            <input type="text" class="form-control" placeholder="رقم اللوحة الجزء 1 :(ح ب ر)" name="plate_number_1" value="{{explode("-",$reservation->car->plate_number)[0]}}"
+                                   data-validation="required" data-validation-error-msg-required="<span class='jq-error'>رقم اللوحه مطلوب</span>"><span>-</span>
+                            <input type="text" class="form-control" placeholder="رقم اللوحة الجزء 2 :(1636)" name="plate_number_2" value="{{explode("-",$reservation->car->plate_number)[1]}}"
+                                   data-validation="required" data-validation-error-msg-required="<span class='jq-error'>رقم اللوحه مطلوب</span>" >
+
                         </div>
                     </div>
                 </div>
@@ -146,7 +150,7 @@
                             <div class="input-group-text">
                                 <img src="{{ asset('/front2/images/vin-number.png') }}" alt="">
                             </div>
-                            <input type="text" class="form-control" placeholder="رقم الشاصيه" name="serial_number" value="{{$reservation->car->serial_number}}" required>
+                            <input type="text" class="form-control" placeholder="رقم الشاصيه" name="serial_number" value="{{$reservation->car->serial_number}}" data-validation="required" data-validation-error-msg-required="<span class='jq-error'>رقم الشاصيه مطلوب</span>" >
                         </div>
                     </div>
                 </div>
@@ -156,7 +160,8 @@
                             <div class="input-group-text">
                                 <img src="{{ asset('/front2/images/vin-number.png') }}" alt="">
                             </div>
-                            <select class="form-control custom-select my-select" name="manufacture_year"   required>
+                            <select class="form-control custom-select my-select" name="manufacture_year"
+                                    data-validation="required" data-validation-error-msg-required="<span class='jq-error'>الموديل مطلوب</span>">
                                 <option selected disabled value="">الموديل</option>
                                 @for($counter_year = date("Y");$counter_year >= 1990 ; $counter_year--)
                                     <option {{ ($reservation->car->manufacture_year == $counter_year) ? "selected" : "" }}>{{$counter_year}}</option>
@@ -171,7 +176,7 @@
                             <div class="input-group-text">
                                 <img src="{{ asset('/front2/images/cars.png') }}" alt=""> </div>
                         </div>
-                        <select id="inputState" class="form-control custom-select my-select" name="model" required>
+                        <select id="inputState" class="form-control custom-select my-select" name="model" data-validation="required" data-validation-error-msg-required="<span class='jq-error'>اسم الشركه المصنعه مطلوب</span>" >
                             <option  disabled value="">شركة المصنعة</option>
                             <option  {{ ($reservation->car->model == "تيوتا") ? "selected" : "" }} name="toyota">تيوتا</option>
                             <option  {{ ($reservation->car->model == "هونداى") ? "selected" : "" }} name="hyundai" >هونداي</option>
@@ -187,7 +192,8 @@
                             <div class="input-group-text">
                                 <img src="{{ asset('/front2/images/vin-number.png') }}" alt="">
                             </div>
-                            <input type="text" class="form-control" placeholder="تاريخ انتهاء الاستمارة" name="register_expire_date" id="datepicker" value="{{$reservation->car->register_expire_date}}" required>
+                            <input type="text" class="form-control" placeholder="تاريخ انتهاء الاستمارة" name="register_expire_date" id="datepicker" value="{{$reservation->car->register_expire_date}}"
+                                   data-validation="required" data-validation-error-msg-required="<span class='jq-error'>تاريخ انتهاء اﻻستماره مطلوب</span>" >
                         </div>
                     </div>
                 </div>
@@ -200,7 +206,7 @@
                             <div class="input-group-text">
                                 <img src="{{ asset('/front2/images/cars.png') }}" alt=""> </div>
                         </div>
-                        <select id="car_type" class="form-control custom-select my-select" name="car_type_id" required>
+                        <select id="car_type" class="form-control custom-select my-select" name="car_type_id" data-validation="required" data-validation-error-msg-required="<span class='jq-error'>نوع السياره مطلوب</span>" >
                             <option selected disabled value="">نوع السيارة</option>
                             @foreach($car_types as $car_type)
                                 <option {{ ($reservation->car->car_type == $car_type) ? "selected" : "" }} value="{{$car_type->id}}" car_type_price="{{$car_type->price}}" >{{$car_type->name_ar}}</option>
@@ -227,7 +233,7 @@
                     {{--<li>لا يجوز لك بتاتاً أن تنتهك او تحاول انتهاك الحماية الأمنية للموقع الإلكتروني  </li>--}}
                     <li><a href="{{URL::to('tos')}}" target="_blank">تصفح الشروط واﻻحكام </a></li>
                 </ul>
-                <input type="checkbox" name="tos_agree" required/><strong> الموافقه على الشروط واﻻحكام </strong>
+                <input type="checkbox" name="tos_agree" data-validation="required" data-validation-error-msg-required="<span class='jq-error'>يجب الموافقه على الشروط واﻷحكام</span>" /><strong> الموافقه على الشروط واﻻحكام </strong>
 
             </div>
             <div class="text-center mt-md-2 mt-2">

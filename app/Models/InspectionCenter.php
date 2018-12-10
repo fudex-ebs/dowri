@@ -56,6 +56,10 @@ class InspectionCenter extends BaseModel
         return $this->hourly_capacity / 4 ;
 
     }
+    public function valid_reservations(){
+        return $this->hasMany('App\Models\Reservation','inspection_center_id')->where('status','valid');
+
+    }
 
 
 }
