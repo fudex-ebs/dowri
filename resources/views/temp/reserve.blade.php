@@ -5,7 +5,7 @@
 @section('content')
 <!--Start Form-->
 <section class="suitable">
-    <h2>املء بياناتك</h2>
+    <h2> {{__('messages.add_reserve')}}</h2>
     @if($errors->all())
 
         <div class="alert alert-danger">
@@ -26,8 +26,8 @@
                     <div class="input-group-text">
                         <img src="{{ asset('/front2/images/name.png') }}" alt="">
                     </div>
-                    <input type="text" class="form-control" placeholder="اسم الاول" name="first_name" value="{{ old('first_name') }}"
-                           data-validation="required" data-validation-error-msg-required="<span class='jq-error'>اﻻسم اﻻول مطلوب</span>">
+                    <input type="text" class="form-control" placeholder="{{__('messages.first_name')}}" name="first_name" value="{{ old('first_name') }}"
+                           data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.first_name').' '.__('messages.required')}}</span>">
                 </div>
             </div>
         </div>
@@ -37,8 +37,8 @@
                     <div class="input-group-text">
                         <img src="{{ asset('/front2/images/name.png') }}" alt="">
                     </div>
-                    <input type="text" class="form-control" placeholder="اسم الاخير" name="last_name" value="{{ old('last_name') }}"
-                           data-validation="required" data-validation-error-msg-required="<span class='jq-error'>اﻻسم اﻻخير مطلوب</span>" >
+                    <input type="text" class="form-control" placeholder="{{__('messages.last_name')}}" name="last_name" value="{{ old('last_name') }}"
+                           data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.last_name').' '.__('messages.required')}}</span>" >
                 </div>
             </div>
         </div>
@@ -49,8 +49,8 @@
                     <div class="input-group-text">
                         <img src="{{ asset('/front2/images/mobile.png') }}" alt="">
                     </div>
-                    <input type="tel" class="form-control" placeholder="رقم الجوال"  name="mobile_number" id="mobile_number" value="{{ old('mobile_number') }}"
-                           data-validation="required" data-validation-error-msg-required="<span class='jq-error'>رقم الجوال مطلوب</span>" >
+                    <input type="tel" class="form-control" placeholder="{{__('messages.mobile')}}"  name="mobile_number" id="mobile_number" value="{{ old('mobile_number') }}"
+                           data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.mobile').' '.__('messages.required')}}</span>" >
                 </div>
             </div>
         </div>
@@ -61,7 +61,8 @@
                     <div class="input-group-text">
                         <img src="{{ asset('/front2/images/email.png') }}" alt="">
                     </div>
-                    <input type="text" class="form-control" placeholder="البريد الالكتروني" name="email" value="{{ old('email') }}" data-validation="required" data-validation-error-msg-required="<span class='jq-error'>البريد اﻷلكترونى مطلوب</span>" >
+                    <input type="text" class="form-control" placeholder="{{__('messages.email')}}" name="email" value="{{ old('email') }}"
+                           data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.email').' '.__('messages.required')}}</span>" >
                 </div>
             </div>
         </div>
@@ -72,10 +73,10 @@
                     <div class="input-group-text">
                         <img src="{{ asset('/front2/images/board-number.png') }}" alt="">
                     </div>
-                    <input type="text" class="form-control" placeholder="رقم اللوحة الجزء 1 :(ح ب ر)" name="plate_number_1" value="{{ old('plate_number_1') }}"
+                    <input type="text" class="form-control" placeholder="{{__('messages.plate_part_1')}}" name="plate_number_1" value="{{ old('plate_number_1') }}"
                            data-validation="required" data-validation-error-msg-required="<span class='jq-error'>رقم اللوحه مطلوب</span>"><span>-</span>
-                    <input type="text" class="form-control" placeholder="رقم اللوحة الجزء 2 :(1636)" name="plate_number_2" value="{{ old('plate_number_2') }}"
-                           data-validation="required" data-validation-error-msg-required="<span class='jq-error'>رقم اللوحه مطلوب</span>">
+                    <input type="text" class="form-control" placeholder="{{__('messages.plate_part_2')}}" name="plate_number_2" value="{{ old('plate_number_2') }}"
+                           data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>">
                 </div>
             </div>
         </div>
@@ -86,8 +87,8 @@
                     <div class="input-group-text">
                         <img src="{{ asset('/front2/images/vin-number.png') }}" alt="">
                     </div>
-                    <input type="text" class="form-control" placeholder="رقم الشاصيه" name="serial_number" value="{{ old('serial_number') }}"
-                           data-validation="required" data-validation-error-msg-required="<span class='jq-error'>رقم الشاصيه مطلوب</span>" >
+                    <input type="text" class="form-control" placeholder="{{__('messages.serial_num')}}" name="serial_number" value="{{ old('serial_number') }}"
+                           data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.serial_num').' '.__('messages.required')}}</span>" >
 
                 </div>
             </div>
@@ -99,8 +100,8 @@
                         <img src="{{ asset('/front2/images/vin-number.png') }}" alt="">
                     </div>
                     <select class="form-control custom-select my-select" name="manufacture_year" value="{{ old('manufacture_year') }}"
-                            data-validation="required" data-validation-error-msg-required="<span class='jq-error'>الموديل مطلوب</span>" >
-                      <option selected disabled value="">الموديل</option>
+                            data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.manufacture_year').' '.__('messages.required')}}</span>" >
+                      <option selected disabled value="">{{__('messages.manufacture_year')}} </option>
                       @for($counter_year = date("Y");$counter_year >= 1990 ; $counter_year--)
                       <option >{{$counter_year}}</option>
                       @endfor
@@ -115,10 +116,10 @@
                         <img src="{{ asset('/front2/images/cars.png') }}" alt=""> </div>
                 </div>
                 <select id="inputState" class="form-control custom-select my-select" name="model" value="{{ old('model') }}"
-                        data-validation="required" data-validation-error-msg-required="<span class='jq-error'>اسم الشركه المصنعه مطلوب</span>" >
-                    <option selected disabled value="">شركة المصنعة</option>
-                    <option name="toyota">تيوتا</option>
-                    <option name="hyundai">هونداي</option>
+                        data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.model').' '.__('messages.required')}}</span>" >
+                    <option selected disabled value="">{{__('messages.model')}}</option>
+                    <option name="toyota">{{__('messages.toyota')}}</option>
+                    <option name="hyundai">{{__('messages.hyundai')}} </option>
 
 
                 </select>
@@ -131,8 +132,8 @@
                     <div class="input-group-text">
                         <img src="{{ asset('/front2/images/vin-number.png') }}" alt="">
                     </div>
-                    <input type="text" class="form-control" placeholder="تاريخ انتهاء الاستمارة" name="register_expire_date" id="datepicker"  value="{{ old('register_expire_date') }}"
-                           data-validation="required" data-validation-error-msg-required="<span class='jq-error'>تاريخ انتهاء اﻻستماره مطلوب</span>" >
+                    <input type="text" class="form-control" placeholder="{{__('messages.expire_date')}}" name="register_expire_date" id="datepicker"  value="{{ old('register_expire_date') }}"
+                           data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.expire_date').' '.__('messages.required')}}</span>" >
                 </div>
             </div>
         </div>
@@ -146,10 +147,10 @@
                         <img src="{{ asset('/front2/images/cars.png') }}" alt=""> </div>
                 </div>
                 <select id="car_type" class="form-control custom-select my-select" name="car_type_id" value="{{ old('car_type_id') }}"
-                        data-validation="required" data-validation-error-msg-required="<span class='jq-error'>نوع السياره مطلوب</span>" >
-                    <option selected disabled value="">نوع السيارة</option>
+                        data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.car_type').' '.__('messages.required')}}</span>" >
+                    <option selected disabled value="">{{__('messages.car_type')}}</option>
                     @foreach($car_types as $car_type)
-                    <option value="{{$car_type->id}}" car_type_price="{{$car_type->price}}" >{{$car_type->name_ar}}</option>
+                    <option value="{{$car_type->id}}" car_type_price="{{$car_type->price}}" >{{App::getLocale()=="ar" ? $car_type->name_ar : $car_type->name_en}}</option>
                     @endforeach
 
                 </select>
@@ -162,7 +163,7 @@
                     <div class="input-group-text">
                         <img src="{{ asset('/front2/images/vin-number.png') }}" alt="">
                     </div>
-                    <input type="text" class="form-control" placeholder="كود تخفيض" name="discount_code" >
+                    <input type="text" class="form-control" placeholder="{{__('messages.discount_code')}}" name="discount_code" >
                 </div>
             </div>
         </div>
@@ -171,27 +172,14 @@
         <ul style="list-style: none">
             {{--<li>لا يحق استخدام الموقع للأشخاص الغير قادرين على تمثيل أنفسهم قانونياً  </li>--}}
             {{--<li>لا يجوز لك بتاتاً أن تنتهك او تحاول انتهاك الحماية الأمنية للموقع الإلكتروني  </li>--}}
-            <li><a href="{{URL::to('tos')}}" target="_blank">تصفح الشروط واﻻحكام </a></li>
+            <li><a href="{{URL::to('tos')}}" target="_blank">{{__('messages.tos_link')}} </a></li>
         </ul>
-        <input type="checkbox" name="tos_agree" data-validation="required" data-validation-error-msg-required="<span class='jq-error'>يجب الموافقه على الشروط واﻷحكام</span>" /><strong> الموافقه على الشروط واﻻحكام </strong>
-        {{--@if ($errors->any())--}}
-            {{--<div class="alert alert-danger">--}}
-                {{--<ul>--}}
-                    {{--@foreach ($errors->all() as $error)--}}
-                        {{--<li>{{ $error }}</li>--}}
-                    {{--@endforeach--}}
-                {{--</ul>--}}
-            {{--</div>--}}
-        {{--@endif--}}
-        {{--@if (session('status'))--}}
-            {{--<div class="alert alert-success">--}}
-                {{--{{ session('status') }}--}}
-            {{--</div>--}}
-        {{--@endif--}}
+        <input type="checkbox" name="tos_agree" data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.tos_accept')}}</span>" /><strong> {{__('messages.tos_agree')}} </strong>
+
     </div>
     <div class="text-center mt-md-2 mt-2">
-        <button type="button" id="btn-price" class="btn btn-danger ">سعر التذكرة/ <strong> # </strong> ريال </button>
-        <button class="btn btn-info">ادفع الان</button>
+        <button type="button" id="btn-price" class="btn btn-danger ">{{__('messages.tic_price')}}<strong> # </strong> {{__('messages.ryal')}} </button>
+        <button class="btn btn-info">{{__('messages.pay')}}</button>
     </div>
 </form>
 </section>

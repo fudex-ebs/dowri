@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -9,6 +9,9 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('/front2/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('/front2/css/bootstrap-rtl.css')}}">
+    {{--@if(app()->getLocale() == "ar")--}}
+        {{--<link rel="stylesheet" href="{{asset('/front2/css/bootstrap-rtl.css')}}">--}}
+    {{--@endif--}}
 
     <link rel="stylesheet" type="text/css" href="{{asset('/front2/plugins/menu/webslidemenu-ar.css')}}">
     <link href="{{asset('/front2/css/datepicker.min.css')}}" rel="stylesheet" type="text/css" />
@@ -19,7 +22,7 @@
 
 
     @yield('page_css')
-    <title>دوري</title>
+    <title>{{__('messages.dowri')}}</title>
 </head>
 <body>
 
@@ -37,7 +40,7 @@
             <div class="wsmobileheader clearfix ">
                 <a id="wsnavtoggle" class="wsanimated-arrow"><span></span></a>
             </div>
-             <div class="d-lg-none d-block search-mobile"><a href="#search">  رقم الحجز <i class="fa fa-search mr-2"></i></a></div>
+             <div class="d-lg-none d-block search-mobile"><a href="#search"> {{__('messages.search_num')}} <i class="fa fa-search mr-2"></i></a></div>
             <!-- Mobile Header -->
             <nav class="wsmenu clearfix header_nav">
                 <ul class="wsmenu-list">
@@ -46,11 +49,17 @@
                             <img src="{{asset('/front2/images/logo.png')}}" class="align-middle" alt="" width="60px">
                         </a>
                     </li>
-                    <li aria-haspopup="true"><a href="#">من نحن</a></li>
-                    <li aria-haspopup="true"><a href="#">شروط الاستخدام</a></li>
-                    <li aria-haspopup="true"><a href="#">اتصل بنا</a></li>
-                    <li class="media-search"><a href="#search"> <i class="fa fa-search align-middle ml-2"></i> رقم الحجز</a></li>
-
+                    <li aria-haspopup="true"><a href="#">{{__('messages.about_us')}}</a></li>
+                    <li aria-haspopup="true"><a href="#">{{__('messages.tos')}}</a></li>
+                    <li aria-haspopup="true"><a href="#">{{__('messages.contact_us')}}</a></li>
+                    <li aria-haspopup="true">
+                        @foreach (Config::get('languages') as $lang => $language)
+                            @if ($lang != App::getLocale())
+                                <a href="{{ route('lang.switch', $lang) }}">{{__('messages.'.$language)}}</a>
+                            @endif
+                        @endforeach
+                    </li>
+                    <li class="media-search"><a href="#search"> <i class="fa fa-search align-middle ml-2"></i>{{__('messages.search_num')}}</a></li>
                 </ul>
             </nav>
             <!--End Nav -->
@@ -67,8 +76,8 @@
     	<span class="close"><i class="fa fa-close"></i></span>
     	<form role="search" id="searchform" action="{{ route('reservation.find')}}" method="post">
         <input type='hidden' name='_token' value="{!! csrf_token() !!}">
-    		<input value="" name="reservation_number" type="search" placeholder="أدخل رقم الحجز!"/>
-           <button type="submit" class="btn btn-danger search-number">بـحث</button>
+    		<input value="" name="reservation_number" type="search" placeholder="{{__('messages.enter_num')}}"/>
+           <button type="submit" class="btn btn-danger search-number">{{__('messages.search')}}</button>
     	</form>
     </div>
     @yield('content')
@@ -86,19 +95,19 @@
                 <ul class="list-inline d-flex">
 
                 <li class="list-inline-item">
-                    <span class="align-bottom">اختر الوقت المناسب</span>
+                    <span class="align-bottom">{{__('messages.select_time')}}</span>
                     <img src="{{asset('/front2/images/pay-ico.png')}}" alt="">
                 </li>
                 <li class="list-inline-item">
-                    <span class="align-bottom">احجز</span>
+                    <span class="align-bottom"> {{__('messages.reserve')}}</span>
                     <img src="{{asset('/front2/images/pay-ico.png')}}" alt="">
                 </li>
                 <li class="list-inline-item">
-                    <span class="align-bottom">ادفع</span>
+                    <span class="align-bottom">{{__('messages.pay')}}</span>
                     <img src="{{asset('/front2/images/pay-ico.png')}}" alt="">
                 </li>
                 <li class="list-inline-item">
-                    <span class="align-bottom">احضر في موعدك</span>
+                    <span class="align-bottom">{{__('messages.on_time')}}</span>
                     <img src="{{asset('/front2/images/pay-ico.png')}}" alt="">
                 </li>
             </ul>
@@ -122,13 +131,13 @@
             </ul>
             <footer class="copyright">
                 <div class="text-center">
-                    <p class="m-0">Copyright © 2018. Dory. All rights reserved </p>
+                    <p class="m-0"> {{__('messages.copyright')}}</p>
                 </div>
             </footer>
         </div>
 
         <button class="btn btn-secondary  order-lg-3 order-first" type="submit">
-            <span><img src="{{asset('/front2/images/x-ico.png')}}" alt="" class="align-middle ml-1"></span> الغاء الحجز
+            <span><img src="{{asset('/front2/images/x-ico.png')}}" alt="" class="align-middle ml-1"></span>{{__('messages.cancel_reserve')}}
         </button>
     </footer>
     <!--End Footer-->

@@ -17,7 +17,7 @@
 @if (session('cancel_done'))
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
-        swal ( "إلغاء الحجز" ,  "تم إلغاء عمليه الحجز بنجاح" ,  "success" )
+        swal ( "{{__('messages.cancel_res')}}" ,  "{{__('messages.cancel_msg_done')}}" ,  "success" )
     </script>
     @php
     Session::forget('cancel_done');
@@ -38,14 +38,14 @@
                         <div class="input-group-text"><img src="{{ asset('/front2/images/city.png') }}" alt=""> </div>
                     </div>
                     <select id="city" class="form-control custom-select my-select">
-                        <option selected disabled >اختر المدينة</option>
+                        <option selected disabled >{{__('messages.select_city')}}</option>
                         @foreach($cities as $city)
-                        <option value="{{$city->id}}">{{$city->name_ar}}</option>
+                        <option value="{{$city->id}}">{{ App::getLocale()=="ar" ? $city->name_ar : $city->name_en }}</option>
 
                         @endforeach
                     </select>
                 </div>
-                <small id="city-help" class="form-text text-muted input-danger hide">الرجاء تاكد من المعلومات</small>
+                <small id="city-help" class="form-text text-muted input-danger hide">{{__('messages.check_msg')}}</small>
             </div>
             <div class="form-group mb-md-0 mb-3 col-lg-3 col-md-3 col-sm-6 col-12">
                 <div class="input-group">
@@ -53,14 +53,14 @@
                         <div class="input-group-text"><img src="{{ asset('/front2/images/city.png') }}" alt=""> </div>
                     </div>
                     <select id="center" class="form-control custom-select my-select">
-                        <option selected disabled class="disabled">اختر المركز</option>
+                        <option selected disabled class="disabled">{{__('messages.select_center')}} </option>
                         @foreach($InspectionCenters as $center)
-                        <option class="hide" value="{{$center->id}}" city_id="{{$center->city->id}}" >{{$center->name}}</option>
+                        <option class="hide" value="{{$center->id}}" city_id="{{$center->city->id}}" >{{ App::getLocale()=="ar" ? $center->name : $center->name_en}}</option>
 
                         @endforeach
                     </select>
                 </div>
-                <small id="center-help" class="form-text text-muted input-danger hide">الرجاء تاكد من المعلومات</small>
+                <small id="center-help" class="form-text text-muted input-danger hide">{{__('messages.check_msg')}}</small>
             </div>
             <div class="form-group mb-md-0 mb-3 col-lg-3 col-md-3 col-sm-6 col-12">
                 <div class="input-group remove-icon">
@@ -68,15 +68,15 @@
                         <div class="input-group-text">
                             <img src="{{ asset('/front2/images/calender-ico.png') }}" alt="">
                         </div>
-                        <input type="text" class="form-control " id="datepicker" placeholder="اختر لتاريخ">
+                        <input type="text" class="form-control " id="datepicker" placeholder="{{__('messages.select_date')}}">
                     </div>
-                    <small id="datepicker-help" class="form-text text-muted input-danger hide">الرجاء تاكد من المعلومات</small>
+                    <small id="datepicker-help" class="form-text text-muted input-danger hide">{{__('messages.check_msg')}}</small>
                 </div>
             </div>
             <div class="form-group mb-md-0 mb-3 col-lg-2 col-md-12 col-sm-6 col-12">
                 <button id="submit" class="btn btn-primary  mt-lg-0 mt-md-2 ml-lg-2 m-0 float-lg-right float-md-left  float-sm-right float-left">
                     <img src="{{ asset('/front2/images/search-ico.png') }}" alt="" class="align-middle" >
-                    <span>ابحث عن موعد</span>
+                    <span>{{__('messages.find_date')}}</span>
                 </button>
             </div>
         </div>

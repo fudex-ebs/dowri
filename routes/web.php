@@ -10,6 +10,8 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
+
 Route::get('/test', 'ReservationController@test');
 Route::get('/tos', 'HomeController@tosList');
 Route::post('/paytabs_respond', 'ReservationController@paytabs_respond');
