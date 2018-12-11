@@ -1,12 +1,10 @@
 <?php
 return [
-    'welcome' => 'Welcome to E-magnet',
+    'welcome' => 'Welcome to ',
     'login'  => 'Login',
-    'e-magnet' => 'E-magnet',
     'register' => 'Register',
     'arabic' => 'Arabic',
     'english' => 'English',
-    'take_exam' =>'Take Exam',
     'password' => 'Password',
     'email' => 'E-Mail Address',
     'remember' => 'Remember Me',
@@ -23,7 +21,7 @@ return [
     'admin_acc' => 'You are admin account',
     'most' =>'most',
     'least' => 'least',
-    'send' => 'send',
+    'send' => 'Send',
     'my_report'=> 'My report',
     'dashboard_report' => 'Dashboard Report',
     'most_table' => 'Most table',
@@ -54,7 +52,7 @@ return [
     'not_available' =>'Not available',
     'add_reserve'=> 'Add Your information',
     'first_name'=> 'First name',
-    'required' =>'required',
+    'required' =>'is required',
     'last_name'=>'Last name',
     'mobile'=>'Mobile number',
     'plate_num'=> 'Plate number',
@@ -73,6 +71,7 @@ return [
     'ryal' => 'SAR' ,
     'tic_price'=>'Ticket price/ ',
     'tos_accept'=> 'You should accept terms and condition',
+    'tos_title'=>'Doari Terms of use',
     'reserve_date'=> 'Reservation date',
     'reserve_num'=>'Reservation number',
     'address'=>'Address',
@@ -84,5 +83,21 @@ return [
     'cancel_msg_done'=> 'Reservation canceled successfully',
     'cancel_update_msg'=>'Update reservation not allowed',
     'print'=>'Print ticket',
-    'download' =>'Download ticket'
+    'download' =>'Download ticket',
+    'sms'=>'SMS services',
+    'sms_msg'=>'You will receive sms with valid confirm code for one time',
+    'code' =>'Confirm code',
+    'cancel' =>'Cancel',
+    'sms_send' =>' confirm code send to ' ,
+    'edit_title'=> 'Edit your reservation ',
+    'invalid_error' => 'This time period not available for that day',
+    'select_period' => 'Select period',
+    'date'=>'Date',
+    'edit'=>'Edit',
+    'date_time'=> 'Reserved for date and time',
+    'location' => 'Location',
+    'reserved_date' =>'Reserved at date',
+    'welcome_msg' => 'Welcome in Doari website'
+
+
 ];

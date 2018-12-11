@@ -14,7 +14,7 @@
 @endsection
 @section('content')
     <section class="suitable">
-        <h2>شروط استخدام الموقع</h2>
+        <h2>{{__('messages.tos_title')}}</h2>
     </section>
     <section class="reservation-form">
         <div class="row">
@@ -22,7 +22,7 @@
                 <div class="tos">
                     <ul>
                         <p>
-                            مرحباً بكم في موقع دورى
+                           {{__('messages.welcome_msg')}}
                         </p>
                         <li>
                             تم تأسيس موقع دورى لتقديم المعلومات الخاصة عن مؤسسة دورى  للاستخدام الشخصي ولإعطاء المستخدمين فرصة التمتع بالتسوق الالكتروني والحصول على أفضل الخدمات والمميزات.

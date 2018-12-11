@@ -43,6 +43,7 @@
                   <th scope="col">start date</th>
                   <th scope="col">end date</th>
                   <th scope="col">amount</th>
+                  <th scope="col">Delete</th>
 
 
                 </tr>
@@ -55,7 +56,8 @@
                   <td>{{$code->code}}</td>
                   <td>{{$code->start_date}}</td>
                   <td>{{$code->end_date}}</td>
-                  <td>{{$code->amount}}</td>
+                  <td>{{$code->amount}} %</td>
+                  <td><a href="{{route('DiscountCode.delete',['DiscountCode'=>$code])}}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                   
                 </tr>
                 @endforeach
@@ -74,6 +76,7 @@
 </div>
 </div>
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
   <div class="modal-dialog  modal-lg" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -84,30 +87,40 @@
       </div>
       <form method="post" action="{{ route('DiscountCode.store') }}" enctype="multipart/form-data">
       <div class="modal-body">
+        @if($errors->all())
+          <script> $('#exampleModal').modal('show');</script>
+          <div class="alert alert-danger">
+            <ul>
+              @foreach ($errors->all() as $message)
+                <li> {{$message}}</li>
+              @endforeach
+            </ul>
+          </div>
 
+        @endif
             <input type='hidden' name='_token' value="{!! csrf_token() !!}">
             <div class="row">
               <div class="form-group col-md-9">
                   <label>code </label>
-                  <input type="text" name="code" class="form-control" >
+                  <input type="text" name="code" value="{{ old('code') }}" class="form-control" >
               </div>
               </div>
               <div class="row">
               <div class="form-group col-md-9">
                   <label>start date </label>
-                  <input type="date" name="start_date" class="form-control" >
+                  <input type="date" name="start_date" value="{{ old('start_date') }}"  class="form-control" >
               </div>
               </div>
                <div class="row">
               <div class="form-group col-md-9">
                   <label>end date </label>
-                  <input type="date" name="end_date" class="form-control" >
+                  <input type="date" name="end_date" value="{{ old('end_date') }}" class="form-control" >
               </div>
               </div>
                <div class="row">
               <div class="form-group col-md-9">
                   <label>amount </label>
-                  <input type="text" name="amount" class="form-control" >
+                  <input type="number" name="amount"  value="{{ old('amount') }}" min="1" class="form-control" >
               </div>
               </div>
                <div class="row">
@@ -136,4 +149,7 @@
       });
   } );
   </script>
+  @if($errors->all())
+    <script> $('#exampleModal').modal('show');</script>
+  @endif
 @endsection

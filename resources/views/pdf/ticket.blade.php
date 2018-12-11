@@ -276,7 +276,7 @@ width: 100%;
 
     </style>
 
-    <title>دوري</title>
+    <title>{{__('messages.dowri')}}</title>
 </head>
 <body>
 
@@ -301,20 +301,20 @@ width: 100%;
     <div class="rightSection">
       <div class="eventDetails">
         <div class="eventDetail">
-          <small>رقم الحجز</small>
+          <small> {{__('messages.search_num')}} </small>
           <strong>{{$reservation->slug}}</strong>
         </div>
       </div>
       <div class="infos">
         <div class="places">
           <div class="box">
-            <small>الاسم</small>
+            <small>{{__('messages.name')}} </small>
             <strong>{{$reservation->user->name}}</strong>
           </div>
         </div>
         <div class="times">
           <div class="box">
-            <small>رقم الجوال</small>
+            <small>{{__('messages.mobile')}}</small>
             <strong>{{$reservation->user->mobile_number}}</strong>
           </div>
         </div>
@@ -322,14 +322,18 @@ width: 100%;
       <div class="infos">
         <div class="places">
           <div class="box">
-            <small> الحجز لوقت و تاريخ</small>
+            <small>  {{__('messages.date_time')}}</small>
             <strong>{{$reservation->date}} | {{time_format($reservation->time_period)}}</strong>
           </div>
         </div>
         <div class="times">
           <div class="box">
-            <small>الموقع</small>
-            <strong>{{$reservation->inspection_center->name}} - {{$reservation->inspection_center->city->name_ar}}</strong>
+            <small>{{__('messages.location')}}</small>
+            @if( App::getLocale()=="ar")
+              <strong>{{$reservation->inspection_center->city->name_ar}} - {{$reservation->inspection_center->name}}</strong>
+            @else
+              <strong>{{$reservation->inspection_center->city->name_en}} - {{$reservation->inspection_center->name_en}}</strong>
+            @endif
           </div>
         </div>
       </div>
@@ -338,18 +342,18 @@ width: 100%;
         <div class="places">
           <div class="box">
             <div class="passenger">
-              <small>رقم اللوحة</small>
+              <small> {{__('messages.plate_num')}}</small>
               <strong>{{$reservation->car->plate_number}}</strong>
             </div>
             <div class="date">
-              <small>رقم الشاصية</small>
+              <small>{{__('messages.serial_num')}}</small>
               <strong>{{$reservation->car->serial_number}}</strong>
             </div>
           </div>
         </div>
         <div class="times">
           <div class="box">
-            <small>حٌجز فى تاريخ</small>
+            <small> {{__('messages.reserved_date')}}</small>
             <strong>{{$reservation->created_at->format('d-m-Y')}} </strong>
           </div>
         </div>

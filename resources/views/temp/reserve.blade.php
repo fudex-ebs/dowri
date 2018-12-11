@@ -74,7 +74,7 @@
                         <img src="{{ asset('/front2/images/board-number.png') }}" alt="">
                     </div>
                     <input type="text" class="form-control" placeholder="{{__('messages.plate_part_1')}}" name="plate_number_1" value="{{ old('plate_number_1') }}"
-                           data-validation="required" data-validation-error-msg-required="<span class='jq-error'>رقم اللوحه مطلوب</span>"><span>-</span>
+                           data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>"><span>-</span>
                     <input type="text" class="form-control" placeholder="{{__('messages.plate_part_2')}}" name="plate_number_2" value="{{ old('plate_number_2') }}"
                            data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>">
                 </div>
@@ -174,7 +174,8 @@
             {{--<li>لا يجوز لك بتاتاً أن تنتهك او تحاول انتهاك الحماية الأمنية للموقع الإلكتروني  </li>--}}
             <li><a href="{{URL::to('tos')}}" target="_blank">{{__('messages.tos_link')}} </a></li>
         </ul>
-        <input type="checkbox" name="tos_agree" data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.tos_accept')}}</span>" /><strong> {{__('messages.tos_agree')}} </strong>
+        <input type="checkbox" name="tos_agree"
+               data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.tos_accept')}}</span>" /><strong> {{__('messages.tos_agree')}} </strong>
 
     </div>
     <div class="text-center mt-md-2 mt-2">

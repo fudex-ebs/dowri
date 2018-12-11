@@ -7,6 +7,7 @@ use App\Models\DiscountCode;
 class DiscountCodeService
 {
     public function create($dataArray)
+
     {
         $DiscountCode = DiscountCode::create(array_merge([
                'slug' => uniqid()

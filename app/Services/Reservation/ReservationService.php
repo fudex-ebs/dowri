@@ -183,9 +183,10 @@ class ReservationService{
                 'status' => 'unverified',
             ]);
         }else{
-           $id = ReservationConfirm::where('reservation_id' ,$reservation->id )
+
+           ReservationConfirm::where('reservation_id' ,$reservation->id )
                 ->update(['confirm_code' => rand (0,99999)]);
-           $reservationConfirm = ReservationConfirm::find($id);
+           $reservationConfirm = ReservationConfirm::where('reservation_id',$reservation->id)->first();
         }
 
         $this->send_confirm_code($reservationConfirm);

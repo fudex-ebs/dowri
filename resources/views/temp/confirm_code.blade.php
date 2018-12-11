@@ -13,15 +13,15 @@
                 </button>
             </div>
 
-            {{--@php--}}
-            {{--Session::forget('code_error');--}}
-            {{--@endphp--}}
+            @php
+            Session::forget('code_error');
+            @endphp
         @endif
-        <h2>خدمة الرسائل</h2>
+        <h2> {{__('messages.sms')}}</h2>
         <div class=" mb-12 col-md-6 col-sm-6 col-12  myl">
             <ul   class="list-unstyled mylist " >
-                <li  style="width:fit-content"><img src="{{ asset('/front2/images/sms.png') }}" width="44" height="22" > تم ارسال كود التفعيل الى  <span style="float: left;direction: ltr" > {{substr_replace($ReservationConfirm->reservation->user->mobile_number, '****', 3 , 4)}} </span></li>
-                <li>سوف تتلقى رسالة نصية بكود التفعيل صالحة لمرة واحدة فقط </li>
+                <li  style="width:fit-content"><img src="{{ asset('/front2/images/sms.png') }}" width="44" height="22" >{{__('messages.sms_send')}} <span style="float: left;direction: ltr" > {{substr_replace($ReservationConfirm->reservation->user->mobile_number, '****', 3 , 4)}} </span></li>
+                <li>{{__('messages.sms_msg')}}</li>
 
             </ul>
             <form method="post" action="{{route('reservation.confirm_code',['Reservation' => $ReservationConfirm])}}" enctype="multipart/form-data">
@@ -33,7 +33,7 @@
                         <div class="input-group input remove-icon">
                             <div class="input-group-prepend p-3">
                                 <div class="input-group-text"><img src="{{ asset('/front2/images/code.png') }}" width="26" height="18"></div>
-                                <input type="text" class="form-control" placeholder="كود التفعيل" name="verify_code" >
+                                <input type="text" class="form-control" placeholder="{{__('messages.code')}}" name="verify_code" >
                             </div>
                         </div>
                     </div>
@@ -42,8 +42,8 @@
                     <div class=" mb-3 col-md-12 col-sm-12 col-12" >
                         <div class=" input-group mb-3 col-md-12 col-sm-12 col-12">
                             <div class="text-right mt-md-2 mt-2 ">
-                                <button class="btn btn-danger">ارسال </button>
-                                <button type="button" class="btn btn-info"><img src="{{ asset('/front2/images/x-ico.png') }}" width="28" height="29" class="align-middle ml-1"> الغاء</button>
+                                <button class="btn btn-danger">{{__('messages.send')}}</button>
+                                <button type="button" class="btn btn-info"><img src="{{ asset('/front2/images/x-ico.png') }}" width="28" height="29" class="align-middle ml-1"> {{__('messages.cancel')}}</button>
                             </div>
                         </div>
                     </div>
@@ -51,6 +51,7 @@
                 </div>
 
             </form>
+        </div>
     </section>
 
 

@@ -193,14 +193,20 @@ class ReservationController extends Controller
 
             }else{
                 $reservation_confirm = $this->ReservationService->create_code($reservation);
-//            return $reservation_confirm ;
                 if($reservation_confirm){
-                    return view('temp.confirm_code',['ReservationConfirm' => $reservation_confirm]);
+//                    return view('temp.confirm_code',['ReservationConfirm' => $reservation_confirm]);
+                    return redirect()->route('reservation.create_confirm_code',['ReservationConfirm' => $reservation_confirm]);
                 }
             }
 
         }
         return redirect()->back()->with('status','reservation not found');
+    }
+
+    public  function confirm_page($id){
+//
+        $reservation_confirm =ReservationConfirm::find($id);
+        return view('temp.confirm_code',['ReservationConfirm' => $reservation_confirm]);
     }
     public function confirm (Request $request ,$id){
             $reservation_confirm = ReservationConfirm::find($id);

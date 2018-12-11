@@ -6,6 +6,7 @@ namespace App\Http\Controllers;
 use App\Services\DiscountCode\DiscountCodeService;
 use Illuminate\Http\Request;
 use App\Models\DiscountCode;
+use App\Http\Requests\CreateCodeRequest;
 
 class DiscountCodeController extends Controller
 {
@@ -42,7 +43,7 @@ class DiscountCodeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CreateCodeRequest $request)
     {
         $this->DiscountCodeService->create($request->all());
         return redirect()->back()->with('status','code added');

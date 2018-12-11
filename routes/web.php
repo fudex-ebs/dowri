@@ -32,7 +32,7 @@ Route::post('/reservation/find', 'ReservationController@find')->name('reservatio
 Route::get('/reservation/{Reservation}/edit', 'ReservationController@edit')->name('reservation.edit');
 Route::post('/reservation/{Reservation}/update', 'ReservationController@update')->name('reservation.update');
 
-
+Route::get('/reservation/{ReservationConfirm}/confirm', 'ReservationController@confirm_page')->name('reservation.create_confirm_code');
 Route::post('/reservation/{ReservationConfirm}/confirm', 'ReservationController@confirm')->name('reservation.confirm_code');
 //Route::get('/reservation/{reservation_slug}/cancel', 'ReservationCancelController@create')->name('reservation.cancel');
 Route::get('/reservation_cancel/{ReservationCancel}/verify', 'ReservationCancelController@verify')->name('reservation.cancel_verify');
