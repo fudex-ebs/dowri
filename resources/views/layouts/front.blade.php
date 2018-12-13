@@ -51,7 +51,7 @@
                     </li>
                     <li aria-haspopup="true"><a href="#">{{__('messages.about_us')}}</a></li>
                     <li aria-haspopup="true"><a href="{{URL::to('tos')}}">{{__('messages.tos')}}</a></li>
-                    <li aria-haspopup="true"><a href="#">{{__('messages.contact_us')}}</a></li>
+                    <li aria-haspopup="true"><a href="{{URL::to('contact')}}">{{__('messages.contact_us')}}</a></li>
                     <li aria-haspopup="true">
                         @foreach (Config::get('languages') as $lang => $language)
                             @if ($lang != App::getLocale())

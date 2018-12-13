@@ -14,6 +14,10 @@ Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@
 
 Route::get('/test', 'ReservationController@test');
 Route::get('/tos', 'HomeController@tosList');
+Route::get('/contact', 'ContactUsController@index');
+Route::post('/contact/store', 'ContactUsController@store')->name('contact.store');
+
+
 Route::post('/paytabs_respond', 'ReservationController@paytabs_respond');
 
 Route::post('/reservation/check_availability', 'ReservationController@check_availability');

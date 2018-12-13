@@ -97,7 +97,9 @@ return [
     'date_time'=> 'Reserved for date and time',
     'location' => 'Location',
     'reserved_date' =>'Reserved at date',
-    'welcome_msg' => 'Welcome in Doari website'
+    'welcome_msg' => 'Welcome in Doari website',
+    'content' => 'Content',
+    'contact_msg'=>'Your message received successfully doari team will contact with you soon'
 
 
 ];

@@ -155,9 +155,14 @@ class ReservationController extends Controller
     public function test()
     {
 
-      var_dump(in_array( 'p_8_30' , sat_work_hours() ));
-      return sat_work_hours();
-
+//      var_dump(in_array( 'p_8_30' , sat_work_hours() ));
+//      return sat_work_hours();
+        $number = '0547292181' ;
+        $mssg = "Hello Ragaa";
+        $msg  = iconv("UTF-8","Windows-1256"  , $mssg);
+        $msg = urlencode($msg);
+        $url = "http://sms.rasaelna.com/gw/?userName=Mohammed&userPassword=123456mm&numbers=$number&userSender=FUDEXSA&msg=$msg&By=API";
+        return $url;
 
     }
 
