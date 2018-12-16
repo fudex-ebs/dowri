@@ -49,6 +49,7 @@
                   <th scope="col">time</th>
                   <th scope="col">city</th>
                   <th scope="col">center name</th>
+                  {{--<th scope="col">Discount code</th>--}}
 
                 </tr>
               </thead>
@@ -65,6 +66,7 @@
                   <td>{{$reservation->time_period}}</td>
                   <td>{{$reservation->inspection_center->city->name_en}}</td>
                   <td>{{$reservation->inspection_center->name}}</td>
+{{--                  <td>{{$reservation->discount->discount_code->code}}</td>--}}
                 </tr>
                 @endforeach
               </tbody>

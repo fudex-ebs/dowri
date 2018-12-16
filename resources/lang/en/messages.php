@@ -70,6 +70,7 @@ return [
     'tos_agree'=>'Accept terms ad conditions',
     'ryal' => 'SAR' ,
     'tic_price'=>'Ticket price/ ',
+    'ticket_price'=>'Ticket price ',
     'tos_accept'=> 'You should accept terms and condition',
     'tos_title'=>'Doari Terms of use',
     'reserve_date'=> 'Reservation date',
@@ -98,8 +99,9 @@ return [
     'location' => 'Location',
     'reserved_date' =>'Reserved at date',
     'welcome_msg' => 'Welcome in Doari website',
-    'content' => 'Content',
-    'contact_msg'=>'Your message received successfully doari team will contact with you soon'
+    'content' => 'Message',
+    'contact_msg'=>'Your message received successfully doari team will contact with you soon',
+    'tic_price_discount' =>'Price after discount'
 
 
 ];

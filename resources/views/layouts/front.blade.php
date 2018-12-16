@@ -9,15 +9,18 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,700" rel="stylesheet">
     <link rel="stylesheet" href="{{asset('/front2/css/bootstrap.min.css')}}">
     <link rel="stylesheet" href="{{asset('/front2/css/bootstrap-rtl.css')}}">
-    {{--@if(app()->getLocale() == "ar")--}}
-        {{--<link rel="stylesheet" href="{{asset('/front2/css/bootstrap-rtl.css')}}">--}}
-    {{--@endif--}}
+    @if(app()->getLocale() == "en")
+        <link rel="stylesheet" href="{{asset('/front2/css/ltr.css')}}">
+    @endif
 
     <link rel="stylesheet" type="text/css" href="{{asset('/front2/plugins/menu/webslidemenu-ar.css')}}">
     <link href="{{asset('/front2/css/datepicker.min.css')}}" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="{{asset('/front2/css/style.css')}}">
 
-    <link rel="stylesheet" type="text/css" href="{{asset('/front2/css/rtl.css')}}">
+    {{--<link rel="stylesheet" type="text/css" href="{{asset('/front2/css/rtl.css')}}">--}}
+
     <link href="{{asset('/front2/css/bootstrap-datetimepicker.css')}}" rel="stylesheet" type="text/css" />
+
     <link rel="stylesheet" type="text/css" href="{{asset('/front/css/dev.css')}}">
 
 

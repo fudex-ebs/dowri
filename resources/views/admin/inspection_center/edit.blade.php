@@ -108,6 +108,8 @@
                   <th scope="col">chase number</th>
                   <th scope="col">Date</th>
                   <th scope="col">time</th>
+                  <th scope="col">Discount code</th>
+
                 </tr>
               </thead>
               <tbody>
@@ -122,6 +124,8 @@
                           <td>{{$reservation->car->serial_number}}</td>
                           <td>{{$reservation->date}}</td>
                           <td>{{$reservation->time_period}}</td>
+                          <td>{{isset($reservation->discount) ? $reservation->discount->discount_code->code : '--'}}</td>
+
                         </tr>
                 @endforeach
               </tbody>

@@ -134,7 +134,7 @@ button.btn.btn-primary {
     background: #c60751;
     border:0 none;
     color:#fff;
-    width: 175px;
+    width: auto;
     height: 53px;
     margin-right: 20px;
 }
@@ -147,7 +147,7 @@ button.btn.btn-primary img {
 }
 button.btn.btn-primary:hover {
     background: #e41d6a;
-    width: 175px;
+    width: auto;
     height: 53px;
     margin-left: 20px;
 }
@@ -259,6 +259,16 @@ footer p {
 .img-wrap img {
     width: 100%;
     object-fit: cover;
+}
+.custom-select{
+    background-image: initial !important;
+    background-size: initial !important;
+    background-position: initial !important;
+    -webkit-webkit-appearance: menulist !important;
+    -moz-webkit-appearance: menulist !important;
+    -ms-webkit-appearance: menulist !important;
+    -o-webkit-appearance: menulist !important;
+    -webkit-appearance: menulist;
 }
 
 .custom-select.my-select{

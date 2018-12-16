@@ -243,7 +243,7 @@ class PayTabs
 	*/
 	public function set_discount($discount)
 	{
-		$this->discount=$discount;
+		$this->discount = $discount;
 	}
 	/*
 		create_pay_page function will call curl function and return array of

@@ -56,7 +56,7 @@
                   <td>{{$code->code}}</td>
                   <td>{{$code->start_date}}</td>
                   <td>{{$code->end_date}}</td>
-                  <td>{{$code->amount}} %</td>
+                  <td>{{$code->amount}} </td>
                   <td><a href="{{route('DiscountCode.delete',['DiscountCode'=>$code])}}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                   
                 </tr>

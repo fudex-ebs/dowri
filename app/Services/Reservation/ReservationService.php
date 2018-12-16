@@ -222,7 +222,19 @@ class ReservationService{
             'model' => $data['model'],
             'register_expire_date' => $data['register_expire_date']
         ]);
-
+        $discount_code = $this->DiscountCodeService->get_valid_discount($data['discount_code']);
+//        return $discount_code;
+        if($discount_code){
+            $discount = Discount::create([
+                'reservation_id' => $reservation->id,
+                'discount_code_id' => $discount_code->id,
+            ]);
+        }elseif ($discount_code == NULL){
+            $old_discount= Discount::where('reservation_id',$reservation->id )->first();
+            if($old_discount){
+                $old_discount->delete();
+            }
+        }
         return "Reservation user data and car data updated";
 
 

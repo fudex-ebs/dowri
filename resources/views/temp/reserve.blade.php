@@ -168,7 +168,7 @@
             </div>
         </div>
     </div>
-    <div class="text-center mt-md-2 mt-2">
+    <div class="text-center mt-md-2 mt-2 tos-error">
         <ul style="list-style: none">
             {{--<li>لا يحق استخدام الموقع للأشخاص الغير قادرين على تمثيل أنفسهم قانونياً  </li>--}}
             {{--<li>لا يجوز لك بتاتاً أن تنتهك او تحاول انتهاك الحماية الأمنية للموقع الإلكتروني  </li>--}}

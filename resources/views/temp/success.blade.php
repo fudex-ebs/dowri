@@ -44,8 +44,13 @@
             <td>{{$reservation->slug}}</td>
           </tr>
           <tr>
-            <th scope="row">{{__('messages.tic_price')}}</th>
-            <td>{{$reservation->car->car_type->price}}</td>
+              @if($reservation->discount)
+                  <th scope="row">{{__('messages.tic_price_discount')}}</th>
+                  <td>{{$reservation->car->car_type->price - $reservation->discount->discount_code->amount}}</td>
+              @else
+                  <th scope="row">{{__('messages.ticket_price')}}</th>
+                  <td>{{$reservation->car->car_type->price}}</td>
+              @endif
           </tr>
           <tr>
             <th scope="row">{{__('messages.name')}}</th>

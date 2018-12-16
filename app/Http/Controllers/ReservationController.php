@@ -268,6 +268,7 @@ class ReservationController extends Controller
         $reservation = Reservation::whereslug($slug)->first();
         $data = $request->all();
         $reservation_update = $this->ReservationService->update($reservation,$data);
+//        return $reservation_update ;
         if( $reservation_update){
             Session::put('update' , 'update done');
             return redirect()->route('reservation.show',['Reservation' => $reservation ]);

@@ -1,0 +1,81 @@
+.reservation-form{
+  direction: ltr !important;
+}
+
+.custom-select{
+  background-image: initial !important;
+	background-size: initial !important;
+	background-position: initial !important;
+  -webkit-webkit-appearance: menulist !important;
+  -moz-webkit-appearance: menulist !important;
+  -ms-webkit-appearance: menulist !important;
+  -o-webkit-appearance: menulist !important;
+  -webkit-appearance: menulist;
+}
+#submit{
+  float: left !important;
+}
+.wsmenu{
+  float: left;
+  position: absolute;
+  left: 0
+}
+
+.wsmenu-list li{
+  float: left !important;
+}
+.color-des{
+  direction: ltr !important;
+}
+#myTab{
+  direction: ltr !important;
+}
+.suitable form{
+  direction: ltr !important;
+}
+ .input-group-text{
+  border-radius: 0px !important;
+  border-top-left-radius:0.25rem !important;
+  border-bottom-left-radius:0.25rem !important;
+}
+.suitable h2{
+  direction: ltr !important;
+  text-align: left !important;
+}
+.suitable table{
+  direction: ltr !important;
+}
+.suitable table th{
+  direction: rtl !important;
+}
+.print-warp{
+  direction: ltr !important;
+}
+.search-number{
+  right: 10% !important;
+  left: initial !important;
+}
+input[name=reservation_number]{
+  text-align: left !important;
+  padding-left: 10px !important;
+}
+/* Fatma */
+.input-danger{
+    float: left;
+}
+ .jq-error {
+   float: left;
+   /*direction: ltr;*/
+}
+.tos-error .jq-error{
+    float: none;
+}
+
+.alert-danger {
+  direction: ltr;
+  text-align: left;
+}
+.row {
+    direction: ltr;
+    text-align: left;
+}
