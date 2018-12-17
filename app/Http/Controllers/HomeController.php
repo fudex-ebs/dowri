@@ -28,4 +28,10 @@ class HomeController extends Controller
     public function tosList (){
         return view('tos');
     }
+    public function policy(){
+        return view('policy');
+    }
+    public function listToc(){
+        return view('toc');
+    }
 }

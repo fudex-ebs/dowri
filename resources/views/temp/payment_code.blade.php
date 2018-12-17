@@ -8,10 +8,10 @@
         @if (isset($error))
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
                 <strong> @if(App::getLocale()=="ar")
-                        {{$error}}
-                    @else
-                        Confirm code not valid
-                    @endif
+                             {{$error}}
+                        @else
+                             Confirm code not valid
+                        @endif
                 </strong>
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
@@ -19,17 +19,17 @@
             </div>
 
             @php
-            Session::forget('code_error');
+                Session::forget('code_error');
             @endphp
         @endif
-        <h2> {{__('messages.sms')}}</h2>
+        <h2> {{__('messages.sms')}} ({{__('messages.payment')}})</h2>
         <div class=" mb-12 col-md-6 col-sm-6 col-12  myl">
             <ul   class="list-unstyled mylist " >
-                <li  style="width:fit-content"><img src="{{ asset('/front2/images/sms.png') }}" width="44" height="22" >{{__('messages.sms_send')}} <span> {{substr_replace($ReservationConfirm->reservation->user->mobile_number, '****', 3 , 4)}} </span></li>
+                <li  style="width:fit-content"><img src="{{ asset('/front2/images/sms.png') }}" width="44" height="22" >{{__('messages.sms_send')}} <span > {{substr_replace($PaymentConfirm->reservation->user->mobile_number, '****', 3 , 4)}} </span></li>
                 <li>{{__('messages.sms_msg')}}</li>
 
             </ul>
-            <form method="post" action="{{route('reservation.confirm_code',['Reservation' => $ReservationConfirm])}}" enctype="multipart/form-data">
+            <form method="post" action="{{route('reservation.payment_code',['Reservation' => $PaymentConfirm])}}" enctype="multipart/form-data">
                 <input type='hidden' name='_token' value="{!! csrf_token() !!}">
                 <div class="form-row form-row d-flex justify-content-md-start">
 

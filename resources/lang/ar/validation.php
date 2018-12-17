@@ -39,7 +39,7 @@ return [
     'dimensions'           => 'The :attribute has invalid image dimensions.',
     'distinct'             => 'The :attribute field has a duplicate value.',
     'email'                => 'The :attribute must be a valid email address.',
-    'exists'               => 'The selected :attribute is invalid.',
+    'exists'               => ':attribute غير صحيح.',
     'file'                 => 'The :attribute must be a file.',
     'filled'               => 'The :attribute field must have a value.',
     'gt'                   => [
@@ -151,6 +151,7 @@ return [
         'plate_number_1' =>' رقم اللوحه الجزء 1',
         'plate_number_2' => 'رقم اللوحه الجزء 2',
         'name'=>'اﻷسم',
+        'discount_code' => 'كود الخصم'
 
     ],
 

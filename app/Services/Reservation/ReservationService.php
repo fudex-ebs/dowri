@@ -2,6 +2,7 @@
 
 namespace App\Services\Reservation;
 
+use App\Models\PaymentConfirm;
 use Hash;
 use App\User;
 use App\Models\Reservation;
@@ -191,6 +192,26 @@ class ReservationService{
 
         $this->send_confirm_code($reservationConfirm);
         return $reservationConfirm ;
+    }
+    //payment confirm
+    public function payment_code($reservation){
+        $exist = PaymentConfirm::where('reservation_id' ,$reservation->id )->first();
+        if(empty($exist)){
+            $paymentConfirm = PaymentConfirm::create([
+                'slug' => uniqid(),
+                'confirm_code' => rand (0,99999),
+                'reservation_id' => $reservation->id,
+                'status' => 'unverified',
+            ]);
+        }else{
+
+            PaymentConfirm::where('reservation_id' ,$reservation->id )
+                ->update(['confirm_code' => rand (0,99999)]);
+            $paymentConfirm = PaymentConfirm::where('reservation_id',$reservation->id)->first();
+        }
+
+        $this->send_confirm_code($paymentConfirm);
+        return $paymentConfirm ;
     }
 
     public function send_confirm_code($reservationConfirm){

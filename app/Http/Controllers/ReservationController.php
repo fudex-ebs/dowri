@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Models\PaymentConfirm;
 use App\Models\Reservation;
 use App\Models\InspectionCenter;
 use App\Models\Payment;
@@ -73,13 +74,34 @@ class ReservationController extends Controller
     {
 //        dd($request->all());
         if( $this->ReservationService->check_availability($date,$time_period,$center_id) ){
-          $dataArray = array_merge($request->all(),['date' => $date,'time_period' =>$time_period,'inspection_center_id' => $center_id]);
-          $reservation = $this->ReservationService->create($dataArray);
-          return $this->ReservationService->payment($reservation);
+            $dataArray = array_merge($request->all(),['date' => $date,'time_period' =>$time_period,'inspection_center_id' => $center_id]);
+            $reservation = $this->ReservationService->create($dataArray);
+            $payment_confirm = $this->ReservationService->payment_code($reservation);
+            if($payment_confirm){
+                return redirect()->route('reservation.create_payment_code',['PaymentConfirm' => $payment_confirm]);
+            }
+//            return $this->ReservationService->payment($reservation);
 
         }
         return redirect()->back()->with('status','reservation unsuccessful');
 
+    }
+    public function confirm_payment_page($id)
+    {
+        $payment_confirm = PaymentConfirm::find($id);
+        return view('temp.payment_code',['PaymentConfirm' => $payment_confirm]);
+    }
+    public function payment_confirm (Request $request ,$id){
+        $payment_confirm = PaymentConfirm::find($id);
+        if($payment_confirm && $payment_confirm->confirm_code == $request->verify_code){
+            $payment_confirm->update(['status' => 'verified']);
+            $reservation  = Reservation::where('id' , $payment_confirm->reservation_id)->first();
+            return $this->ReservationService->payment($reservation);
+        }else{
+            return view('temp.payment_code',['error' => "كود التفعيل غير صحيح" ,'PaymentConfirm' => $payment_confirm]);
+
+        }
+//        return $reservation_confirm ;
     }
 
     /**
@@ -118,6 +140,7 @@ class ReservationController extends Controller
         $pdf = PDF::loadView('pdf.ticket',['reservation' => $Reservation ]);
         return $pdf->download('ticket.pdf');
     }
+
     public function print(Reservation $Reservation)
     {
         $pdf = PDF::loadView('pdf.ticket',['reservation' => $Reservation]);
@@ -210,7 +233,8 @@ class ReservationController extends Controller
 
     public  function confirm_page($id){
 //
-        $reservation_confirm =ReservationConfirm::find($id);
+        $reservation_confirm = ReservationConfirm::find($id);
+//        return $reservation_confirm;
         return view('temp.confirm_code',['ReservationConfirm' => $reservation_confirm]);
     }
     public function confirm (Request $request ,$id){

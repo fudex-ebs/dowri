@@ -803,3 +803,25 @@ a .time_period{
 .reservation-form .form-group{
 	padding-top: 13px;
 }
+.lin{
+    color: #6d91a6;
+}
+
+.links li {
+    margin-bottom: 15px;
+    font-size: 13px;
+}
+
+.links li a {
+    color: #517BA4;
+}
+
+.links li a:hover {
+    color: #ee2e6b;
+    text-decoration: underline;
+}
+
+ul	{
+    list-style-image: none;
+    list-style-type: none;
+}

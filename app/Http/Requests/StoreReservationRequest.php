@@ -32,6 +32,7 @@ class StoreReservationRequest extends FormRequest
             'plate_number_1' =>'required|regex:/^[\p{Arabic}\s]{5}$/u',
             'plate_number_2' =>'required|digits:4',
             'serial_number' => 'required',
+            'discount_code'=> 'nullable|exists:discount_codes,code'
       ];
     }
 

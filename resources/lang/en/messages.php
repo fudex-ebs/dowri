@@ -101,7 +101,12 @@ return [
     'welcome_msg' => 'Welcome in Doari website',
     'content' => 'Message',
     'contact_msg'=>'Your message received successfully doari team will contact with you soon',
-    'tic_price_discount' =>'Price after discount'
+    'tic_price_discount' =>'Price after discount',
+    'related_link' => 'Related links',
+    'link' =>'Link',
+    'payment' =>'Payment',
+    'privacy'=>'Privacy policy',
+    'cancellation' =>'Cancellation terms'
 
 
 ];

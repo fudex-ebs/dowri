@@ -93,16 +93,14 @@
                             <h6><strong>{{__("messages.address")}} :</strong></h6>
                         </div>
                         <div class="col-lg-4 col-4">
-                            Saint Marco Street,
-                            6th floor,Jedda,
-                            KSA, 123456.
+                            الدمام - الواحة - المملكة العربية السعودية
                         </div>
                         <div class="col-lg-4 col-4">
                             <p class="m-0 text-danger"><i class="fa fa-phone-square" aria-hidden="true"></i>
                                 +966 534567890
                             </p>
                             <p class="m-0 text-info"><i class="fa fa-envelope" aria-hidden="true"></i>
-                                <a href="#" class="lin"> example@doari.com </a>
+                                <a href="#" class="lin">Support@doari.co </a>
                             </p>
                         </div>
                         <div class="col-lg-4 col-4 address-icon text-center text-danger">

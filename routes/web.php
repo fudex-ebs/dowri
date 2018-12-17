@@ -15,6 +15,10 @@ Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@
 Route::get('/test', 'ReservationController@test');
 Route::get('/tos', 'HomeController@tosList');
 Route::get('/contact', 'ContactUsController@index');
+Route::get('/policy', 'HomeController@policy');
+Route::get('/toc', 'HomeController@listToc');
+
+
 Route::post('/contact/store', 'ContactUsController@store')->name('contact.store');
 
 
@@ -35,6 +39,10 @@ Route::post('/reservation/find', 'ReservationController@find')->name('reservatio
 //Update routes
 Route::get('/reservation/{Reservation}/edit', 'ReservationController@edit')->name('reservation.edit');
 Route::post('/reservation/{Reservation}/update', 'ReservationController@update')->name('reservation.update');
+//confirm payment
+Route::get('/payment/{PaymentConfirm}/confirm', 'ReservationController@confirm_payment_page')->name('reservation.create_payment_code');
+Route::post('/payment/{PaymentConfirm}/confirm', 'ReservationController@payment_confirm')->name('reservation.payment_code');
+
 
 Route::get('/reservation/{ReservationConfirm}/confirm', 'ReservationController@confirm_page')->name('reservation.create_confirm_code');
 Route::post('/reservation/{ReservationConfirm}/confirm', 'ReservationController@confirm')->name('reservation.confirm_code');

@@ -1,3 +1,4 @@
+/**/
 .reservation-form{
   direction: ltr !important;
 }
@@ -79,3 +80,28 @@ input[name=reservation_number]{
     direction: ltr;
     text-align: left;
 }
+.line-wrap {
+    direction: ltr;
+}
+footer{
+    direction: ltr;
+}
+.links li {
+    margin-bottom: 15px;
+    font-size: 13px; text-align:left;
+}
+.myl{
+
+    direction: ltr;
+    text-align: left;
+    /*float: left;*/
+}
+.tos{
+    direction: rtl;
+    text-align: right;
+}
+.suitable{
+    direction: ltr;
+}
+
+

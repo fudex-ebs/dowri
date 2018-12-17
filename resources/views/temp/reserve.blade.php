@@ -163,7 +163,7 @@
                     <div class="input-group-text">
                         <img src="{{ asset('/front2/images/vin-number.png') }}" alt="">
                     </div>
-                    <input type="text" class="form-control" placeholder="{{__('messages.discount_code')}}" name="discount_code" >
+                    <input type="text" class="form-control" placeholder="{{__('messages.discount_code')}}" name="discount_code" value="{{old('discount_code')}}" >
                 </div>
             </div>
         </div>
@@ -233,7 +233,7 @@
   });
 
   $("#mobile_number").keypress(function (e){
-    if( (e.which < 48 || e.which > 57)){
+    if( (e.which < 48 || e.which > 57 || e.which != 8)){
       return false;
     }
     if($(this).val().length === 0 && e.which != 48){

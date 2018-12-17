@@ -55,6 +55,9 @@
                     <li aria-haspopup="true"><a href="#">{{__('messages.about_us')}}</a></li>
                     <li aria-haspopup="true"><a href="{{URL::to('tos')}}">{{__('messages.tos')}}</a></li>
                     <li aria-haspopup="true"><a href="{{URL::to('contact')}}">{{__('messages.contact_us')}}</a></li>
+                    <li aria-haspopup="true"><a href="{{URL::to('policy')}}">{{__('messages.privacy')}}</a></li>
+                    <li aria-haspopup="true"><a href="{{URL::to('toc')}}">{{__('messages.cancellation')}}</a></li>
+
                     <li aria-haspopup="true">
                         @foreach (Config::get('languages') as $lang => $language)
                             @if ($lang != App::getLocale())
@@ -97,18 +100,19 @@
             <div class="line-wrap">
                 <ul class="list-inline d-flex">
 
-                <li class="list-inline-item">
-                    <span class="align-bottom">{{__('messages.select_time')}}</span>
-                    <img src="{{asset('/front2/images/pay-ico.png')}}" alt="">
-                </li>
-                <li class="list-inline-item">
-                    <span class="align-bottom"> {{__('messages.reserve')}}</span>
-                    <img src="{{asset('/front2/images/pay-ico.png')}}" alt="">
-                </li>
+
+                {{--<li class="list-inline-item">--}}
+                    {{--<span class="align-bottom"> {{__('messages.reserve')}}</span>--}}
+                    {{--<img src="{{asset('/front2/images/pay-ico.png')}}" alt="">--}}
+                {{--</li>--}}
                 <li class="list-inline-item">
                     <span class="align-bottom">{{__('messages.pay')}}</span>
                     <img src="{{asset('/front2/images/pay-ico.png')}}" alt="">
                 </li>
+                    <li class="list-inline-item">
+                        <span class="align-bottom">{{__('messages.select_time')}}</span>
+                        <img src="{{asset('/front2/images/pay-ico.png')}}" alt="">
+                    </li>
                 <li class="list-inline-item">
                     <span class="align-bottom">{{__('messages.on_time')}}</span>
                     <img src="{{asset('/front2/images/pay-ico.png')}}" alt="">
@@ -138,10 +142,31 @@
                 </div>
             </footer>
         </div>
+        <div class="order-lg-3 order-first">
+            <h4>
+                {{__('messages.related_link')}}
+            </h4>
 
-        <button class="btn btn-secondary  order-lg-3 order-first" type="submit">
-            <span><img src="{{asset('/front2/images/x-ico.png')}}" alt="" class="align-middle ml-1"></span>{{__('messages.cancel_reserve')}}
-        </button>
+            <ul class="links ">
+                <li>
+                    <a href="#">{{__('messages.link')}} 1 </a>
+                </li>
+                <li>
+                    <a href="#">{{__('messages.link')}} 2</a>
+                </li>
+                <li>
+                    <a href="#">{{__('messages.link')}} 3</a>
+                </li>
+                <li>
+                    <a href="#">{{__('messages.link')}} 4</a>
+                </li>
+
+
+            </ul>
+        </div>
+        {{--<button class="btn btn-secondary  order-lg-3 order-first" type="submit">--}}
+            {{--<span><img src="{{asset('/front2/images/x-ico.png')}}" alt="" class="align-middle ml-1"></span>{{__('messages.cancel_reserve')}}--}}
+        {{--</button>--}}
     </footer>
     <!--End Footer-->
 </div>
