@@ -22,6 +22,11 @@
                 </div>
 
         @endif
+        @if(session('status'))
+            <div class="alert alert-danger" role="alert">
+                {{session('status') }}
+            </div>
+        @endif
         <form method="post" action="{{route('reservation.update',['slug' => $reservation->slug ])}}" enctype="multipart/form-data" novalidate>
             <input type='hidden' name='_token' value="{!! csrf_token() !!}">
             <div class="form-row form-row d-flex justify-content-md-center">

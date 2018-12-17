@@ -106,5 +106,7 @@
         'link'=> 'رابط',
         'payment' =>'عمليه الدفع',
         'privacy' =>'سياسه الخصوصيه',
-        'cancellation' =>'شروط اﻹلغاء'
+        'cancellation' =>'شروط اﻹلغاء',
+        'center_reservation'=>'حجوزات مركز',
+        'time'=>'الوقت'
     ];

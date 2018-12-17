@@ -9,7 +9,7 @@
   <div class="m-subheader ">
     <div class="d-flex align-items-center">
       <div class="mr-auto">
-        <h3 class="m-subheader__title ">discount code - {{discount_code->name_en}}</h3>
+        <h3 class="m-subheader__title ">discount code - {{$discount_code->code}}</h3>
       </div>
     </div>
   </div>
@@ -33,31 +33,46 @@
         		</div>
         	</div>
         	<div class="m-portlet__body">
-            <form class="" action="index.html" method="post" enctype="multipart/form-data">
+                @if($errors->all())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $message)
+                                <li> {{$message}}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+            <form class="" action="{{ route('DiscountCode.update',['slug' => $discount_code->slug ]) }}" method="post" enctype="multipart/form-data">
               <input type='hidden' name='_token' value="{!! csrf_token() !!}">
               <div class="row">
                 <div class="form-group col-md-9">
                     <label>code </label>
-                    <input type="text" name="code" class="form-control" >
+                    <input type="text" name="code" class="form-control" value="{{$discount_code->code}}">
                 </div>
                 </div>
                 <div class="row">
                 <div class="form-group col-md-9">
                     <label>start date </label>
-                    <input type="date" name="start_date" class="form-control" >
+                    <input type="date" name="start_date" class="form-control" value="{{$discount_code->start_date}}">
                 </div>
                 </div>
                  <div class="row">
                 <div class="form-group col-md-9">
                     <label>end date </label>
-                    <input type="date" name="end_date" class="form-control" >
+                    <input type="date" name="end_date" class="form-control" value="{{$discount_code->end_date}}" >
                 </div>
                 </div>
-                 <div class="row">
-                <div class="form-group col-md-9">
-                    <label>amount </label>
-                    <input type="text" name="amount" class="form-control" >
+                <div class="row">
+                    <div class="form-group col-md-9">
+                        <label>amount </label>
+                        <input type="number" name="amount" min="1" class="form-control" value="{{$discount_code->amount}}">
+                    </div>
                 </div>
+                <div class="row">
+                    <div class="form-group col-md-9">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">cancel</button>
+                        <input type="submit" class="btn btn-primary" value="edit">
+                    </div>
                 </div>
             </form>
 

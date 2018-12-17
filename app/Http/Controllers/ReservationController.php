@@ -83,7 +83,7 @@ class ReservationController extends Controller
 //            return $this->ReservationService->payment($reservation);
 
         }
-        return redirect()->back()->with('status','reservation unsuccessful');
+        return redirect()->back()->with('time_status','reservation unsuccessful');
 
     }
     public function confirm_payment_page($id)

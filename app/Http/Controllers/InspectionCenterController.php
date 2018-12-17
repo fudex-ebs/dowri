@@ -111,7 +111,7 @@ class InspectionCenterController extends Controller
         if($center){
             $center_reservations = Reservation::where('inspection_center_id', $center->id)->get();
 //            return $center_reservations;
-            return view('admin.inspection_center.list_reservations',['center_reservations' => $center_reservations ,'center_name'=>$center->name_en]);
+            return view('admin.inspection_center.list_reservations',['center_reservations' => $center_reservations ,'center'=>$center]);
         }
         return redirect()->back()->with('status','no center');
 

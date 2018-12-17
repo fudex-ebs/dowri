@@ -103,5 +103,7 @@ footer{
 .suitable{
     direction: ltr;
 }
-
+#list-table th{
+    text-align: left;
+}
 

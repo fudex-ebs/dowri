@@ -21,10 +21,18 @@
     <!--Begin::Section-->
     <div class="row">
       <div class="col-xl-12">
-
+        @if(session('status'))
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{session('status') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        @endif
         <!--begin:: Widgets/Top Products-->
         <div class="m-portlet m-portlet--bordered-semi m-portlet--full-height " style="height:fit-content;">
           <div class="m-portlet__head">
+
             <div class="m-portlet__head-caption">
               <div class="m-portlet__head-title">
                 <h3 class="m-portlet__head-text">
@@ -43,6 +51,7 @@
                   <th scope="col">start date</th>
                   <th scope="col">end date</th>
                   <th scope="col">amount</th>
+                  <th scope="col">Edit</th>
                   <th scope="col">Delete</th>
 
 
@@ -57,6 +66,7 @@
                   <td>{{$code->start_date}}</td>
                   <td>{{$code->end_date}}</td>
                   <td>{{$code->amount}} </td>
+                  <td><a href="{{route('DiscountCode.edit',['DiscountCode'=>$code])}}"><i class="fa fa-edit" aria-hidden="true"></i></a></td>
                   <td><a href="{{route('DiscountCode.delete',['DiscountCode'=>$code])}}"><i class="fa fa-trash" aria-hidden="true"></i></a></td>
                   
                 </tr>

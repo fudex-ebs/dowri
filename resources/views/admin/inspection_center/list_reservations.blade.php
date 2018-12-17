@@ -5,7 +5,7 @@
 @endsection
 @section('content')
     <section class="suitable">
-        <h2>  حجوزات مركز  {{$center_name}} </h2>
+        <h2>{{__('messages.center_reservation')}}  {{App::getLocale()=="ar" ? $center->name : $center->name_en}} </h2>
     </section>
 
 
@@ -18,13 +18,13 @@
                                 <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">{{__("اﻻسم")}}</th>
-                                    <th scope="col">{{__("رقم الجوال")}}</th>
-                                    <th scope="col">{{__("البريد اﻷلكترونى")}}</th>
-                                    <th scope="col">{{__("رقم اللوحه")}}</th>
-                                    <th scope="col">{{__("رقم الشاصيه")}}</th>
-                                    <th scope="col">{{__("التاريخ")}}</th>
-                                    <th scope="col">{{__("الوقت")}}</th>
+                                    <th scope="col">{{__("messages.name")}}</th>
+                                    <th scope="col">{{__("messages.mobile")}}</th>
+                                    <th scope="col">{{__("messages.email")}}</th>
+                                    <th scope="col">{{__("messages.plate_num")}}</th>
+                                    <th scope="col">{{__("messages.serial_num")}}</th>
+                                    <th scope="col">{{__("messages.date")}}</th>
+                                    <th scope="col">{{__("messages.time")}}</th>
                                 </tr>
                                 </thead>
                                 <tbody>
