@@ -18,7 +18,7 @@
                     <li class="nav-item col p-0">
                         <a class="nav-link" id="Monday-tab" href="{{route('reservation.check',['center_id'=>$center_id,'date' => $mydate->addDays(1)->format('Y-m-d') ])}}" role="tab" aria-controls="Monday" aria-selected="false">{{$mydate->format('d-m-Y')}}</a>
                     </li>
-                    <li class="nav-item col p-0">
+                    <li class="nav-item col p-0 active">
                         <a class="nav-link active" id="Tuseday-tab" data-toggle="tab"  role="tab" aria-controls="Tuseday" aria-selected="false">{{$mydate->addDays(1)->format('d-m-Y')}}</a>
                     </li>
                     <li class="nav-item col p-0">

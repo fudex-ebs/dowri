@@ -23,7 +23,7 @@
             <div class="form-group mb-md-0 mb-3 col-lg-3 col-md-4 col-sm-6 col-12">
                 <div class="input-group">
                     <div class="input-group-prepend">
-                        <div class="input-group-text"><img src="images/city.png" alt=""> </div>
+                        <div class="input-group-text fhs-logo"><img src="images/city.png" alt=""> </div>
                     </div>
                     <select id="inputCity" class="form-control custom-select my-select">
                         <option selected>المدينة</option>

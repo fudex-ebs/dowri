@@ -172,13 +172,13 @@
         <ul style="list-style: none">
             {{--<li>لا يحق استخدام الموقع للأشخاص الغير قادرين على تمثيل أنفسهم قانونياً  </li>--}}
             {{--<li>لا يجوز لك بتاتاً أن تنتهك او تحاول انتهاك الحماية الأمنية للموقع الإلكتروني  </li>--}}
-            <li><a href="{{URL::to('tos')}}" target="_blank">{{__('messages.tos_link')}} </a></li>
+            {{--<li><a href="{{URL::to('tos')}}" target="_blank">{{__('messages.tos_link')}} </a></li>--}}
         </ul>
         <input type="checkbox" name="tos_agree"
-               data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.tos_accept')}}</span>" /><strong> {{__('messages.tos_agree')}} </strong>
+               data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.tos_accept')}}</span>" /><strong><a href="{{URL::to('tos')}}" target="_blank"> {{__('messages.tos_agree')}} <a /></strong>
 
     </div>
-    <div class="text-center mt-md-2 mt-2">
+    <div class="text-center mt-md-2 mt-2 c-btn-group">
         <button type="button" id="btn-price" class="btn btn-danger ">{{__('messages.tic_price')}}<strong> # </strong> {{__('messages.ryal')}} </button>
         <button class="btn btn-info">{{__('messages.pay')}}</button>
     </div>
