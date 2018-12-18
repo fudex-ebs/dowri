@@ -905,5 +905,18 @@ ul	{
 	.print-warp{
 		display: flow-root;
 	}
+	.search-mobile{
+		display: none !important;
+	}
+	header .reserve{
+		text-align: left !important;
+	}
+	#searchform button{
+		width: 100px !important;
+		height: 45px !important;
+	}
+	#searchform input{
+		font-size: 15px !important;
+	}
 
 }
