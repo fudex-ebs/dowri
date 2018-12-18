@@ -71,7 +71,7 @@
                             </div>
                             <div class="color-des">
 
-                              <span class="alert-box c-box" ></span>&nbsp;<strong>{{__('messages.not_available')}}</strong>&nbsp;&nbsp;
+                             <span class="alert-box c-box" ></span>&nbsp;<strong>{{__('messages.not_available')}}</strong>&nbsp;&nbsp;
                               <span class="success-box c-box"></span>&nbsp;<strong>{{__('messages.available')}}</strong>
                             </div>
 

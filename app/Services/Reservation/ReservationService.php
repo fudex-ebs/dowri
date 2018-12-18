@@ -2,7 +2,6 @@
 
 namespace App\Services\Reservation;
 
-use App\Models\PaymentConfirm;
 use Hash;
 use App\User;
 use App\Models\Reservation;
@@ -14,6 +13,7 @@ use App\Models\DiscountCode;
 use App\Models\Discount;
 use App\Models\ReservationCancel;
 use App\Models\ReservationConfirm;
+use App\Models\PaymentConfirm;
 use Log;
 use Carbon\Carbon;
 use App\PayTabs\PayTabs;
@@ -167,14 +167,12 @@ class ReservationService{
       $reservation_number_count = Reservation::whereBetween('date', [$from_date, $to_date])->where('status','valid')->count();
       return $reservation_number_count;
     }
-
     public function reservation_count_on($from_date,$to_date){
       $reservation_number_count = Reservation::whereBetween('created_at', [$from_date, $to_date])->where('status','valid')->count();
       return $reservation_number_count;
     }
-
     //Reservation confirm
-    public function create_code($reservation){
+        public function create_code($reservation){
         $exist = ReservationConfirm::where('reservation_id' ,$reservation->id )->first();
         if(empty($exist)){
             $reservationConfirm = ReservationConfirm::create([
@@ -190,10 +188,11 @@ class ReservationService{
            $reservationConfirm = ReservationConfirm::where('reservation_id',$reservation->id)->first();
         }
 
-        $this->send_confirm_code($reservationConfirm);
+        $res = $this->send_confirm_code($reservationConfirm);
+        // return $res ;
         return $reservationConfirm ;
     }
-    //payment confirm
+     //payment confirm
     public function payment_code($reservation){
         $exist = PaymentConfirm::where('reservation_id' ,$reservation->id )->first();
         if(empty($exist)){
@@ -217,9 +216,8 @@ class ReservationService{
     public function send_confirm_code($reservationConfirm){
         $msg = 'رمز التأكيد هو '.$reservationConfirm->confirm_code;
         $mobile_number = $reservationConfirm->reservation->user->mobile_number;
-        SendSms($mobile_number,$msg);
+        return  SendSms($mobile_number,$msg);
     }
-
     //update reservation
     public function update($reservation , $data){
         $car = Car::where('id', $reservation->car_id)->first();
@@ -243,23 +241,25 @@ class ReservationService{
             'model' => $data['model'],
             'register_expire_date' => $data['register_expire_date']
         ]);
-        $discount_code = $this->DiscountCodeService->get_valid_discount($data['discount_code']);
-//        return $discount_code;
-        if($discount_code){
-            $discount = Discount::create([
-                'reservation_id' => $reservation->id,
-                'discount_code_id' => $discount_code->id,
-            ]);
-        }elseif ($discount_code == NULL){
-            $old_discount= Discount::where('reservation_id',$reservation->id )->first();
-            if($old_discount){
-                $old_discount->delete();
-            }
-        }
+//         $discount_code = $this->DiscountCodeService->get_valid_discount($data['discount_code']);
+// //        return $discount_code;
+//         if($discount_code){
+//             $discount = Discount::create([
+//                 'reservation_id' => $reservation->id,
+//                 'discount_code_id' => $discount_code->id,
+//             ]);
+//         }elseif ($discount_code == NULL){
+//             $old_discount= Discount::where('reservation_id',$reservation->id )->first();
+//             if($old_discount){
+//                 $old_discount->delete();
+//             }
+//         }
+
         return "Reservation user data and car data updated";
 
 
 
     }
+
 
 }

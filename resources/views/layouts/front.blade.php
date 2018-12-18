@@ -15,9 +15,8 @@
 
     <link rel="stylesheet" type="text/css" href="{{asset('/front2/plugins/menu/webslidemenu-ar.css')}}">
     <link href="{{asset('/front2/css/datepicker.min.css')}}" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="{{asset('/front2/css/style.css')}}">
 
-    {{--<link rel="stylesheet" type="text/css" href="{{asset('/front2/css/rtl.css')}}">--}}
+    <link rel="stylesheet" type="text/css" href="{{asset('/front2/css/style.css')}}">
 
     <link href="{{asset('/front2/css/bootstrap-datetimepicker.css')}}" rel="stylesheet" type="text/css" />
 
@@ -26,8 +25,7 @@
 
     @yield('page_css')
     <title>{{__('messages.dowri')}}</title>
-</head>
-<body>
+</head><body>
 
 <div class="container-fluid">
     <div id="preloader">
@@ -53,11 +51,10 @@
                         </a>
                     </li>
                     <li aria-haspopup="true"><a href="#">{{__('messages.about_us')}}</a></li>
-                    <li aria-haspopup="true"><a href="{{URL::to('tos')}}">{{__('messages.tos')}}</a></li>
+                    <!--<li aria-haspopup="true"><a href="{{URL::to('tos')}}">{{__('messages.tos')}}</a></li>-->
                     <li aria-haspopup="true"><a href="{{URL::to('contact')}}">{{__('messages.contact_us')}}</a></li>
-                    <li aria-haspopup="true"><a href="{{URL::to('policy')}}">{{__('messages.privacy')}}</a></li>
-                    <li aria-haspopup="true"><a href="{{URL::to('toc')}}">{{__('messages.cancellation')}}</a></li>
-
+                    <!--<li aria-haspopup="true"><a href="{{URL::to('policy')}}">{{__('messages.privacy')}}</a></li>-->
+                    <!--<li aria-haspopup="true"><a href="{{URL::to('toc')}}">{{__('messages.cancellation')}}</a></li>-->
                     <li aria-haspopup="true">
                         @foreach (Config::get('languages') as $lang => $language)
                             @if ($lang != App::getLocale())
@@ -149,17 +146,17 @@
 
             <ul class="links ">
                 <li>
-                    <a href="#">{{__('messages.link')}} 1 </a>
+                    <a href="{{URL::to('tos')}}">{{__('messages.tos')}}</a>
                 </li>
                 <li>
-                    <a href="#">{{__('messages.link')}} 2</a>
+                    <a href="{{URL::to('policy')}}">{{__('messages.privacy')}}</a>
                 </li>
                 <li>
-                    <a href="#">{{__('messages.link')}} 3</a>
+                    <a href="{{URL::to('toc')}}">{{__('messages.cancellation')}}</a>
                 </li>
-                <li>
-                    <a href="#">{{__('messages.link')}} 4</a>
-                </li>
+                <!--<li>-->
+                <!--    <a href="#">{{__('messages.link')}} 4</a>-->
+                <!--</li>-->
 
 
             </ul>

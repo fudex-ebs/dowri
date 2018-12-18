@@ -10,7 +10,7 @@
   <div class="m-subheader ">
     <div class="d-flex align-items-center">
       <div class="mr-auto">
-        <h3 class="m-subheader__title ">reservations</h3>
+        <h3 class="m-subheader__title ">Reservations</h3>
       </div>
     </div>
   </div>
@@ -128,7 +128,7 @@
                 @foreach($reservations as $count => $reservation)
                 <tr>
                   <th scope="row">{{$count+1}}</th>
-                  <th scope="col">{{$reservation->slug}}</th>
+                  <th scope="row">{{$reservation->slug}}</th>
                   <td>{{$reservation->user->name}}</td>
                   <td>{{$reservation->user->mobile_number}}</td>
                   <td>{{$reservation->user->email}}</td>

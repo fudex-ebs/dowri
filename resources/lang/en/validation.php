@@ -150,7 +150,6 @@ return [
         'serial_number'=>'Serial number',
         'plate_number_1' =>' Plate number part 1',
         'plate_number_2' => 'Plate number part 2',
-        'discount_code' => 'discount code'
     ],
 
 ];

@@ -1,13 +1,13 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\PaymentConfirm;
 use App\Models\Reservation;
 use App\Models\InspectionCenter;
 use App\Models\Payment;
 use App\Models\CarType;
 use App\Models\City;
 use App\Models\ReservationConfirm;
+use App\Models\PaymentConfirm;
 use App\Services\Reservation\ReservationService;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreReservationRequest;
@@ -18,6 +18,7 @@ use PDF;
 use Log;
 use App\PayTabs\PayTabs;
 use Session;
+
 
 class ReservationController extends Controller
 {
@@ -34,7 +35,9 @@ class ReservationController extends Controller
      */
     public function index()
     {
-      $reservations = Reservation::where('status','valid')->get();
+    //   $reservations = Reservation::all();
+          $reservations = Reservation::where('status','valid')->get();
+
       return view('admin.reservations2',['reservations' => $reservations]);
     }
 
@@ -72,25 +75,26 @@ class ReservationController extends Controller
      */
     public function store(StoreReservationRequest $request,$center_id,$date,$time_period)
     {
-//        dd($request->all());
         if( $this->ReservationService->check_availability($date,$time_period,$center_id) ){
-            $dataArray = array_merge($request->all(),['date' => $date,'time_period' =>$time_period,'inspection_center_id' => $center_id]);
-            $reservation = $this->ReservationService->create($dataArray);
-            $payment_confirm = $this->ReservationService->payment_code($reservation);
+          $dataArray = array_merge($request->all(),['date' => $date,'time_period' =>$time_period,'inspection_center_id' => $center_id]);
+          $reservation = $this->ReservationService->create($dataArray);
+          $payment_confirm = $this->ReservationService->payment_code($reservation);
             if($payment_confirm){
                 return redirect()->route('reservation.create_payment_code',['PaymentConfirm' => $payment_confirm]);
             }
-//            return $this->ReservationService->payment($reservation);
+        //   return $this->ReservationService->payment($reservation);
 
         }
         return redirect()->back()->with('time_status','reservation unsuccessful');
 
     }
+    
     public function confirm_payment_page($id)
     {
         $payment_confirm = PaymentConfirm::find($id);
         return view('temp.payment_code',['PaymentConfirm' => $payment_confirm]);
     }
+    
     public function payment_confirm (Request $request ,$id){
         $payment_confirm = PaymentConfirm::find($id);
         if($payment_confirm && $payment_confirm->confirm_code == $request->verify_code){
@@ -140,7 +144,6 @@ class ReservationController extends Controller
         $pdf = PDF::loadView('pdf.ticket',['reservation' => $Reservation ]);
         return $pdf->download('ticket.pdf');
     }
-
     public function print(Reservation $Reservation)
     {
         $pdf = PDF::loadView('pdf.ticket',['reservation' => $Reservation]);
@@ -166,7 +169,6 @@ class ReservationController extends Controller
 
     public function check_availability(Request $request)
     {
-//        return $request;
         if( $this->ReservationService->check_availability($request->get('date'),$request->get('time_period'),$request->get('inspection_center_id')) ){
 
           return 'availabe';
@@ -178,14 +180,9 @@ class ReservationController extends Controller
     public function test()
     {
 
-//      var_dump(in_array( 'p_8_30' , sat_work_hours() ));
-//      return sat_work_hours();
-        $number = '0547292181' ;
-        $mssg = "Hello Ragaa";
-        $msg  = iconv("UTF-8","Windows-1256"  , $mssg);
-        $msg = urlencode($msg);
-        $url = "http://sms.rasaelna.com/gw/?userName=Mohammed&userPassword=123456mm&numbers=$number&userSender=FUDEXSA&msg=$msg&By=API";
-        return $url;
+      var_dump(in_array( 'p_8_30' , sat_work_hours() ));
+      return sat_work_hours();
+
 
     }
 
@@ -210,7 +207,7 @@ class ReservationController extends Controller
      * @param  \App\Reservation  $reservation
      * @return \Illuminate\Http\Response
      */
-    public function find(Request $request)
+     public function find(Request $request)
     {
         $reservation = $this->ReservationService->get_reservation_by_slug($request->get('reservation_number'));
         if($reservation){
@@ -221,6 +218,7 @@ class ReservationController extends Controller
 
             }else{
                 $reservation_confirm = $this->ReservationService->create_code($reservation);
+                // return $reservation_confirm ;
                 if($reservation_confirm){
 //                    return view('temp.confirm_code',['ReservationConfirm' => $reservation_confirm]);
                     return redirect()->route('reservation.create_confirm_code',['ReservationConfirm' => $reservation_confirm]);
@@ -233,8 +231,7 @@ class ReservationController extends Controller
 
     public  function confirm_page($id){
 //
-        $reservation_confirm = ReservationConfirm::find($id);
-//        return $reservation_confirm;
+        $reservation_confirm =ReservationConfirm::find($id);
         return view('temp.confirm_code',['ReservationConfirm' => $reservation_confirm]);
     }
     public function confirm (Request $request ,$id){
@@ -249,7 +246,8 @@ class ReservationController extends Controller
         }
 //        return $reservation_confirm ;
     }
-    public function  edit($slug){
+    
+     public function  edit($slug){
         $reservation = Reservation::whereslug($slug)->first();
         if($reservation){
             $current_date = Carbon::now() ;
@@ -263,22 +261,26 @@ class ReservationController extends Controller
                 $cities = City::all();
                 $centers = InspectionCenter::all();
                 $date = $reservation->date ;
-                $periods = get_time_periods();
-//                return $periods;
-                $new_periods = [];
-//                foreach ($periods as $period){
-//                    if($period == $reservation->time_period ){
-//                        array_push($new_periods, $period) ;
-//                    }else{
-//                        $result = $this->ReservationService->check_availability($date,$period,$reservation->inspection_center_id);
-//                        if($result == true){
-//                            array_push($new_periods, $period) ;
-//                        }
-//                    }
-//
-//                }
+                // if(date_is_sat($date)){
+                //     $periods = sat_work_hours();
+                // }else{
+                //     $periods = get_time_periods();
+                // }
+                // $new_periods = [];
+                // foreach ($periods as $period){
+                //     if($period == $reservation->time_period ){
+                //         array_push($new_periods, $period) ;
+                //     }else{
+                //         $result = $this->ReservationService->check_availability($date,$period,$reservation->inspection_center_id);
+                //         if($result == true){
+                //             array_push($new_periods, $period) ;
+                //         }
+                //     }
+
+                // }
 //                return count($new_periods) ;
-                return view('reservation.edit',['reservation' => $reservation ,"car_types" => $car_types ,'cities'=>$cities,'centers'=>$centers ,'periods'=>$periods]);
+                $new_periods = get_time_periods();
+                return view('reservation.edit',['reservation' => $reservation ,"car_types" => $car_types ,'cities'=>$cities,'centers'=>$centers ,'periods'=>$new_periods]);
             }
 
         }
@@ -286,13 +288,11 @@ class ReservationController extends Controller
 
 
     }
-
     public function update($slug ,UpdateReservationRequest $request ){
 //        return $request->all();
         $reservation = Reservation::whereslug($slug)->first();
         $data = $request->all();
         $reservation_update = $this->ReservationService->update($reservation,$data);
-//        return $reservation_update ;
         if( $reservation_update){
             Session::put('update' , 'update done');
             return redirect()->route('reservation.show',['Reservation' => $reservation ]);

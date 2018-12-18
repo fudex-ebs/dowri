@@ -22,11 +22,6 @@
                 </div>
 
         @endif
-        @if(session('status'))
-            <div class="alert alert-danger" role="alert">
-                {{session('status') }}
-            </div>
-        @endif
         <form method="post" action="{{route('reservation.update',['slug' => $reservation->slug ])}}" enctype="multipart/form-data" novalidate>
             <input type='hidden' name='_token' value="{!! csrf_token() !!}">
             <div class="form-row form-row d-flex justify-content-md-center">
@@ -224,18 +219,18 @@
                     </div>
                 </div>
 
-                <div class="form-group mb-3 col-md-4 col-sm-6 col-12">
-                    <div class="input-group input remove-icon">
-                        <div class="input-group-prepend">
-                            <div class="input-group-text">
-                                <img src="{{ asset('/front2/images/vin-number.png') }}" alt="">
-                            </div>
-                            <input type="text" class="form-control" placeholder="{{__('messages.discount_code')}}" name="discount_code" value="{{isset($reservation->discount->discount_code->code )? $reservation->discount->discount_code->code : ''}}">
-                        </div>
-                    </div>
-                </div>
+                <!--<div class="form-group mb-3 col-md-4 col-sm-6 col-12">-->
+                <!--    <div class="input-group input remove-icon">-->
+                <!--        <div class="input-group-prepend">-->
+                <!--            <div class="input-group-text">-->
+                <!--                <img src="{{ asset('/front2/images/vin-number.png') }}" alt="">-->
+                <!--            </div>-->
+                <!--            <input type="text" class="form-control" placeholder="{{__('messages.discount_code')}}" name="discount_code" >-->
+                <!--        </div>-->
+                <!--    </div>-->
+                <!--</div>-->
             </div>
-            <div class="text-center mt-md-2 mt-2 tos-error">
+            <div class="text-center mt-md-2 mt-2">
                 <ul style="list-style: none">
                     {{--<li>لا يحق استخدام الموقع للأشخاص الغير قادرين على تمثيل أنفسهم قانونياً  </li>--}}
                     {{--<li>لا يجوز لك بتاتاً أن تنتهك او تحاول انتهاك الحماية الأمنية للموقع الإلكتروني  </li>--}}
@@ -333,7 +328,7 @@
                     success:function(data) {
                         if(data == "not_availabe")
                             $("#error").css('display','block');
-                            console.log(data);
+                        console.log(data);
                     }
                 });
 
