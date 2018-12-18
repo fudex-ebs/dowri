@@ -23,6 +23,15 @@
     Session::forget('cancel_done');
     @endphp
 @endif
+@if (session('search_status'))
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script>
+        swal ( "{{__('messages.search_result')}}" ,  "{{__('messages.no_search_result')}}" ,  "error" )
+    </script>
+    @php
+        Session::forget('cancel_done');
+    @endphp
+@endif
 <!--End Eye animation -->
 
 <!--Start Form-->

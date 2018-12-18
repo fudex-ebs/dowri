@@ -54,11 +54,18 @@ class ReservationController extends Controller
     }
     public function check($center_id,$date){
       if(date_is_friday($date)){
-        return redirect()->back()->with('status','friday not avalble');
+            return redirect()->back()->with('status','friday not avalble');
       }
+        $today = Carbon::today();
+        if($date < $today){
+            return redirect()->back()->with('status','friday not avalble');
+        }
+//      return $date ;
       if(date_is_sat($date)){
           $is_sat = "true";
-      }else{ $is_sat = "false";}
+      }else{
+          $is_sat = "false";
+      }
 //      return $is_sat;
       return view('temp.search_result',['center_id' => $center_id ,'date' => $date,'ReservationService' => $this->ReservationService , "is_sat" =>$is_sat]);
     }
@@ -212,26 +219,26 @@ class ReservationController extends Controller
         $reservation = $this->ReservationService->get_reservation_by_slug($request->get('reservation_number'));
         if($reservation){
 //            return $reservation;
-            $exist = ReservationConfirm::where('reservation_id',$reservation->id)->first();
-            if(!empty($exist) && $exist->status == "verified"){
-                  return redirect()->route('reservation.show',['Reservation' => $reservation]);
+//            $exist = ReservationConfirm::where('reservation_id',$reservation->id)->first();
+//            if(!empty($exist) && $exist->status == "verified"){
+//                  return redirect()->route('reservation.show',['Reservation' => $reservation]);
 
-            }else{
+//            }else{
                 $reservation_confirm = $this->ReservationService->create_code($reservation);
                 // return $reservation_confirm ;
                 if($reservation_confirm){
 //                    return view('temp.confirm_code',['ReservationConfirm' => $reservation_confirm]);
                     return redirect()->route('reservation.create_confirm_code',['ReservationConfirm' => $reservation_confirm]);
                 }
-            }
+//            }
 
         }
-        return redirect()->back()->with('status','reservation not found');
+        return redirect()->back()->with('search_status','reservation not found');
     }
 
     public  function confirm_page($id){
 //
-        $reservation_confirm =ReservationConfirm::find($id);
+        $reservation_confirm = ReservationConfirm::find($id);
         return view('temp.confirm_code',['ReservationConfirm' => $reservation_confirm]);
     }
     public function confirm (Request $request ,$id){

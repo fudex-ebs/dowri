@@ -125,8 +125,11 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'plate_number_1' => [
+            'regex' => 'الجزء اﻷول من رقم اللوحه يجب ان يكون مكون من 3 حروف عربيه منفصله بـ مسافات',
+        ],
+        'plate_number_2' => [
+            'digits' => 'الجزء الثانى من رقم اللوحه يجب ان يكون 4 أرقام',
         ],
     ],
 

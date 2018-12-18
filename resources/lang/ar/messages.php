@@ -108,5 +108,7 @@
         'privacy' =>'سياسه الخصوصيه',
         'cancellation' =>'شروط اﻹلغاء',
         'center_reservation'=>'حجوزات مركز',
-        'time'=>'الوقت'
+        'time'=>'الوقت',
+        'search_result' => 'نتيجه البحث',
+        'no_search_result'=>'ﻻ يوجد حجز بهذا الرقم'
     ];

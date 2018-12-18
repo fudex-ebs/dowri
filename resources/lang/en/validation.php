@@ -125,8 +125,11 @@ return [
     */
 
     'custom' => [
-        'attribute-name' => [
-            'rule-name' => 'custom-message',
+        'plate_number_1' => [
+            'regex' => 'The plate number part 1 must be 3 arabic letter separated by white space',
+        ],
+        'plate_number_2' => [
+            'digits' => 'The plate number part 2 must be 4 digits',
         ],
     ],
 

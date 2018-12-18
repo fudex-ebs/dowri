@@ -108,7 +108,9 @@ return [
     'privacy'=>'Privacy policy',
     'cancellation' =>'Cancellation terms',
     'center_reservation' => 'Reservations of center ',
-    'time'=>'Time'
+    'time'=>'Time',
+    'search_result' => 'Search result',
+    'no_search_result'=>'No reservation with this number'
 
 
 ];

@@ -115,7 +115,7 @@ class ReservationService{
 
 
     public function get_reservation_by_slug($slug){
-        $reservation = Reservation::whereslug($slug)->get()->first();
+        $reservation = Reservation::whereslug($slug)->where('status','valid')->get()->first();
         return $reservation;
     }
 
