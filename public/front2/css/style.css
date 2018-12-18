@@ -918,5 +918,24 @@ ul	{
 	#searchform input{
 		font-size: 15px !important;
 	}
+	.c-confirm-form .input-group-prepend{
+		padding: 0px !important;
+	}
+	.c-confirm-form .input-group button{
+		width: 49%;
+	}
+	.c-confirm-form .input-group,.c-confirm-form .input-group .text-right{
+		width: 100%;
+		padding: 0px !important;
+	}
+	.c-con-mobile{
+		font-size: 15px !important;
+	}
+	.c-con-add{
+		font-size: 14px;
+	}
+	.con-form .c-con-but,.con-form .c-con-but div,.con-form .c-con-but div button{
+		width: 100%;
+	}
 
 }

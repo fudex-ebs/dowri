@@ -24,7 +24,7 @@
                 <li>{{__('messages.sms_msg')}}</li>
 
             </ul>
-            <form method="post" action="{{route('reservation.confirm_code',['Reservation' => $ReservationConfirm])}}" enctype="multipart/form-data">
+            <form class="c-confirm-form" method="post" action="{{route('reservation.confirm_code',['Reservation' => $ReservationConfirm])}}" enctype="multipart/form-data">
                 <input type='hidden' name='_token' value="{!! csrf_token() !!}">
                 <div class="form-row form-row d-flex justify-content-md-start">
 

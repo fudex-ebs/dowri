@@ -92,20 +92,18 @@
                         <div class="col-lg-12">
                             <h6><strong>{{__("messages.address")}} :</strong></h6>
                         </div>
-                        <div class="col-lg-4 col-4">
+                        <div class="col-lg-6 col-6 c-con-add">
                             الدمام - الواحة - المملكة العربية السعودية
                         </div>
-                        <div class="col-lg-4 col-4">
-                            <p class="m-0 text-danger"><i class="fa fa-phone-square" aria-hidden="true"></i>
+                        <div class="col-lg-6 col-6">
+                            <p class="m-0 text-danger c-con-mobile"><i class="fa fa-phone-square" aria-hidden="true"></i>
                                 +966 534567890
                             </p>
                             <p class="m-0 text-info"><i class="fa fa-envelope" aria-hidden="true"></i>
                                 <a href="#" class="lin">Support@doari.co </a>
                             </p>
                         </div>
-                        <div class="col-lg-4 col-4 address-icon text-center text-danger">
-                            <i class="fa fa-map-marker" aria-hidden="true"></i>
-                        </div>
+
                     </div>
 
                     <div class="row bg-light pt-3 pb-3 mb-4">
@@ -125,7 +123,7 @@
                                     <p> {{__('messages.contact_msg')}}</p>
                                 </div>
                             @endif
-                            <form method="post" action="{{route('contact.store')}}" enctype="multipart/form-data">
+                            <form method="post" action="{{route('contact.store')}}" enctype="multipart/form-data" class="con-form">
                             <input type='hidden' name='_token' value="{!! csrf_token() !!}">
 
                             <div class="form-row mb-3">
@@ -156,7 +154,7 @@
                             </div>
 
                             <div class="form-row mb-3" >
-                                <div class=" input-group mb-3 col-md-12 col-sm-12 col-12">
+                                <div class=" input-group mb-3 col-md-12 col-sm-12 col-12 c-con-but">
                                     <div class="text-right mt-md-2 mt-2 ">
                                         <button class="btn btn-danger">{{__('messages.send')}}</button>
                                     </div>

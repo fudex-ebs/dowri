@@ -29,7 +29,7 @@
                 <li>{{__('messages.sms_msg')}}</li>
 
             </ul>
-            <form method="post" action="{{route('reservation.payment_code',['Reservation' => $PaymentConfirm])}}" enctype="multipart/form-data">
+            <form method="post" class="c-confirm-form" action="{{route('reservation.payment_code',['Reservation' => $PaymentConfirm])}}" enctype="multipart/form-data">
                 <input type='hidden' name='_token' value="{!! csrf_token() !!}">
                 <div class="form-row form-row d-flex justify-content-md-start">
 
