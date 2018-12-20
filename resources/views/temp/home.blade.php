@@ -23,15 +23,7 @@
     Session::forget('cancel_done');
     @endphp
 @endif
-@if (session('search_status'))
-    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-    <script>
-        swal ( "{{__('messages.search_result')}}" ,  "{{__('messages.no_search_result')}}" ,  "error" )
-    </script>
-    @php
-        Session::forget('cancel_done');
-    @endphp
-@endif
+
 <!--End Eye animation -->
 
 <!--Start Form-->
@@ -41,7 +33,7 @@
             <div class=" mb-md-0 mb-3 col-lg-1 col-md-1 col-sm-6 col-12 fhs-logo" style="text-align:center">
                 <img src="{{ asset('/front2/images/fahs.png') }}" alt="" width="80px">
             </div>
-            <div class="form-group mb-md-0 mb-3 col-lg-3 col-md-3 col-sm-6 col-12">
+            <div class="form-group mb-md-0 mb-3 col-lg-2 col-md-3 col-sm-6 col-12">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <div class="input-group-text"><img src="{{ asset('/front2/images/city.png') }}" alt=""> </div>
@@ -49,14 +41,13 @@
                     <select id="city" class="form-control custom-select my-select">
                         <option selected disabled >{{__('messages.select_city')}}</option>
                         @foreach($cities as $city)
-                        <option value="{{$city->id}}">{{ App::getLocale()=="ar" ? $city->name_ar : $city->name_en }}</option>
-
+                            <option value="{{$city->id}}">{{ App::getLocale()=="ar" ? $city->name_ar : $city->name_en }}</option>
                         @endforeach
                     </select>
                 </div>
                 <small id="city-help" class="form-text text-muted input-danger hide">{{__('messages.check_msg')}}</small>
             </div>
-            <div class="form-group mb-md-0 mb-3 col-lg-3 col-md-3 col-sm-6 col-12">
+            <div class="form-group mb-md-0 mb-3 col-lg-2 col-md-3 col-sm-6 col-12">
                 <div class="input-group">
                     <div class="input-group-prepend">
                         <div class="input-group-text"><img src="{{ asset('/front2/images/city.png') }}" alt=""> </div>
@@ -71,7 +62,22 @@
                 </div>
                 <small id="center-help" class="form-text text-muted input-danger hide">{{__('messages.check_msg')}}</small>
             </div>
-            <div class="form-group mb-md-0 mb-3 col-lg-3 col-md-3 col-sm-6 col-12">
+            <div class="form-group mb-md-0 mb-3 col-lg-2 col-md-3 col-sm-6 col-12">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text"><img src="{{ asset('/front2/images/cars.png') }}" alt=""> </div>
+                    </div>
+                    <select id="car" class="form-control custom-select my-select">
+                        <option selected disabled >{{__('messages.car_type')}} </option>
+                        @foreach($cars as $car)
+                            <option value="{{$car->id}}" >{{ App::getLocale()=="ar" ? $car->name_ar : $car->name_en}}</option>
+                        @endforeach
+                    </select>
+                </div>
+                <small id="car-help" class="form-text text-muted input-danger hide">{{__('messages.check_msg')}}</small>
+            </div>
+
+            <div class="form-group mb-md-0 mb-3 col-lg-2 col-md-3 col-sm-6 col-12">
                 <div class="input-group remove-icon">
                     <div class="input-group-prepend">
                         <div class="input-group-text">
@@ -82,6 +88,7 @@
                     <small id="datepicker-help" class="form-text text-muted input-danger hide">{{__('messages.check_msg')}}</small>
                 </div>
             </div>
+
             <div class="form-group mb-md-0 mb-3 col-lg-2 col-md-12 col-sm-6 col-12">
                 <button id="submit" class="btn btn-primary  mt-lg-0 mt-md-2 ml-lg-2 m-0 float-lg-right float-md-left  float-sm-right float-left">
                     <img src="{{ asset('/front2/images/search-ico.png') }}" alt="" class="align-middle" >
@@ -118,16 +125,22 @@
       $('#center-help,#datepicker-help').addClass('hide');
       var center_valid = true;
       var datepicke_valid = true;
+      var car_valid = true;
       if(!$('#center').val()){
         $('#center-help').removeClass('hide')
         center_valid = false;
+      }
+      if(!$('#car').val()){
+         $('#car-help').removeClass('hide')
+         car_valid = false;
       }
       if(!$('#datepicker').val()){
         $('#datepicker-help').removeClass('hide');
         datepicke_valid = false;
       }
-      if(datepicke_valid && center_valid){
-        window.location.href = "{{url('reservation_check/center')}}/"+$('#center').val()+"/date/"+$('#datepicker').val();
+      if(datepicke_valid && center_valid && car_valid){
+        window.location.href = "{{url('reservation_check/center')}}/"+$('#center').val()+"/date/"+$('#datepicker').val()+"/"+$('#car').val();
+        // console.log();
 
       }
 

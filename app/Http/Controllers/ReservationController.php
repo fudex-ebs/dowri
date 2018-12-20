@@ -50,12 +50,14 @@ class ReservationController extends Controller
     {
         $InspectionCenters = InspectionCenter::all();
         $cities = City::all();
-        return view('temp.home',['InspectionCenters' => $InspectionCenters,'cities' => $cities]);
+        $cars = CarType::all();
+        return view('temp.home',['InspectionCenters' => $InspectionCenters,'cities' => $cities ,'cars'=>$cars]);
     }
-    public function check($center_id,$date){
-      if(date_is_friday($date)){
-            return redirect()->back()->with('status','friday not avalble');
-      }
+    public function check($center_id,$date ,$car){
+        Session::put('car_id' , $car);
+        if(date_is_friday($date)){
+                return redirect()->back()->with('status','friday not avalble');
+        }
         $today = Carbon::today();
         if($date < $today){
             return redirect()->back()->with('status','friday not avalble');
@@ -69,9 +71,11 @@ class ReservationController extends Controller
 //      return $is_sat;
       return view('temp.search_result',['center_id' => $center_id ,'date' => $date,'ReservationService' => $this->ReservationService , "is_sat" =>$is_sat]);
     }
-    public function reserve($center_id,$date,$time_period){
-      $car_types = CarType::all();
-      return view('temp.reserve',['center_id' => $center_id ,'date' => $date,'time' =>$time_period,'car_types' => $car_types ]);
+    public function reserve($center_id,$date,$time_period ){
+        $car_types = CarType::all();
+        $car_id = Session::get('car_id');
+        $selected_car = CarType::find($car_id);
+      return view('temp.reserve',['center_id' => $center_id ,'date' => $date,'time' =>$time_period,'car_types' => $car_types ,'selected_car'=>$selected_car]);
     }
 
     /**
@@ -83,7 +87,8 @@ class ReservationController extends Controller
     public function store(StoreReservationRequest $request,$center_id,$date,$time_period)
     {
         if( $this->ReservationService->check_availability($date,$time_period,$center_id) ){
-          $dataArray = array_merge($request->all(),['date' => $date,'time_period' =>$time_period,'inspection_center_id' => $center_id]);
+          $car_id = Session::get('car_id');
+          $dataArray = array_merge($request->all(),['date' => $date,'time_period' =>$time_period,'inspection_center_id' => $center_id ,'car_type_id'=>$car_id]);
           $reservation = $this->ReservationService->create($dataArray);
           $payment_confirm = $this->ReservationService->payment_code($reservation);
             if($payment_confirm){

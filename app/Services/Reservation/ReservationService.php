@@ -38,11 +38,11 @@ class ReservationService{
             ]);
         }
 
-        $car = Car::where('plate_number',$dataArray['plate_number_1']."-".$dataArray['plate_number_2'])->first();
+        $car = Car::where('plate_number',$dataArray['char1'].$dataArray['char2'].$dataArray['char3']."-".$dataArray['plate_number_2'])->first();
         if(!$car){
             $car = Car::create([
                     'slug' => uniqid(),
-                    'plate_number' => $dataArray['plate_number_1']."-".$dataArray['plate_number_2'],
+                    'plate_number' => $dataArray['char1'].$dataArray['char2'].$dataArray['char3']."-".$dataArray['plate_number_2'],
                     'serial_number' => $dataArray['serial_number'],
                     'car_type_id' => $dataArray['car_type_id'],
                     'manufacture_year' => $dataArray['manufacture_year'],
@@ -67,6 +67,9 @@ class ReservationService{
                 'discount_code_id' => $discount_code->id,
             ]);
         }
+        //send sms for reservation create
+
+
         return $reservation;
     }
 
@@ -137,7 +140,18 @@ class ReservationService{
           'p_id' => $pay_page->p_id
         ]);
         Log::info('payment_url '.$pay_page->payment_url);
+        $reservation->update(['status'=>'valid']);
+        //send welcome sms for reservation
+          $msg = ' عزيزى العميل لقد تم حجز موعدك في الفحص الدوري للسيارات فى يوم '.$reservation->date;
+          $msg .= ' فى وقت '. time_format($reservation->time_period);
+          $msg .=', رقم حجزك '.$reservation->slug ;
+          $msg .= ' , وذلك في فرع ' . $reservation->inspection_center->name;
+          $msg .= ' , الرجاء الحضور مبكراً بخمسة دقائق و احضار استماره المركبة. حريصين كل الحرص لخدمتك في وقت موعدك #عزز_موقفك_بموعد';
+          $mobile_number = $reservation->user->mobile_number;
+          SendSms($mobile_number,$msg);
+
         return redirect()->away($pay_page->payment_url);
+        //
       }
       return ;
     }
@@ -234,7 +248,7 @@ class ReservationService{
             'email' => $data['email'],
         ]);
         $car->update([
-            'plate_number' => $data['plate_number_1']."-".$data['plate_number_2'],
+            'plate_number' => $data['char1'].$data['char2'].$data['char3']."-".$data['plate_number_2'],
             'serial_number' => $data['serial_number'],
             'car_type_id' => $data['car_type_id'],
             'manufacture_year' => $data['manufacture_year'],

@@ -51,10 +51,11 @@
                         </a>
                     </li>
                     <li aria-haspopup="true"><a href="#">{{__('messages.about_us')}}</a></li>
-                    <!--<li aria-haspopup="true"><a href="{{URL::to('tos')}}">{{__('messages.tos')}}</a></li>-->
+                    <li aria-haspopup="true"><a href="{{URL::to('tos')}}">{{__('messages.tos')}}</a></li>
                     <li aria-haspopup="true"><a href="{{URL::to('contact')}}">{{__('messages.contact_us')}}</a></li>
                     <!--<li aria-haspopup="true"><a href="{{URL::to('policy')}}">{{__('messages.privacy')}}</a></li>-->
                     <!--<li aria-haspopup="true"><a href="{{URL::to('toc')}}">{{__('messages.cancellation')}}</a></li>-->
+                    <li class="media-search"><a href="#search"> <i class="fa fa-search align-middle ml-2"></i>{{__('messages.search_num')}}</a></li>
                     <li aria-haspopup="true">
                         @foreach (Config::get('languages') as $lang => $language)
                             @if ($lang != App::getLocale())
@@ -62,7 +63,6 @@
                             @endif
                         @endforeach
                     </li>
-                    <li class="media-search"><a href="#search"> <i class="fa fa-search align-middle ml-2"></i>{{__('messages.search_num')}}</a></li>
                 </ul>
             </nav>
             <!--End Nav -->
@@ -74,6 +74,15 @@
 
         </div>
     </header>
+    @if (session('search_status'))
+        <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+        <script>
+            swal ( "{{__('messages.search_result')}}" ,  "{{__('messages.no_search_result')}}" ,  "error" )
+        </script>
+    @php
+        Session::forget('search_status');
+    @endphp
+@endif
     <!--End Header -->
     <div id="search">
     	<span class="close"><i class="fa fa-close"></i></span>

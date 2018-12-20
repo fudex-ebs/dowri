@@ -138,10 +138,11 @@
                             <div class="input-group-text">
                                 <img src="{{ asset('/front2/images/board-number.png') }}" alt="">
                             </div>
-                            <input type="text" class="form-control" placeholder="{{__('messages.plate_part_1')}}" name="plate_number_1" value="{{explode("-",$reservation->car->plate_number)[0]}}"
-                                   data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>"><span>-</span>
-                            <input type="text" class="form-control" placeholder="{{__('messages.plate_part_2')}}" name="plate_number_2" value="{{explode("-",$reservation->car->plate_number)[1]}}"
-                                   data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>" >
+                            <div class="col-md-2 col-sm-2 col-2"><input type="text" class="form-control char-inputs" placeholder="{{__('messages.char')}}"  name="char1" value="{{explode("-",$reservation->car->plate_number)[0][0]}}" maxlength="1" data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>" ></div><span class="hyphen">&#x2011;</span>
+                            <div class="col-md-2 col-sm-2 col-2"><input type="text" class="form-control char-inputs" placeholder="{{__('messages.char')}}" name="char2" value="{{explode("-",$reservation->car->plate_number)[0][1]}} " maxlength="1" data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>" ></div><span class="hyphen">&#x2011;</span>
+                            <div class="col-md-2 col-sm-2 col-2"><input type="text" class="form-control char-inputs" placeholder="{{__('messages.char')}}" name="char3" value="{{explode("-",$reservation->car->plate_number)[0][2]}}" maxlength="1" data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>" ></div>
+                            <div ><input type="text" class="form-control" placeholder="{{__('messages.plate_part_2')}}" name="plate_number_2" value="{{explode("-",$reservation->car->plate_number)[1]}}"
+                                         data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>" ></div>
                         </div>
                     </div>
                 </div>
@@ -234,10 +235,10 @@
                 <ul style="list-style: none">
                     {{--<li>لا يحق استخدام الموقع للأشخاص الغير قادرين على تمثيل أنفسهم قانونياً  </li>--}}
                     {{--<li>لا يجوز لك بتاتاً أن تنتهك او تحاول انتهاك الحماية الأمنية للموقع الإلكتروني  </li>--}}
-                    <li><a href="{{URL::to('tos')}}" target="_blank">{{__('messages.tos_link')}} </a></li>
+{{--                    <li><a href="{{URL::to('tos')}}" target="_blank">{{__('messages.tos_link')}} </a></li>--}}
                 </ul>
                 <input type="checkbox" name="tos_agree"
-                       data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.tos_accept')}}</span>" /><strong> {{__('messages.tos_agree')}} </strong>
+                       data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.tos_accept')}}</span>" /><strong><a href="{{URL::to('tos')}}" target="_blank"> {{__('messages.tos_agree')}} <a /></strong>
             </div>
             <div class="text-center mt-md-2 mt-2">
                 <button type="button" id="btn-price" class="btn btn-danger ">{{__('messages.tic_price')}} <strong> # </strong> {{__('messages.ryal')}}  </button>
@@ -344,7 +345,7 @@
         });
 
         $("#mobile_number").keypress(function (e){
-            if( (e.which < 48 || e.which > 57)){
+            if( (e.which < 48 || e.which > 57 ) && e.which != 8){
                 return false;
             }
             if($(this).val().length === 0 && e.which != 48){
@@ -353,9 +354,37 @@
             if($(this).val().length === 1 && e.which != 53){
                 return false;
             }
-            if($(this).val().length === 10 ){
+            if($(this).val().length === 10 && e.which != 8 ){
                 return false;
             }
+        });
+
+        $(".char-inputs").keypress(function (e){
+            console.log(e.which);
+            if($(this).val().length === 1  && e.which != 8 ){
+                return false;
+            }
+            if((e.which < 65 || e.which > 90) && ( e.which != 1602 ) && ( e.which != 1603 ) && ( e.which != 1604 ) && ( e.which != 1605 ) && ( e.which != 1606) && ( e.which != 1607 ) && ( e.which != 1608 ) && ( e.which != 1609 ) && (e.which != 8 ) && (e.which != 1575) && (e.which != 1576) && (e.which != 1581) && (e.which != 1583) && (e.which != 1585) && (e.which != 1587) && (e.which != 1589) && (e.which != 1591) && (e.which != 1593)  ){
+                return false;
+            }
+            if( e.which == 67 || e.which == 70 || e.which == 73 || e.which == 77 || e.which == 79 || e.which == 80 || e.which == 81 || e.which == 87 || e.which == 89 ) {
+                return false;
+            }
+
+            // var valid_char = [65,66,68,69,71,72,74,75,76,78,82,83,84,85,86,88];
+
+        });
+
+        $(function() {
+            var charLimit = 1;
+            $(".char-inputs").keyup(function(e) {
+                console.log('Focus');
+                if (this.value.length == charLimit) {
+                    console.log('Focus');
+                    $(this).next('.char-inputs').focus();
+
+                }
+            });
         });
     </script>
 @endsection

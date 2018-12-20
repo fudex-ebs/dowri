@@ -27,7 +27,7 @@ Route::post('/paytabs_respond', 'ReservationController@paytabs_respond');
 Route::post('/reservation/check_availability', 'ReservationController@check_availability');
 Route::get('/', 'ReservationController@create')->name('home');
 
-Route::get('/reservation_check/center/{center_id}/date/{date}', 'ReservationController@check')->name('reservation.check');
+Route::get('/reservation_check/center/{center_id}/date/{date}/{car?}', 'ReservationController@check')->name('reservation.check');
 Route::get('/reservation_check/center/{center_id}/date/{date}/time/{time}', 'ReservationController@reserve')->name('reservation.create');
 
 // Route::get('/reservation/create', 'ReservationController@create');

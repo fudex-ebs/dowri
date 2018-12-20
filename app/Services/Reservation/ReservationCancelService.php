@@ -23,5 +23,11 @@ class ReservationCancelService{
       $mobile_number = $reservationCancel->reservation->user->mobile_number;
       SendSms($mobile_number,$msg);
     }
+    public function send_cancel_sms($reservation){
+        $msg = 'تم إلغاء حجزك رقم '.$reservation->slug;
+        $mobile_number = $reservation->user->mobile_number;
+        $res = SendSms($mobile_number,$msg);
+        return $res ;
+    }
 
 }

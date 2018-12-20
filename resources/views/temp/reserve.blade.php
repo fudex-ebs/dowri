@@ -78,10 +78,11 @@
                     <div class="input-group-text">
                         <img src="{{ asset('/front2/images/board-number.png') }}" alt="">
                     </div>
-                    <input type="text" class="form-control" placeholder="{{__('messages.plate_part_1')}}" name="plate_number_1" value="{{ old('plate_number_1') }}"
-                           data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>"><span>-</span>
-                    <input type="text" class="form-control" placeholder="{{__('messages.plate_part_2')}}" name="plate_number_2" value="{{ old('plate_number_2') }}"
-                           data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>">
+                    <div class="col-md-2 col-sm-2 col-2"><input type="text" class="form-control char-inputs" placeholder="{{__('messages.char')}}"  name="char1" value="{{ old('char1') }}" maxlength="1"  data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>"></div><span class="hyphen">&#x2011;</span>
+                    <div class="col-md-2 col-sm-2 col-2"><input type="text" class="form-control char-inputs" placeholder="{{__('messages.char')}}" name="char2" value="{{ old('char2') }}" maxlength="1"  data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>" ></div><span class="hyphen">&#x2011;</span>
+                    <div class="col-md-2 col-sm-2 col-2"><input type="text" class="form-control char-inputs" placeholder="{{__('messages.char')}}" name="char3" value="{{ old('char3') }}" maxlength="1"  data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>"></div>
+                    <div ><input type="text" class="form-control" placeholder="{{__('messages.plate_part_2')}}" name="plate_number_2" value="{{ old('plate_number_2') }}"
+                                                 data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>"></div>
                 </div>
             </div>
         </div>
@@ -145,22 +146,24 @@
 
 
 
-        <div class="form-group mb-3 col-md-4 col-12">
-            <div class="input-group">
-                <div class="input-group-prepend">
-                    <div class="input-group-text">
-                        <img src="{{ asset('/front2/images/cars.png') }}" alt=""> </div>
-                </div>
-                <select id="car_type" class="form-control custom-select my-select" name="car_type_id" value="{{ old('car_type_id') }}"
-                        data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.car_type').' '.__('messages.required')}}</span>" >
-                    <option selected disabled value="">{{__('messages.car_type')}}</option>
-                    @foreach($car_types as $car_type)
-                    <option value="{{$car_type->id}}" car_type_price="{{$car_type->price}}" >{{App::getLocale()=="ar" ? $car_type->name_ar : $car_type->name_en}}</option>
-                    @endforeach
+        {{--<div class="form-group mb-3 col-md-4 col-12">--}}
+            {{--<div class="input-group">--}}
+                {{--<div class="input-group-prepend">--}}
+                    {{--<div class="input-group-text">--}}
+                        {{--<img src="{{ asset('/front2/images/cars.png') }}" alt=""> </div>--}}
+                {{--</div>--}}
+                {{--<select id="car_type" class="form-control custom-select my-select" name="car_type_id" value="{{ old('car_type_id') }}"--}}
+                        {{--data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.car_type').' '.__('messages.required')}}</span>" >--}}
+                    {{--<option selected disabled value="">{{__('messages.car_type')}}</option>--}}
+                    {{--@foreach($car_types as $car_type)--}}
+                    {{--<option value="{{$car_type->id}}" car_type_price="{{$car_type->price}}" >{{App::getLocale()=="ar" ? $car_type->name_ar : $car_type->name_en}}</option>--}}
+                    {{--@endforeach--}}
 
-                </select>
-            </div>
-        </div>
+                {{--</select>--}}
+                <input id="car_type" type="hidden" class="form-control custom-select my-select" name="car_type_id" value="{{ $selected_car->id }}">
+
+            {{--</div>--}}
+        {{--</div>--}}
 
         <div class="form-group mb-3 col-md-4 col-sm-6 col-12">
             <div class="input-group input remove-icon">
@@ -184,7 +187,7 @@
 
     </div>
     <div class="text-center mt-md-2 mt-2 c-btn-group">
-        <button type="button" id="btn-price" class="btn btn-danger ">{{__('messages.tic_price')}}<strong> # </strong> {{__('messages.ryal')}} </button>
+        <button type="button" id="btn-price" class="btn btn-danger ">{{__('messages.tic_price')}}<strong> {{$selected_car->price}} #  </strong> {{__('messages.ryal')}} </button>
         <button class="btn btn-info">{{__('messages.pay')}}</button>
     </div>
 </form>
@@ -251,5 +254,32 @@
       return false;
     }
   });
+    $(".char-inputs").keypress(function (e){
+        console.log(e.which);
+        if($(this).val().length === 1  && e.which != 8 ){
+            return false;
+        }
+        if((e.which < 65 || e.which > 90) && ( e.which != 1602 ) && ( e.which != 1603 ) && ( e.which != 1604 ) && ( e.which != 1605 ) && ( e.which != 1606) && ( e.which != 1607 ) && ( e.which != 1608 ) && ( e.which != 1609 ) && (e.which != 8 ) && (e.which != 1575) && (e.which != 1576) && (e.which != 1581) && (e.which != 1583) && (e.which != 1585) && (e.which != 1587) && (e.which != 1589) && (e.which != 1591) && (e.which != 1593)  ){
+            return false;
+        }
+        if( e.which == 67 || e.which == 70 || e.which == 73 || e.which == 77 || e.which == 79 || e.which == 80 || e.which == 81 || e.which == 87 || e.which == 89 ) {
+           return false;
+       }
+
+        // var valid_char = [65,66,68,69,71,72,74,75,76,78,82,83,84,85,86,88];
+
+    });
+
+    $(function() {
+        var charLimit = 1;
+        $(".char-inputs").keyup(function(e) {
+            console.log('Focus');
+            if (this.value.length == charLimit) {
+                console.log('Focus');
+                $(this).next('.char-inputs').focus();
+
+            }
+        });
+    });
 </script>
 @endsection

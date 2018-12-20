@@ -81,6 +81,9 @@ class ReservationCancelController extends Controller
                 $check_confirm = ReservationConfirm::where('reservation_id' , $reservation->id)->first();
                 if($check_confirm && $check_confirm->status == "verified"){
                     $reservation->update(['status' => 'in_valid']);
+                    //send sms
+                    $res = $this->ReservationCancelService->send_cancel_sms($reservation);
+//                    return $res;
                     return redirect()->route('home')->with('cancel_done','your reservation has been canceled');
                 }else{
                     return redirect()->back()->with('cancel','إلغاء عمليه الحجز غير مفعله  ');

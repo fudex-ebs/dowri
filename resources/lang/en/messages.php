@@ -3,7 +3,7 @@ return [
     'welcome' => 'Welcome to ',
     'login'  => 'Login',
     'register' => 'Register',
-    'arabic' => 'Arabic',
+    'arabic' => 'العربيه',
     'english' => 'English',
     'password' => 'Password',
     'email' => 'E-Mail Address',
@@ -110,7 +110,8 @@ return [
     'center_reservation' => 'Reservations of center ',
     'time'=>'Time',
     'search_result' => 'Search result',
-    'no_search_result'=>'No reservation with this number'
+    'no_search_result'=>'No reservation with this number',
+    'char' => 'Character'
 
 
 ];

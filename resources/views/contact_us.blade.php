@@ -93,7 +93,11 @@
                             <h6><strong>{{__("messages.address")}} :</strong></h6>
                         </div>
                         <div class="col-lg-6 col-6 c-con-add">
-                            الدمام - الواحة - المملكة العربية السعودية
+                            @if(App::getLocale()=="ar")
+                             الدمام - الواحة - المملكة العربية السعودية
+                            @else
+                                 Dammam - Al Wahah - Saudi Arabia
+                            @endif
                         </div>
                         <div class="col-lg-6 col-6">
                             <p class="m-0 text-danger c-con-mobile"><i class="fa fa-phone-square" aria-hidden="true"></i>

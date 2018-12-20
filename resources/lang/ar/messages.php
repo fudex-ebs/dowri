@@ -4,7 +4,7 @@
         'login' =>'تسجيل دخول',
         'register' => 'حساب جديد',
         'arabic' => 'العربيه',
-        'english' =>'اﻷنجليزيه',
+        'english' =>'English',
         'password' => 'كلمه المرور',
         'email' => 'البريد اﻷلكترونى',
         'remember' => 'تذكرنى',
@@ -110,5 +110,6 @@
         'center_reservation'=>'حجوزات مركز',
         'time'=>'الوقت',
         'search_result' => 'نتيجه البحث',
-        'no_search_result'=>'ﻻ يوجد حجز بهذا الرقم'
+        'no_search_result'=>'ﻻ يوجد حجز بهذا الرقم',
+        'char' => 'حرف'
     ];
