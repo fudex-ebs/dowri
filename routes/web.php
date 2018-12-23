@@ -88,5 +88,7 @@ Route::group(['prefix' => 'admin','middleware' => 'admin' ], function () {
     Route::post('/car_type/{carType}/edit', 'CarTypeController@update')->name('car_type.update');
     // users controller
     Route::get('/user/index', 'AdminController@user_index')->name('user.index');
+    Route::get('/setting/index', 'AdminController@setting')->name('setting.index');
+    Route::post('/setting/{id?}', 'AdminController@setting_update')->name('setting.update');
 
 });

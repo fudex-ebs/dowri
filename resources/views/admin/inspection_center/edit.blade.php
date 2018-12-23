@@ -1,7 +1,9 @@
 @extends('layouts.admin',['page' => 'inspection_center'])
 @section('page_css')
-  <link href="/metronic/assets/vendors/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />
-  <link href="/metronic/assets/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />
+    <link href="{{asset('/metronic/assets/vendors/custom/fullcalendar/fullcalendar.bundle.css')}}" rel="stylesheet" type="text/css" />
+    <link href="{{asset('/metronic/assets/vendors/custom/datatables/datatables.bundle.css')}}" rel="stylesheet" type="text/css" />
+  {{--<link href="/metronic/assets/vendors/custom/datatables/datatables.bundle.css" rel="stylesheet" type="text/css" />--}}
+  {{--<link href="/metronic/assets/vendors/custom/fullcalendar/fullcalendar.bundle.css" rel="stylesheet" type="text/css" />--}}
 @endsection
 @section('content')
 <div class="m-grid__item m-grid__item--fluid m-wrapper">
@@ -60,39 +62,44 @@
           </div>
           <div class="m-portlet__body">
             <div class="row search-field">
+                <div class="col-md-3">
+                    <div class="form-group">
+                        <input type="text" id="slug" index="1" class="form-control" placeholder="reservation number">
+                    </div>
+                </div>
               <div class="col-md-3">
                 <div class="form-group">
-                  <input type="text" id="name" index="1" class="form-control" placeholder="name">
+                  <input type="text" id="name" index="2" class="form-control" placeholder="name">
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group">
-                  <input type="text" id="mobile_number" index="2" class="form-control" placeholder="mobile number">
+                  <input type="text" id="mobile_number" index="3" class="form-control" placeholder="mobile number">
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group">
-                  <input type="text" id="email" index="3" class="form-control" placeholder="email">
+                  <input type="text" id="email" index="4" class="form-control" placeholder="email">
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group">
-                  <input type="text" id="plate_number" index="4" class="form-control" placeholder="plate number">
+                  <input type="text" id="plate_number" index="5" class="form-control" placeholder="plate number">
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group">
-                  <input type="text" id="chase_number" index="5" class="form-control" placeholder="chase number">
+                  <input type="text" id="chase_number" index="6" class="form-control" placeholder="chase number">
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group">
-                  <input type="text" id="date" index="6" class="form-control" placeholder="date">
+                  <input type="text" id="date" index="7" class="form-control" placeholder="date">
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group">
-                  <input type="text" id="time" index="7" class="form-control" placeholder="time">
+                  <input type="text" id="time" index="8" class="form-control" placeholder="time">
                 </div>
               </div>
             </div>
@@ -108,6 +115,7 @@
                   <th scope="col">chase number</th>
                   <th scope="col">Date</th>
                   <th scope="col">time</th>
+                  <th scope="col">Create time</th>
                   <th scope="col">Discount code</th>
 
                 </tr>
@@ -124,6 +132,7 @@
                           <td>{{$reservation->car->serial_number}}</td>
                           <td>{{$reservation->date}}</td>
                           <td>{{$reservation->time_period}}</td>
+                          <td>{{ date("d-m-Y", strtotime($reservation->created_at))}}</td>
                           <td>{{isset($reservation->discount) ? $reservation->discount->discount_code->code : '--'}}</td>
 
                         </tr>
@@ -195,7 +204,7 @@
                   <div class="form-group col-md-12">
                       <label>advertisement </label>
                       @if($inspection_center->ad_img)
-                        <img src="/adds/{{$inspection_center->ad_img}}" alt="" width="100%">
+                        <img src="{{asset('/adds/'.$inspection_center->ad_img)}}" alt="" width="100%">
                       @endif
 
                       <input type="file" name="photo" class="form-control"/>
@@ -254,11 +263,16 @@
 </div>
 @endsection
 @section('page_js')
-  <script src="/metronic/assets/vendors/custom/datatables/datatables.bundle.js" type="text/javascript"></script>
-  <script src="/metronic/assets/demo/default/custom/crud/forms/widgets/bootstrap-datepicker.js" type="text/javascript"></script>
-  <script src="/metronic/assets/vendors/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript"></script>
-  <script src="/metronic/assets/demo/default/custom/components/calendar/basic.js" type="text/javascript"></script>
-  <script src="/js/admin/custom.js" type="text/javascript"></script>
+  {{--<script src="/metronic/assets/vendors/custom/datatables/datatables.bundle.js" type="text/javascript"></script>--}}
+  {{--<script src="/metronic/assets/demo/default/custom/crud/forms/widgets/bootstrap-datepicker.js" type="text/javascript"></script>--}}
+  {{--<script src="/metronic/assets/vendors/custom/fullcalendar/fullcalendar.bundle.js" type="text/javascript"></script>--}}
+  {{--<script src="/metronic/assets/demo/default/custom/components/calendar/basic.js" type="text/javascript"></script>--}}
+  <script src="{{asset('/metronic/assets/vendors/custom/datatables/datatables.bundle.js')}}" type="text/javascript"></script>
+  <script src="{{asset('/metronic/assets/demo/default/custom/crud/forms/widgets/bootstrap-datepicker.js')}}" type="text/javascript"></script>
+  <script src="{{asset('/metronic/assets/vendors/custom/fullcalendar/fullcalendar.bundle.js')}}" type="text/javascript"></script>
+  <script src="{{asset('/metronic/assets/demo/default/custom/components/calendar/basic.js')}}" type="text/javascript"></script>
+
+  <script src="{{asset('/js/admin/custom.js')}}" type="text/javascript"></script>
   <script type="text/javascript">
   $(document).ready( function () {
       $('#m_datepicker_6').datepicker().on('changeDate', function (ev) {

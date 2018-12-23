@@ -63,6 +63,16 @@
           </span>
         </a>
       </li>
+      <li class="m-menu__item inspection_center" aria-haspopup="true">
+        <a href="{{route('setting.index')}}" class="m-menu__link ">
+          <i class="m-menu__link-icon flaticon-line-graph"></i>
+          <span class="m-menu__link-title">
+            <span class="m-menu__link-wrap">
+              <span class="m-menu__link-text">setting</span>
+            </span>
+          </span>
+        </a>
+      </li>
 
 
     </ul>

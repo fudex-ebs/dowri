@@ -111,7 +111,11 @@ return [
     'time'=>'Time',
     'search_result' => 'Search result',
     'no_search_result'=>'No reservation with this number',
-    'char' => 'Character'
+    'char' => 'Character',
+    'reserve_city'=>'Reservation city',
+    'reserve_center'=>'Reservation center',
+    'reserve_time' => 'Reservation date',
+    'tic_price_with_fee' => 'Ticket price + fees'
 
 
 ];

@@ -15,6 +15,8 @@ jQuery(document).ready(function() {
 
   $(".search-field input").on('keyup change', function() {
         var index = $(this).attr('index');
+        // table.column( index).visible( false );
+
         table.column(index).search(this.value).draw();
   });
 

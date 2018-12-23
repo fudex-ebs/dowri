@@ -27,6 +27,7 @@
             <div class="form-row form-row d-flex justify-content-md-center">
                 {{-- center data --}}
                 <div class="form-group mb-3 col-md-4 col-sm-6 col-12">
+                    <label>{{__('messages.reserve_city')}} *</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <div class="input-group-text"><img src="{{ asset('/front2/images/city.png') }}" alt=""> </div>
@@ -42,6 +43,7 @@
                 </div>
 
                 <div class="form-group mb-3 col-md-4 col-sm-6 col-12">
+                    <label>{{__('messages.reserve_center')}} *</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <div class="input-group-text"><img src="{{ asset('/front2/images/city.png') }}" alt=""> </div>
@@ -57,6 +59,7 @@
                 </div>
 
                 <div class="form-group mb-3 col-md-4 col-sm-6 col-12">
+                    <label>{{__('messages.reserve_date')}} *</label>
                     <div class="input-group input remove-icon">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
@@ -68,6 +71,7 @@
                 </div>
 
                 <div class="form-group mb-3 col-md-4 col-sm-6 col-12">
+                    <label>{{__('messages.reserve_time')}} *</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <div class="input-group-text"><img src="{{ asset('/front2/images/vin-number.png') }}" alt=""> </div>
@@ -86,6 +90,7 @@
                 $names = explode(" " , $name) ;
                 @endphp
                 <div class="form-group mb-3 col-md-4 col-sm-6 col-12">
+                    <label>{{__('messages.first_name')}} *</label>
                     <div class="input-group input remove-icon">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
@@ -97,6 +102,7 @@
                 </div>
 
                 <div class="form-group mb-3 col-md-4 col-sm-6 col-12">
+                    <label>{{__('messages.last_name')}} *</label>
                     <div class="input-group input remove-icon">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
@@ -109,6 +115,7 @@
                 </div>
 
                 <div class="form-group mb-3 col-md-4 col-sm-6 col-12">
+                    <label>{{__('messages.mobile')}} *</label>
                     <div class="input-group input remove-icon">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
@@ -121,6 +128,7 @@
                 </div>
 
                 <div class="form-group mb-3 col-md-4 col-sm-6 col-12">
+                    <label>{{__('messages.email')}} *</label>
                     <div class="input-group input remove-icon">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
@@ -133,14 +141,23 @@
                 </div>
 
                 <div class="form-group mb-3 col-md-4 col-sm-6 col-12">
+                    @php
+                        $chars = explode("-",$reservation->car->plate_number)[0];
+                        $string = preg_replace('/\s+/', '', $chars);
+                        $char1 = mb_substr($string, 0, 1, "UTF-8");
+                        $char2 = mb_substr($string, 1, 1, "UTF-8");
+                        $char3 = mb_substr($string, 2, 2, "UTF-8");
+                    @endphp
+                    <label>{{__('messages.plate_num')}} * </label>
                     <div class="input-group input remove-icon">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
                                 <img src="{{ asset('/front2/images/board-number.png') }}" alt="">
                             </div>
-                            <div class="col-md-2 col-sm-2 col-2"><input type="text" class="form-control char-inputs" placeholder="{{__('messages.char')}}"  name="char1" value="{{explode("-",$reservation->car->plate_number)[0][0]}}" maxlength="1" data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>" ></div><span class="hyphen">&#x2011;</span>
-                            <div class="col-md-2 col-sm-2 col-2"><input type="text" class="form-control char-inputs" placeholder="{{__('messages.char')}}" name="char2" value="{{explode("-",$reservation->car->plate_number)[0][1]}} " maxlength="1" data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>" ></div><span class="hyphen">&#x2011;</span>
-                            <div class="col-md-2 col-sm-2 col-2"><input type="text" class="form-control char-inputs" placeholder="{{__('messages.char')}}" name="char3" value="{{explode("-",$reservation->car->plate_number)[0][2]}}" maxlength="1" data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>" ></div>
+
+                            <div class="col-md-2 col-sm-2 col-2"><input type="text" class="form-control char-inputs" placeholder="{{__('messages.char')}}"  name="char1" value="{{$char1}}" maxlength="1" data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>" ></div><span class="hyphen">&#x2011;</span>
+                            <div class="col-md-2 col-sm-2 col-2"><input type="text" class="form-control char-inputs" placeholder="{{__('messages.char')}}" name="char2" value="{{$char2}} " maxlength="1" data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>" ></div><span class="hyphen">&#x2011;</span>
+                            <div class="col-md-2 col-sm-2 col-2"><input type="text" class="form-control char-inputs" placeholder="{{__('messages.char')}}" name="char3" value="{{$char3}}" maxlength="1" data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>" ></div>
                             <div ><input type="text" class="form-control" placeholder="{{__('messages.plate_part_2')}}" name="plate_number_2" value="{{explode("-",$reservation->car->plate_number)[1]}}"
                                          data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>" ></div>
                         </div>
@@ -148,6 +165,7 @@
                 </div>
 
                 <div class="form-group mb-3 col-md-4 col-sm-6 col-12">
+                    <label>{{__('messages.serial_num')}} *</label>
                     <div class="input-group input remove-icon">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
@@ -160,6 +178,7 @@
                 </div>
 
                 <div class="form-group mb-3 col-md-4 col-sm-6 col-12">
+                    <label>{{__('messages.manufacture_year')}} *</label>
                     <div class="input-group input remove-icon">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
@@ -177,6 +196,7 @@
                 </div>
 
                 <div class="form-group mb-3 col-md-4 col-12">
+                    <label>{{__('messages.model')}} *</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
@@ -192,6 +212,7 @@
                 </div>
 
                 <div class="form-group mb-3 col-md-4 col-sm-6 col-12">
+                    <label>{{__('messages.expire_date')}} *</label>
                     <div class="input-group input remove-icon">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
@@ -204,12 +225,13 @@
                 </div>
 
                 <div class="form-group mb-3 col-md-4 col-12">
+                    <label>{{__('messages.car_type')}} *</label>
                     <div class="input-group">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
                                 <img src="{{ asset('/front2/images/cars.png') }}" alt=""> </div>
                         </div>
-                        <select id="car_type" class="form-control custom-select my-select" name="car_type_id" data-validation="required"
+                        <select id="car_type"  class="form-control custom-select my-select" name="car_type_id" data-validation="required"
                                 data-validation-error-msg-required="<span class='jq-error'>{{__('messages.car_type').' '.__('messages.required')}}</span>" >
                             <option selected disabled value="">{{__('messages.car_type')}}</option>
                             @foreach($car_types as $car_type)
@@ -232,16 +254,17 @@
                 <!--</div>-->
             </div>
             <div class="text-center mt-md-2 mt-2 tos-error">
-                <ul style="list-style: none">
-                    {{--<li>لا يحق استخدام الموقع للأشخاص الغير قادرين على تمثيل أنفسهم قانونياً  </li>--}}
-                    {{--<li>لا يجوز لك بتاتاً أن تنتهك او تحاول انتهاك الحماية الأمنية للموقع الإلكتروني  </li>--}}
-{{--                    <li><a href="{{URL::to('tos')}}" target="_blank">{{__('messages.tos_link')}} </a></li>--}}
+                <ul style="list-style: none ">
+                    <li> <strong><a href="{{URL::to('toc')}}" target="_blank"> {{__('messages.cancellation')}}</a></strong></li>
+                    <li>لايمكن تغير او إالغاء الموعد قبل الموعد المحجوز بأقل من اربعة و عشرون ساعة.</li>
+                    <li>بينما اذا تم الإلغاء خلال المدة المسموح فيها بالتعديل و الإلغاء فسوف يتم خصم 30% من اجمالي سعر التذكرة المدفوعة و سوف يتم أرجاع باقي المبلغ وفقاً لسياسة البنوك السعودية المتبعة.</li>
+                    <li>لا توجد أي رسوم مصاحبه لتغيير الموعد و لكن هناك حد اقصى للتغير و هو مرتين متتاليتي.</li>
                 </ul>
                 <input type="checkbox" name="tos_agree"
                        data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.tos_accept')}}</span>" /><strong><a href="{{URL::to('tos')}}" target="_blank"> {{__('messages.tos_agree')}} <a /></strong>
             </div>
             <div class="text-center mt-md-2 mt-2">
-                <button type="button" id="btn-price" class="btn btn-danger ">{{__('messages.tic_price')}} <strong> # </strong> {{__('messages.ryal')}}  </button>
+                <button type="button" id="btn-price" class="btn btn-danger ">{{__('messages.tic_price_with_fee')}} <strong> # </strong> {{__('messages.ryal')}}  </button>
                 <button class="btn btn-info"> {{__('messages.edit')}}</button>
             </div>
         </form>
@@ -263,6 +286,7 @@
 @endsection
 @section('page_js')
     <script>
+        $('#car_type').attr('disabled',true);
         $('#city').change(function(){
             selected_city_id = $(this).val();
             $('#center .disabled').prop('selected', true);
@@ -338,7 +362,7 @@
 
 
 
-        $("#btn-price strong").text(<?php echo $reservation->car->car_type->price ?>);
+        $("#btn-price strong").text(<?php echo $reservation->car->car_type->price + $fee ?>);
 
         $("#car_type").change(function(){
             $("#btn-price strong").text($("#car_type option:selected").attr("car_type_price"));

@@ -9,6 +9,7 @@ use App\Models\City;
 use App\Models\ReservationConfirm;
 use App\Models\PaymentConfirm;
 use App\Services\Reservation\ReservationService;
+use App\Setting;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreReservationRequest;
 use App\Http\Requests\UpdateReservationRequest;
@@ -75,7 +76,14 @@ class ReservationController extends Controller
         $car_types = CarType::all();
         $car_id = Session::get('car_id');
         $selected_car = CarType::find($car_id);
-      return view('temp.reserve',['center_id' => $center_id ,'date' => $date,'time' =>$time_period,'car_types' => $car_types ,'selected_car'=>$selected_car]);
+        $website_fee = Setting::all();
+        if(count($website_fee) > 0){
+            $fee = $website_fee[0]->website_fee;
+        }else{
+            $fee = 0 ;
+        }
+
+      return view('temp.reserve',['center_id' => $center_id ,'date' => $date,'time' =>$time_period,'car_types' => $car_types ,'selected_car'=>$selected_car ,'fee'=>$fee]);
     }
 
     /**
@@ -292,7 +300,13 @@ class ReservationController extends Controller
                 // }
 //                return count($new_periods) ;
                 $new_periods = get_time_periods();
-                return view('reservation.edit',['reservation' => $reservation ,"car_types" => $car_types ,'cities'=>$cities,'centers'=>$centers ,'periods'=>$new_periods]);
+                $website_fee = Setting::all();
+                if(count($website_fee) > 0){
+                    $fee = $website_fee[0]->website_fee;
+                }else{
+                    $fee = 0 ;
+                }
+                return view('reservation.edit',['reservation' => $reservation ,"car_types" => $car_types ,'cities'=>$cities,'centers'=>$centers ,'periods'=>$new_periods , 'fee'=>$fee]);
             }
 
         }

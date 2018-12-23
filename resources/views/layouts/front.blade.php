@@ -99,7 +99,27 @@
     <!--start Footer-->
     <footer class="d-flex flex-lg-row flex-column justify-content-md-between justify-content-center align-items-start">
         <div class="logo mb-3 order-lg-1 order-2">
-            <img src="{{asset('/front2/images/vision2030.png')}}" alt="">
+            {{--<img src="{{asset('/front2/images/vision2030.png')}}" alt="">--}}
+            <h4>
+                {{__('messages.related_link')}}
+            </h4>
+
+            <ul class="links">
+                <li>
+                    <a href="{{URL::to('tos')}}">{{__('messages.tos')}}</a>
+                </li>
+                <li>
+                    <a href="{{URL::to('policy')}}">{{__('messages.privacy')}}</a>
+                </li>
+                <li>
+                    <a href="{{URL::to('toc')}}">{{__('messages.cancellation')}}</a>
+                </li>
+                <!--<li>-->
+            <!--    <a href="#">{{__('messages.link')}} 4</a>-->
+                <!--</li>-->
+
+
+            </ul>
         </div>
 
         <div class="middle-footer order-2 text-center">
@@ -148,27 +168,10 @@
                 </div>
             </footer>
         </div>
+
         <div class="order-lg-3 order-first">
-            <h4>
-                {{__('messages.related_link')}}
-            </h4>
+            <img src="{{asset('/front2/images/vision2030.png')}}" alt="">
 
-            <ul class="links ">
-                <li>
-                    <a href="{{URL::to('tos')}}">{{__('messages.tos')}}</a>
-                </li>
-                <li>
-                    <a href="{{URL::to('policy')}}">{{__('messages.privacy')}}</a>
-                </li>
-                <li>
-                    <a href="{{URL::to('toc')}}">{{__('messages.cancellation')}}</a>
-                </li>
-                <!--<li>-->
-                <!--    <a href="#">{{__('messages.link')}} 4</a>-->
-                <!--</li>-->
-
-
-            </ul>
         </div>
         {{--<button class="btn btn-secondary  order-lg-3 order-first" type="submit">--}}
             {{--<span><img src="{{asset('/front2/images/x-ico.png')}}" alt="" class="align-middle ml-1"></span>{{__('messages.cancel_reserve')}}--}}
@@ -197,6 +200,8 @@
 <script src="https://rawgit.com/abdennour/hijri-date/master/cdn/hijri-date-latest.js" type="text/javascript" ></script>
 {{-- form validation --}}
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+
+
 @yield('page_js')
     <script>
         $.validate({

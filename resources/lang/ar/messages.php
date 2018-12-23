@@ -111,5 +111,9 @@
         'time'=>'الوقت',
         'search_result' => 'نتيجه البحث',
         'no_search_result'=>'ﻻ يوجد حجز بهذا الرقم',
-        'char' => 'حرف'
+        'char' => 'حرف',
+        'reserve_city'=>'مدينه الحجز',
+        'reserve_center'=>'مركز الحجز',
+        'reserve_time' => 'تاريخ الحجز',
+        'tic_price_with_fee' => 'سعر التذكره + الرسوم'
     ];

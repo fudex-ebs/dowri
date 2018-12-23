@@ -88,7 +88,7 @@ footer{
 }
 .links li {
     margin-bottom: 15px;
-    font-size: 13px; text-align:left;
+    font-size: 13px; text-align:center;
 }
 .myl{
 
@@ -105,5 +105,9 @@ footer{
 }
 #list-table th{
     text-align: left;
+}
+.suitable label{
+    float :left;
+
 }
 

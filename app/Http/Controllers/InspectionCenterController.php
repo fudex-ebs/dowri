@@ -109,7 +109,7 @@ class InspectionCenterController extends Controller
     public function list_reservations($slug){
         $center = InspectionCenter::whereslug($slug)->first();
         if($center){
-            $center_reservations = Reservation::where('inspection_center_id', $center->id)->get();
+            $center_reservations = Reservation::where('inspection_center_id', $center->id)->where('status','valid')->get();
 //            return $center_reservations;
             return view('admin.inspection_center.list_reservations',['center_reservations' => $center_reservations ,'center'=>$center]);
         }

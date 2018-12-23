@@ -61,47 +61,52 @@
             <div class="row search-field">
               <div class="col-md-3">
                 <div class="form-group">
-                  <input type="text" id="name" index="1" class="form-control" placeholder="name">
+                  <input type="text" id="name" index="1" class="form-control" placeholder="reservation number">
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group">
-                  <input type="text" id="mobile_number" index="2" class="form-control" placeholder="mobile number">
+                  <input type="text" id="name" index="2" class="form-control" placeholder="name">
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group">
-                  <input type="text" id="email" index="3" class="form-control" placeholder="email">
+                  <input type="text" id="mobile_number" index="3" class="form-control" placeholder="mobile number">
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group">
-                  <input type="text" id="plate_number" index="4" class="form-control" placeholder="plate number">
+                  <input type="text" id="email" index="4" class="form-control" placeholder="email">
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group">
-                  <input type="text" id="chase_number" index="5" class="form-control" placeholder="chase number">
+                  <input type="text" id="plate_number" index="5" class="form-control" placeholder="plate number">
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group">
-                  <input type="text" id="date" index="6" class="form-control" placeholder="date">
+                  <input type="text" id="chase_number" index="6" class="form-control" placeholder="chase number">
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group">
-                  <input type="text" id="time" index="7" class="form-control" placeholder="time">
+                  <input type="text" id="date" index="7" class="form-control" placeholder="date">
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group">
-                  <input type="text" id="city" index="8" class="form-control" placeholder="city">
+                  <input type="text" id="time" index="8" class="form-control" placeholder="time">
                 </div>
               </div>
               <div class="col-md-3">
                 <div class="form-group">
-                  <input type="text" id="center_name" index="9" class="form-control" placeholder="center name">
+                  <input type="text" id="city" index="9" class="form-control" placeholder="city">
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="form-group">
+                  <input type="text" id="center_name" index="10" class="form-control" placeholder="center name">
                 </div>
               </div>
             </div>
@@ -117,6 +122,7 @@
                   <th scope="col">chase number</th>
                   <th scope="col">Date</th>
                   <th scope="col">time</th>
+                  <th scope="col">Create time</th>
                   <th scope="col">city</th>
                   <th scope="col">center name</th>
                   <th scope="col">Discount code</th>
@@ -136,6 +142,7 @@
                   <td>{{$reservation->car->serial_number}}</td>
                   <td>{{$reservation->date}}</td>
                   <td>{{$reservation->time_period}}</td>
+                  <td>{{ date("d-m-Y", strtotime($reservation->created_at))}}</td>
                   <td>{{$reservation->inspection_center->city->name_en}}</td>
                   <td>{{$reservation->inspection_center->name_en}}</td>
                   <td>{{isset($reservation->discount) ? $reservation->discount->discount_code->code : '--'}}</td>

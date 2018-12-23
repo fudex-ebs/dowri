@@ -38,11 +38,11 @@ class ReservationService{
             ]);
         }
 
-        $car = Car::where('plate_number',$dataArray['char1'].$dataArray['char2'].$dataArray['char3']."-".$dataArray['plate_number_2'])->first();
+        $car = Car::where('plate_number',$dataArray['char1']." ".$dataArray['char2']." ".$dataArray['char3']."-".$dataArray['plate_number_2'])->first();
         if(!$car){
             $car = Car::create([
                     'slug' => uniqid(),
-                    'plate_number' => $dataArray['char1'].$dataArray['char2'].$dataArray['char3']."-".$dataArray['plate_number_2'],
+                    'plate_number' => $dataArray['char1']." ".$dataArray['char2']." ".$dataArray['char3']."-".$dataArray['plate_number_2'],
                     'serial_number' => $dataArray['serial_number'],
                     'car_type_id' => $dataArray['car_type_id'],
                     'manufacture_year' => $dataArray['manufacture_year'],
@@ -248,9 +248,9 @@ class ReservationService{
             'email' => $data['email'],
         ]);
         $car->update([
-            'plate_number' => $data['char1'].$data['char2'].$data['char3']."-".$data['plate_number_2'],
+            'plate_number' => $data['char1']." ".$data['char2']." ".$data['char3']."-".$data['plate_number_2'],
             'serial_number' => $data['serial_number'],
-            'car_type_id' => $data['car_type_id'],
+//            'car_type_id' => $data['car_type_id'],
             'manufacture_year' => $data['manufacture_year'],
             'model' => $data['model'],
             'register_expire_date' => $data['register_expire_date']
