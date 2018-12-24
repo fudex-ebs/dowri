@@ -80,9 +80,9 @@
             <div class="form-group mb-md-0 mb-3 col-lg-2 col-md-3 col-sm-6 col-12">
                 <div class="input-group remove-icon">
                     <div class="input-group-prepend">
-                        <div class="input-group-text">
-                            <img src="{{ asset('/front2/images/calender-ico.png') }}" alt="">
-                        </div>
+                        {{--<div class="input-group-text">--}}
+{{--                            <img src="{{ asset('/front2/images/calender-ico.png') }}" alt="">--}}
+                        {{--</div>--}}
                         <input type="text" class="form-control " id="datepicker" placeholder="{{__('messages.select_date')}}">
                     </div>
                     <small id="datepicker-help" class="form-text text-muted input-danger hide">{{__('messages.check_msg')}}</small>

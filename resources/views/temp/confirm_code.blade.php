@@ -20,7 +20,7 @@
         <h2> {{__('messages.sms')}}</h2>
         <div class=" mb-12 col-md-6 col-sm-6 col-12  myl">
             <ul   class="list-unstyled mylist " >
-                <li  style="width:fit-content"><img src="{{ asset('/front2/images/sms.png') }}" width="44" height="22" >{{__('messages.sms_send')}} <span style="float: left;direction: ltr" > {{substr_replace($ReservationConfirm->reservation->user->mobile_number, '****', 3 , 4)}} </span></li>
+                <li  style="width:fit-content"><img src="{{ asset('/front2/images/sms.png') }}" width="44" height="22" >{{__('messages.sms_send')}} <span> {{substr_replace($ReservationConfirm->reservation->user->mobile_number, '****', 3 , 4)}} </span></li>
                 <li>{{__('messages.sms_msg')}}</li>
 
             </ul>

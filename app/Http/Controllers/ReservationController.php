@@ -76,9 +76,9 @@ class ReservationController extends Controller
         $car_types = CarType::all();
         $car_id = Session::get('car_id');
         $selected_car = CarType::find($car_id);
-        $website_fee = Setting::all();
-        if(count($website_fee) > 0){
-            $fee = $website_fee[0]->website_fee;
+        $website_fee = Setting::first();
+        if($website_fee){
+            $fee = $website_fee->website_fee;
         }else{
             $fee = 0 ;
         }

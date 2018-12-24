@@ -2,6 +2,7 @@
 
 namespace App\Services\Reservation;
 
+use App\Setting;
 use Hash;
 use App\User;
 use App\Models\Reservation;
@@ -123,10 +124,17 @@ class ReservationService{
     }
 
     public function payment(Reservation $reservation){
+        $website_fee = Setting::first();
+        if($website_fee){
+            $fee = $website_fee->website_fee;
+        }else{
+            $fee = 0 ;
+        }
+      $total_price = $reservation->car->car_type->price + $fee ;
       $paytabs = new PayTabs();
       $paytabs->set_page_setting('reservation','abs2121','SAR','127.0.0.1','English');
       $paytabs->set_customer($reservation->user->name,$reservation->user->name,'00966',$reservation->user->mobile_number,$reservation->user->email);
-      $paytabs->add_item('reservation-'.$reservation->slug,$reservation->car->car_type->price,'1');
+      $paytabs->add_item('reservation-'.$reservation->slug,$total_price,'1');
       $paytabs->set_address("princ moteb road","Dammam","Dammam","12345","SAU");
       if($reservation->discount){
         $paytabs->set_discount($reservation->discount->discount_code->amount);

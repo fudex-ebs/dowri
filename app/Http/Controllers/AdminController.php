@@ -30,14 +30,14 @@ class AdminController extends Controller
                 unset ($cols[$key]);
             }
         }
-        $setting = Setting::all()->take(1);
-        if(count($setting) == 0){
-            $setting = [] ;
+        $setting = Setting::first();
+        if($setting){
+            $fee = $setting ;
         }else{
-            $setting = $setting[0];
+            $fee = [];
         }
 //        return $setting ;
-        return view('admin.setting.index' ,['cols' => $cols , 'setting'=> $setting]);
+        return view('admin.setting.index' ,['cols' => $cols , 'setting'=> $fee]);
 
     }
     public function setting_update(Request $request ,$id = null){

@@ -254,7 +254,7 @@
     if( (e.which < 48 || e.which > 57 ) && e.which != 8){
       return false;
     }
-    if($(this).val().length === 0 && e.which != 48){
+    if($(this).val().length === 0 && e.which != 48 ){
       return false;
     }
     if($(this).val().length === 1 && e.which != 53){
