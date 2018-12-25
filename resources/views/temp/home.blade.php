@@ -35,9 +35,9 @@
             </div>
             <div class="form-group mb-md-0 mb-3 col-lg-2 col-md-3 col-sm-6 col-12">
                 <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text"><img src="{{ asset('/front2/images/city.png') }}" alt=""> </div>
-                    </div>
+                    {{--<div class="input-group-prepend">--}}
+                        {{--<div class="input-group-text"><img src="{{ asset('/front2/images/city.png') }}" alt=""> </div>--}}
+                    {{--</div>--}}
                     <select id="city" class="form-control custom-select my-select">
                         <option selected disabled >{{__('messages.select_city')}}</option>
                         @foreach($cities as $city)
@@ -49,9 +49,9 @@
             </div>
             <div class="form-group mb-md-0 mb-3 col-lg-2 col-md-3 col-sm-6 col-12">
                 <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text"><img src="{{ asset('/front2/images/city.png') }}" alt=""> </div>
-                    </div>
+                    {{--<div class="input-group-prepend">--}}
+                        {{--<div class="input-group-text"><img src="{{ asset('/front2/images/city.png') }}" alt=""> </div>--}}
+                    {{--</div>--}}
                     <select id="center" class="form-control custom-select my-select">
                         <option selected disabled class="disabled">{{__('messages.select_center')}} </option>
                         @foreach($InspectionCenters as $center)
@@ -64,9 +64,9 @@
             </div>
             <div class="form-group mb-md-0 mb-3 col-lg-2 col-md-3 col-sm-6 col-12">
                 <div class="input-group">
-                    <div class="input-group-prepend">
-                        <div class="input-group-text"><img src="{{ asset('/front2/images/cars.png') }}" alt=""> </div>
-                    </div>
+                    {{--<div class="input-group-prepend">--}}
+                        {{--<div class="input-group-text"><img src="{{ asset('/front2/images/cars.png') }}" alt=""> </div>--}}
+                    {{--</div>--}}
                     <select id="car" class="form-control custom-select my-select">
                         <option selected disabled >{{__('messages.car_type')}} </option>
                         @foreach($cars as $car)

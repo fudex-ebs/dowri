@@ -124,13 +124,13 @@ class ReservationService{
     }
 
     public function payment(Reservation $reservation){
-        $website_fee = Setting::first();
-        if($website_fee){
-            $fee = $website_fee->website_fee;
-        }else{
-            $fee = 0 ;
-        }
-      $total_price = $reservation->car->car_type->price + $fee ;
+//        $website_fee = Setting::first();
+//        if($website_fee){
+//            $fee = $website_fee->website_fee;
+//        }else{
+//            $fee = 0 ;
+//        }
+      $total_price = $reservation->car->car_type->price + $reservation->car->car_type->dowri_fee ;
       $paytabs = new PayTabs();
       $paytabs->set_page_setting('reservation','abs2121','SAR','127.0.0.1','English');
       $paytabs->set_customer($reservation->user->name,$reservation->user->name,'00966',$reservation->user->mobile_number,$reservation->user->email);

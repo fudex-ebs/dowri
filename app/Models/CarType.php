@@ -9,6 +9,7 @@ class CarType extends Model
   protected $fillable = [
       'name_ar',
       'name_en',
-      'price'
+      'price',
+      'dowri_fee'
   ];
 }

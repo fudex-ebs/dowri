@@ -57,7 +57,7 @@ return [
     'mobile'=>'Mobile number',
     'plate_num'=> 'Plate number',
     'plate_part_1'=> ' (ح ب ر) : Plate number 1 ',
-    'plate_part_2'=>'(1234) : Plate number 2  ',
+    'plate_part_2'=>'Plate number',
     'serial_num'=>'Serial number',
     'manufacture_year'=> 'Manufacture year',
     'model'=>'Model',
@@ -111,11 +111,11 @@ return [
     'time'=>'Time',
     'search_result' => 'Search result',
     'no_search_result'=>'No reservation with this number',
-    'char' => 'Character',
+    'char' => 'Char',
     'reserve_city'=>'Reservation city',
     'reserve_center'=>'Reservation center',
     'reserve_time' => 'Reservation date',
-    'tic_price_with_fee' => 'Ticket price + fees'
+    'fee' => 'Doari fees/'
 
 
 ];

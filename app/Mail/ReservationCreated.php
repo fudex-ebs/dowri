@@ -28,6 +28,6 @@ class ReservationCreated extends Mailable
      */
     public function build()
     {
-        return $this->view('mail.reservation_created',['reservation' => $this->reservation])
+        return $this->view('mail.reservation_created',['reservation' => $this->reservation]);
     }
 }

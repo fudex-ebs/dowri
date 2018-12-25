@@ -21,6 +21,16 @@
     <!--Begin::Section-->
     <div class="row">
       <div class="col-xl-12">
+        @if(session('status'))
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            {{session('status') }}
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+        @endif
+    <div class="row">
+      <div class="col-xl-12">
 
         <!--begin:: Widgets/Top Products-->
         <div class="m-portlet m-portlet--bordered-semi m-portlet--full-height " style="height:fit-content;">
@@ -42,6 +52,7 @@
                   <th scope="col">name english</th>
                   <th scope="col">name arabic</th>
                   <th scope="col">price</th>
+                  <th scope="col">doari fee</th>
                   <th scope="col"></th>
                 </tr>
               </thead>
@@ -53,6 +64,7 @@
                   <td>{{$car_type->name_en}}</td>
                   <td>{{$car_type->name_ar}}</td>
                   <td>{{$car_type->price}}</td>
+                  <td>{{$car_type->dowri_fee}}</td>
                   <td class="text-center">
                     
                     <a href="{{route('car_type.edit',['id' => $car_type->id])}}" class="m-portlet__nav-link btn btn-success m-btn m-btn--icon m-btn--icon-only m-btn--pill   m-dropdown__toggle" title="edit "><i class="la la-edit"></i></a>
@@ -86,7 +98,17 @@
       </div>
       <form method="post" action="{{ route('car_type.store') }}" enctype="multipart/form-data">
       <div class="modal-body">
+        @if($errors->all())
+          <script> $('#exampleModal').modal('show');</script>
+          <div class="alert alert-danger">
+            <ul>
+              @foreach ($errors->all() as $message)
+                <li> {{$message}}</li>
+              @endforeach
+            </ul>
+          </div>
 
+        @endif
             <input type='hidden' name='_token' value="{!! csrf_token() !!}">
             <div class="row">
               <div class="form-group col-md-9">
@@ -103,7 +125,13 @@
             <div class="row">
               <div class="form-group col-md-9">
                   <label>price </label>
-                  <input type="number" name="price" class="form-control" required>
+                  <input type="number" name="price" min="1" class="form-control" required>
+              </div>
+            </div>
+            <div class="row">
+              <div class="form-group col-md-9">
+                <label>doari fee </label>
+                <input type="number" name="dowri_fee" min="1" class="form-control" required>
               </div>
             </div>
       </div>

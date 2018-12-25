@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CarTypeRequest;
 use App\Models\CarType;
 use Illuminate\Http\Request;
 
@@ -34,7 +35,7 @@ class CarTypeController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(CarTypeRequest $request)
     {
       CarType::create($request->all());
       return redirect()->back()->with('status','CarType added');

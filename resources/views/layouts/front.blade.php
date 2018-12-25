@@ -35,7 +35,7 @@
 
     <!--Start Header -->
     <header>
-        <div class="d-flex justify-content-between">
+        <div class="d-flex justify-content-between new-height">
             <!--Start Nav -->
             <!-- Mobile Header -->
             <div class="wsmobileheader clearfix ">

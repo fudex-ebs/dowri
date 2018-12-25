@@ -60,3 +60,13 @@
 {
     font-size:17px;
 }
+.new-height{
+    height: 95px ;
+}
+.new-padding{
+    padding:0px;
+}
+.new-padding  input[type="text"]{
+    font-size:15px;
+
+}

@@ -80,13 +80,13 @@
             <label>{{__('messages.plate_num')}} *</label>
             <div class="input-group input remove-icon">
                 <div class="input-group-prepend">
-                    <div class="input-group-text">
+                    <div class="input-group-text" >
                         <img src="{{ asset('/front2/images/board-number.png') }}" alt="">
                     </div>
-                    <div class="col-md-2 col-sm-2 col-2"><input type="text" class="form-control char-inputs" placeholder="{{__('messages.char')}}"  name="char1" value="{{ old('char1') }}" maxlength="1"  data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>"></div><label class="hyphen">&#x2011;</label>
-                    <div class="col-md-2 col-sm-2 col-2"><input type="text" class="form-control char-inputs" placeholder="{{__('messages.char')}}" name="char2" value="{{ old('char2') }}" maxlength="1"  data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>" ></div><label class="hyphen">&#x2011;</label>
-                    <div class="col-md-2 col-sm-2 col-2"><input type="text" class="form-control char-inputs" placeholder="{{__('messages.char')}}" name="char3" value="{{ old('char3') }}" maxlength="1"  data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>"></div>
-                    <div ><input type="text" class="form-control" placeholder="{{__('messages.plate_part_2')}}" name="plate_number_2" value="{{ old('plate_number_2') }}"
+                    <div class="col-md-2 col-sm-3 new-padding" ><input type="text" class="form-control char-inputs" placeholder="{{__('messages.char')}}"  name="char1" value="{{ old('char1') }}" maxlength="1"  data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>"></div><label class="hyphen">&#x2011;</label>
+                    <div class="col-md-2 col-sm-3 new-padding" ><input type="text" class="form-control char-inputs" placeholder="{{__('messages.char')}}" name="char2" value="{{ old('char2') }}" maxlength="1"  data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>" ></div><label class="hyphen">&#x2011;</label>
+                    <div class="col-md-2 col-sm-3 new-padding" ><input type="text" class="form-control char-inputs" placeholder="{{__('messages.char')}}" name="char3" value="{{ old('char3') }}" maxlength="1"  data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>"></div><label class="hyphen">&nbsp;</label>
+                    <div><input type="text" class="form-control" placeholder="{{__('messages.plate_part_2')}}" name="plate_number_2" id="plate_number_2" value="{{ old('plate_number_2') }}"
                                                  data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>"></div>
                 </div>
             </div>
@@ -197,7 +197,7 @@
 
     </div>
     <div class="text-center mt-md-2 mt-2 c-btn-group">
-        <button type="button" id="btn-price" class="btn btn-danger ">{{__('messages.tic_price_with_fee')}}<strong> {{$selected_car->price + $fee}}   </strong> {{__('messages.ryal')}} </button>
+        <button type="button" id="btn-price" class="btn btn-danger ">{{__('messages.tic_price')}}<strong> {{$selected_car->price}}   </strong> {{__('messages.ryal')}}  +{{__('messages.fee')}}<strong> {{$selected_car->dowri_fee}}   </strong> {{__('messages.ryal')}} </button>
         <button class="btn btn-info">{{__('messages.pay')}}</button>
     </div>
 </form>
@@ -290,6 +290,15 @@
 
             }
         });
+    });
+    $("#plate_number_2").keypress(function (e){
+        if( (e.which < 48 || e.which > 57 ) && e.which != 8){
+            return false;
+        }
+
+        if($(this).val().length === 4 && e.which != 8 ){
+            return false;
+        }
     });
 </script>
 @endsection

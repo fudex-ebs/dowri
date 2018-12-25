@@ -51,8 +51,14 @@
                 <div class="row">
                   <div class="form-group col-md-12">
                       <label>price</label>
-                      <input type="text" name="price" class="form-control" value="{{$car_type->price}}"/>
+                      <input type="number" name="price" class="form-control" value="{{$car_type->price}}"/>
                   </div>
+                </div>
+                <div class="row">
+                    <div class="form-group col-md-12">
+                        <label>doari fee</label>
+                        <input type="number" name="dowri_fee"  min="1" class="form-control" value="{{$car_type->dowri_fee}}"/>
+                    </div>
                 </div>
 
                 <input type="submit" value="update" class="btn btn-primary"/>
