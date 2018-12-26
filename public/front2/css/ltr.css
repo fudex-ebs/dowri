@@ -110,4 +110,6 @@ footer{
     float :left;
 
 }
-
+#myTabContent .has-validation-callback .time_period_warp{
+	direction: ltr !important;
+}

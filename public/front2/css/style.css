@@ -939,3 +939,6 @@ ul	{
 	}
 
 }
+#myTabContent .time_period_warp{
+	direction: rtl !important;
+}
