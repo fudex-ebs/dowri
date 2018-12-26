@@ -179,8 +179,9 @@
                     <div class="input-group-text">
                         <img src="{{ asset('/front2/images/vin-number.png') }}" alt="">
                     </div>
-                    <input type="text" class="form-control" placeholder="{{__('messages.discount_code')}}" name="discount_code" value="{{old('discount_code') ? old('discount_code'):''  }}">
+                    <input type="text" class="form-control" placeholder="{{__('messages.discount_code')}}" name="discount_code" id="discount_code" value="{{old('discount_code') ? old('discount_code'):''  }}">
                 </div>
+                <span class="help-block form-error discount_error hide"><span class="jq-error">{{__('messages.code_error')}}</span></span>
             </div>
         </div>
     </div>
@@ -299,6 +300,27 @@
         if($(this).val().length === 4 && e.which != 8 ){
             return false;
         }
+    });
+$('#discount_code').change(function(){
+        var code = $(this).val();
+        console.log(code);
+        var csrf_token = "{!! csrf_token() !!}";
+
+          $.ajax({
+            type:"POST",
+            url:"{{ URL::to('/discount_code/check_code') }}",
+            data:{ "_token":csrf_token,
+                    "code": code ,
+            },
+            success:function(data) {
+                console.log(data);
+                if(data == "not_exist"){
+                    $('.discount_error').removeClass('hide');
+                }
+
+            }
+        });
+
     });
 </script>
 @endsection

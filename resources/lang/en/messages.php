@@ -115,7 +115,8 @@ return [
     'reserve_city'=>'Reservation city',
     'reserve_center'=>'Reservation center',
     'reserve_time' => 'Reservation date',
-    'fee' => 'Doari fees/'
+    'fee' => 'Doari fees/',
+    'code_error'=>'Discount code not exist'
 
 
 ];

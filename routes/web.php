@@ -51,6 +51,7 @@ Route::get('/reservation_cancel/{ReservationCancel}/verify', 'ReservationCancelC
 Route::post('/reservation_cancel/{ReservationCancel}/verify', 'ReservationCancelController@post_verify')->name('reservation.cancel_verify_post');
 Route::get('/reservation/{reservation_slug}/cancel', 'ReservationCancelController@cancel_reserve')->name('reservation.cancel');
 Route::get('/inspection_center/{inspection_center}/list', 'InspectionCenterController@list_reservations')->name('inspection_center.list');
+Route::post('/discount_code/check_code', 'DiscountCodeController@check_code');
 
 
 Auth::routes();
@@ -74,6 +75,8 @@ Route::group(['prefix' => 'admin','middleware' => 'admin' ], function () {
     Route::get('/discount_code/{DiscountCode}/delete', 'DiscountCodeController@destroy')->name('DiscountCode.delete');
     Route::get('/discount_code/{DiscountCode}/edit', 'DiscountCodeController@edit')->name('DiscountCode.edit');
     Route::post('/discount_code/{DiscountCode}/edit', 'DiscountCodeController@update')->name('DiscountCode.update');
+
+
     // cities controller
     Route::get('/city/index', 'CityController@index')->name('city.index');
     Route::post('/city/create', 'CityController@store')->name('city.store');
