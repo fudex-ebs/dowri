@@ -51,7 +51,7 @@ Route::get('/reservation_cancel/{ReservationCancel}/verify', 'ReservationCancelC
 Route::post('/reservation_cancel/{ReservationCancel}/verify', 'ReservationCancelController@post_verify')->name('reservation.cancel_verify_post');
 Route::get('/reservation/{reservation_slug}/cancel', 'ReservationCancelController@cancel_reserve')->name('reservation.cancel');
 Route::get('/inspection_center/{inspection_center}/list', 'InspectionCenterController@list_reservations')->name('inspection_center.list');
-Route::post('/discount_code/check_code', 'DiscountCodeController@check_code');
+Route::post('/discount_code/check', 'DiscountCodeController@check_code');
 
 
 Auth::routes();

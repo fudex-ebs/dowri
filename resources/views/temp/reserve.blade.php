@@ -301,14 +301,14 @@
             return false;
         }
     });
-$('#discount_code').change(function(){
+    $('#discount_code').change(function(){
         var code = $(this).val();
         console.log(code);
         var csrf_token = "{!! csrf_token() !!}";
 
           $.ajax({
             type:"POST",
-            url:"{{ URL::to('/discount_code/check_code') }}",
+            url:"{{ URL::to('/discount_code/check') }}",
             data:{ "_token":csrf_token,
                     "code": code ,
             },
@@ -316,6 +316,8 @@ $('#discount_code').change(function(){
                 console.log(data);
                 if(data == "not_exist"){
                     $('.discount_error').removeClass('hide');
+                }else{
+                    $('.discount_error').addClass('hide');
                 }
 
             }

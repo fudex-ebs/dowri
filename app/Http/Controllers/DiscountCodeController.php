@@ -86,6 +86,7 @@ class DiscountCodeController extends Controller
         $DiscountCode->delete();
         return redirect()->back()->with('status','Discount code deleted');
     }
+
     public function check_code(Request $request){
         $discount_code = $request->code ;
         // return $discount_code;
@@ -93,11 +94,11 @@ class DiscountCodeController extends Controller
         // return $all_codes;
         foreach($all_codes as $one){
             if($one->code == $discount_code){
-               $msg = "exist";
+              return"exist";
             }else{
-                $msg = "not_exist";
+                return "not_exist";
             }
         }
-        return $msg ;
+
     }
 }
