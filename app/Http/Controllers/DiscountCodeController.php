@@ -91,14 +91,16 @@ class DiscountCodeController extends Controller
         $discount_code = $request->code ;
         // return $discount_code;
         $all_codes = DiscountCode::all();
-        // return $all_codes;
-        foreach($all_codes as $one){
-            if($one->code == $discount_code){
-              return"exist";
-            }else{
-                return "not_exist";
-            }
+        $code = DiscountCode::where('code' , $discount_code)->first();
+        if(empty($code)){
+            $msg = "not_exist";
+            $discount = 0 ;
+        }else{
+            $msg = "exist";
+            $discount = $code->amount;
         }
 
+        return ['msg'=>$msg , 'discount' => $discount];
     }
+
 }

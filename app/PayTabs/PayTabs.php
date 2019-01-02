@@ -166,7 +166,8 @@ class PayTabs
 				$fields = array(
 								'merchant_email' => $this->merchant_email,
 								'secret_key' => $this->secret_key,
-								'payment_reference'=>$this->payment_reference
+                                'payment_reference'=>$this->payment_reference,
+                                'url' => 'http://bsamat.com'
 								);
 
 				break;
@@ -196,7 +197,7 @@ class PayTabs
 			else
 			{
 
-				$this->response_code=$curl->response->response_code;
+				$this->response_code = $curl->response->response_code;
 			    $curl->close();
 			    return $curl->response;
 
@@ -334,7 +335,7 @@ class PayTabs
 	*/
 	public function verify_payment($payment_reference)
 	{
-		$this->payment_reference=$payment_reference;
+        $this->payment_reference=$payment_reference;
 		$response=$this->curl('verify_payment');
 		return $response;
 

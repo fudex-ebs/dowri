@@ -77,21 +77,32 @@
         </div>
 
         <div class="form-group mb-3 col-md-4 col-sm-6 col-12">
-            <label>{{__('messages.plate_num')}} *</label>
+            <label>{{__('messages.plate_part_1')}} *</label>
             <div class="input-group input remove-icon">
                 <div class="input-group-prepend">
                     <div class="input-group-text" >
                         <img src="{{ asset('/front2/images/board-number.png') }}" alt="">
                     </div>
-                    <div class="col-md-2 col-sm-3 new-padding" ><input type="text" class="form-control char-inputs" placeholder="{{__('messages.char')}}"  name="char1" value="{{ old('char1') }}" maxlength="1"  data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>"></div><label class="hyphen">&#x2011;</label>
-                    <div class="col-md-2 col-sm-3 new-padding" ><input type="text" class="form-control char-inputs" placeholder="{{__('messages.char')}}" name="char2" value="{{ old('char2') }}" maxlength="1"  data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>" ></div><label class="hyphen">&#x2011;</label>
-                    <div class="col-md-2 col-sm-3 new-padding" ><input type="text" class="form-control char-inputs" placeholder="{{__('messages.char')}}" name="char3" value="{{ old('char3') }}" maxlength="1"  data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>"></div><label class="hyphen">&nbsp;</label>
-                    <div><input type="text" class="form-control" placeholder="{{__('messages.plate_part_2')}}" name="plate_number_2" id="plate_number_2" value="{{ old('plate_number_2') }}"
-                                                 data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>"></div>
+                    <div class="col-md-3 col-sm-3 new-padding" ><input type="text" class="form-control char-inputs" placeholder="{{__('messages.char')}}"  name="char1" value="{{ old('char1') }}" maxlength="1"  data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>"></div><label class="hyphen">&#x2011;</label>
+                    <div class="col-md-3 col-sm-3 new-padding" ><input type="text" class="form-control char-inputs" placeholder="{{__('messages.char')}}" name="char2" value="{{ old('char2') }}" maxlength="1"  data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>" ></div><label class="hyphen">&#x2011;</label>
+                    <div class="col-md-3 col-sm-3 new-padding" ><input type="text" class="form-control char-inputs" placeholder="{{__('messages.char')}}" name="char3" value="{{ old('char3') }}" maxlength="1"  data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>"></div>
+
                 </div>
             </div>
         </div>
+        <div class="form-group mb-3 col-md-4 col-sm-6 col-12">
+                <label>{{__('messages.plate_part_2')}} *</label>
+                <div class="input-group input remove-icon">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <img src="{{ asset('/front2/images/vin-number.png') }}" alt="">
+                        </div>
+                        <input type="text" class="form-control" placeholder="{{__('messages.plate_part_2')}}" name="plate_number_2" id="plate_number_2" value="{{ old('plate_number_2') }}"
+                            data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.plate_num').' '.__('messages.required')}}</span>">
 
+                    </div>
+                </div>
+            </div>
         <div class="form-group mb-3 col-md-4 col-sm-6 col-12">
             <label>{{__('messages.serial_num')}} *</label>
             <div class="input-group input remove-icon">
@@ -186,19 +197,19 @@
         </div>
     </div>
     <div class="text-center mt-md-2 mt-2 tos-error">
-        <ul style="list-style: none ">
+        {{--  <ul style="list-style: none ">
             <li> <strong><a href="{{URL::to('toc')}}" target="_blank"> {{__('messages.cancellation')}}</a></strong></li>
             <li>لايمكن تغير او إالغاء الموعد قبل الموعد المحجوز بأقل من اربعة و عشرون ساعة.</li>
             <li>بينما اذا تم الإلغاء خلال المدة المسموح فيها بالتعديل و الإلغاء فسوف يتم خصم 30% من اجمالي سعر التذكرة المدفوعة و سوف يتم أرجاع باقي المبلغ وفقاً لسياسة البنوك السعودية المتبعة.</li>
             <li>لا توجد أي رسوم مصاحبه لتغيير الموعد و لكن هناك حد اقصى للتغير و هو مرتين متتاليتي.</li>
-        </ul>
+        </ul>  --}}
 
         <input type="checkbox" name="tos_agree"
                data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.tos_accept')}}</span>" /><strong><a href="{{URL::to('tos')}}" target="_blank"> {{__('messages.tos_agree')}}* </a></strong>
 
     </div>
-    <div class="text-center mt-md-2 mt-2 c-btn-group">
-        <button type="button" id="btn-price" class="btn btn-danger ">{{__('messages.tic_price')}}<strong> {{$selected_car->price}}   </strong> {{__('messages.ryal')}}  +{{__('messages.fee')}}<strong> {{$selected_car->dowri_fee}}   </strong> {{__('messages.ryal')}} </button>
+    <div class="text-center mt-md-2 mt-2">
+        <button type="button" id="btn-price" class="btn btn-danger "><span class="new_msg">{{__('messages.tic_price')}}</span><strong class="old_price"> {{$selected_car->price}}   </strong> {{__('messages.ryal')}}  +{{__('messages.fee')}}<strong> {{$selected_car->dowri_fee}}   </strong> {{__('messages.ryal')}} <span class="new_price hide"></span></button>
         <button class="btn btn-info">{{__('messages.pay')}}</button>
     </div>
 </form>
@@ -314,10 +325,32 @@
             },
             success:function(data) {
                 console.log(data);
-                if(data == "not_exist"){
+                if(data.msg == "not_exist"){
                     $('.discount_error').removeClass('hide');
+                    var old = {{ $selected_car->price }};
+                    $('.old_price').text(old);
+                    var lang = document.documentElement.lang;
+                    if(lang == "ar"){
+                        $('.new_msg').text("سعر التذكرة /");
+
+                    }else{
+                        $('.new_msg').text("Ticket price /");
+
+                    }
                 }else{
                     $('.discount_error').addClass('hide');
+                    var old = {{ $selected_car->price }};
+                    var new_price = old - data.discount;
+                    $('.old_price').text(new_price);
+                    var lang = document.documentElement.lang;
+                    console.log(lang);
+                    if(lang == "ar"){
+                        $('.new_msg').text("سعر التذكرة بعد الخصم /");
+
+                    }else{
+                        $('.new_msg').text("Ticket price after discount /");
+
+                    }
                 }
 
             }

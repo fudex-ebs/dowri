@@ -148,16 +148,16 @@ class ReservationService{
           'p_id' => $pay_page->p_id
         ]);
         Log::info('payment_url '.$pay_page->payment_url);
-        $reservation->update(['status'=>'valid']);
+        // $reservation->update(['status'=>'valid']);
         //send welcome sms for reservation
-          $msg = ' عزيزى العميل لقد تم حجز موعدك في الفحص الدوري للسيارات فى يوم '.$reservation->date;
+          /* $msg = ' عزيزى العميل لقد تم حجز موعدك في الفحص الدوري للسيارات فى يوم '.$reservation->date;
           $msg .= ' فى وقت '. time_format($reservation->time_period);
           $msg .=', رقم حجزك '.$reservation->slug ;
           $msg .= ' , وذلك في فرع ' . $reservation->inspection_center->name;
           $msg .= ' , الرجاء الحضور مبكراً بخمسة دقائق و احضار استماره المركبة. حريصين كل الحرص لخدمتك في وقت موعدك #عزز_موقفك_بموعد';
           $mobile_number = $reservation->user->mobile_number;
           SendSms($mobile_number,$msg);
-
+ */
         return redirect()->away($pay_page->payment_url);
         //
       }

@@ -108,13 +108,13 @@ class ReservationController extends Controller
         return redirect()->back()->with('time_status','reservation unsuccessful');
 
     }
-    
+
     public function confirm_payment_page($id)
     {
         $payment_confirm = PaymentConfirm::find($id);
         return view('temp.payment_code',['PaymentConfirm' => $payment_confirm]);
     }
-    
+
     public function payment_confirm (Request $request ,$id){
         $payment_confirm = PaymentConfirm::find($id);
         if($payment_confirm && $payment_confirm->confirm_code == $request->verify_code){
@@ -208,14 +208,25 @@ class ReservationController extends Controller
 
     public function paytabs_respond(Request $request)
     {
-      $paytabs= new PayTabs();
-	    $payment_varification = $paytabs->verify_payment($request->get('payment_reference'));
-      if($payment_varification->response_code == '100'){
-        $payment = Payment::where( 'p_id',$request->get('payment_reference') )->first();
-        $payment->update(['status' => 'paid']);
-        $payment->reservation->update(['status' => 'valid']);
-        event(new ReservationCreated($payment->reservation));
-        return redirect()->route('reservation.show',['reservation' => $payment->reservation]);
+        // dd($request->all());
+        $paytabs= new PayTabs();
+        $payment_varification = $paytabs->verify_payment($request->get('payment_reference'));
+        //dd( $payment_varification);
+        if($payment_varification->response_code == '100' || $payment_varification->response_code == '481'){
+            $payment = Payment::where( 'p_id',$request->get('payment_reference') )->first();
+            $payment->update(['status' => 'paid']);
+            $payment->reservation->update(['status' => 'valid']);
+            // event(new ReservationCreated($payment->reservation));
+            //send welcome sms for reservation
+            $reservation = $payment->reservation;
+            $msg = ' عزيزى العميل لقد تم حجز موعدك في الفحص الدوري للسيارات فى يوم '.$reservation->date;
+            $msg .= ' فى وقت '. time_format($reservation->time_period);
+            $msg .=', رقم حجزك '.$reservation->slug ;
+            $msg .= ' , وذلك في فرع ' . $reservation->inspection_center->name;
+            $msg .= ' , الرجاء الحضور مبكراً بخمسة دقائق و احضار استماره المركبة. حريصين كل الحرص لخدمتك في وقت موعدك #عزز_موقفك_بموعد';
+            $mobile_number = $reservation->user->mobile_number;
+            SendSms($mobile_number,$msg);
+        return redirect()->route('reservation.show',['reservation' => $payment->reservation ]);
       }
       return redirect()->route('home')->with('status', 'payment_faild');
 
@@ -266,7 +277,7 @@ class ReservationController extends Controller
         }
 //        return $reservation_confirm ;
     }
-    
+
      public function  edit($slug){
         $reservation = Reservation::whereslug($slug)->first();
         if($reservation){
@@ -300,13 +311,8 @@ class ReservationController extends Controller
                 // }
 //                return count($new_periods) ;
                 $new_periods = get_time_periods();
-                $website_fee = Setting::all();
-                if(count($website_fee) > 0){
-                    $fee = $website_fee[0]->website_fee;
-                }else{
-                    $fee = 0 ;
-                }
-                return view('reservation.edit',['reservation' => $reservation ,"car_types" => $car_types ,'cities'=>$cities,'centers'=>$centers ,'periods'=>$new_periods , 'fee'=>$fee]);
+                
+                return view('reservation.edit',['reservation' => $reservation ,"car_types" => $car_types ,'cities'=>$cities,'centers'=>$centers ,'periods'=>$new_periods]);
             }
 
         }
