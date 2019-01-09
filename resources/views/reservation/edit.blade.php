@@ -22,7 +22,7 @@
                 </div>
 
         @endif
-        <form method="post" action="{{route('reservation.update',['slug' => $reservation->slug ])}}" enctype="multipart/form-data" novalidate>
+        <form method="post" action="{{ route('reservation.update',['slug' => $reservation->slug ])}}" enctype="multipart/form-data" novalidate>
             <input type='hidden' name='_token' value="{!! csrf_token() !!}">
             <div class="form-row form-row d-flex justify-content-md-center">
                 {{-- center data --}}
@@ -264,7 +264,7 @@
                 <!--</div>-->
             </div>
             <div class="text-center mt-md-2 mt-2 tos-error">
-                
+
                 <input type="checkbox" name="tos_agree"
                        data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.tos_accept')}}</span>" /><strong><a href="{{URL::to('tos')}}" target="_blank"> {{__('messages.tos_agree')}} <a /></strong>
             </div>
@@ -275,7 +275,7 @@
                     <button type="button" id="btn-price" class="btn btn-danger "><span class="new_msg">{{__('messages.tic_price')}}</span><strong class="old_price"> {{$reservation->car->car_type->price}}   </strong> {{__('messages.ryal')}}  +{{__('messages.fee')}}<strong> {{$reservation->car->car_type->dowri_fee}}   </strong> {{__('messages.ryal')}} </button>
                 @endif
                 <button class="btn btn-info"> {{__('messages.edit')}}</button>
-
+                <a class="btn btn-danger" href="{{ route('reservation.show',['slug' => $reservation->slug ]) }}">Cancel</a>
             </div>
         </form>
     </section>

@@ -158,14 +158,25 @@ class ReservationController extends Controller
             $data = file_get_contents($path);
             $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
             $Reservation->img_code = $base64;
+
         }
 
+        // return $Reservation->stylesheet;
+                // return view('pdf.ticket',['reservation' => $Reservation ]);
 
         $pdf = PDF::loadView('pdf.ticket',['reservation' => $Reservation ]);
         return $pdf->download('ticket.pdf');
     }
     public function print(Reservation $Reservation)
     {
+        if(isset($Reservation->inspection_center->ad_img)){
+            $path = public_path()."/adds/" . $Reservation->inspection_center->ad_img;
+            $type = pathinfo($path, PATHINFO_EXTENSION);
+            $data = file_get_contents($path);
+            $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+            $Reservation->img_code = $base64;
+
+        }
         $pdf = PDF::loadView('pdf.ticket',['reservation' => $Reservation]);
         return $pdf->stream('ticket.pdf');
     }
@@ -311,7 +322,7 @@ class ReservationController extends Controller
                 // }
 //                return count($new_periods) ;
                 $new_periods = get_time_periods();
-                
+
                 return view('reservation.edit',['reservation' => $reservation ,"car_types" => $car_types ,'cities'=>$cities,'centers'=>$centers ,'periods'=>$new_periods]);
             }
 

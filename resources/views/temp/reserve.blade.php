@@ -185,24 +185,25 @@
 
         <div class="form-group mb-3 col-md-4 col-sm-6 col-12">
             <label>{{__('messages.discount_code')}}</label>
-            <div class="input-group input remove-icon">
+            <div class="input-group input remove-icon ">
                 <div class="input-group-prepend">
                     <div class="input-group-text">
                         <img src="{{ asset('/front2/images/vin-number.png') }}" alt="">
                     </div>
                     <input type="text" class="form-control" placeholder="{{__('messages.discount_code')}}" name="discount_code" id="discount_code" value="{{old('discount_code') ? old('discount_code'):''  }}">
+                    <div class="check_code hide"><button class="btn btn-primary" style="width:100px">{{ __('messages.check') }}</button></div>
                 </div>
                 <span class="help-block form-error discount_error hide"><span class="jq-error">{{__('messages.code_error')}}</span></span>
             </div>
         </div>
     </div>
     <div class="text-center mt-md-2 mt-2 tos-error">
-        {{--  <ul style="list-style: none ">
-            <li> <strong><a href="{{URL::to('toc')}}" target="_blank"> {{__('messages.cancellation')}}</a></strong></li>
+        <ul style="list-style: none ">
+            {{-- <li> <strong><a href="{{URL::to('toc')}}" target="_blank"> {{__('messages.cancellation')}}</a></strong></li> --}}
             <li>لايمكن تغير او إالغاء الموعد قبل الموعد المحجوز بأقل من اربعة و عشرون ساعة.</li>
             <li>بينما اذا تم الإلغاء خلال المدة المسموح فيها بالتعديل و الإلغاء فسوف يتم خصم 30% من اجمالي سعر التذكرة المدفوعة و سوف يتم أرجاع باقي المبلغ وفقاً لسياسة البنوك السعودية المتبعة.</li>
             <li>لا توجد أي رسوم مصاحبه لتغيير الموعد و لكن هناك حد اقصى للتغير و هو مرتين متتاليتي.</li>
-        </ul>  --}}
+        </ul>
 
         <input type="checkbox" name="tos_agree"
                data-validation="required" data-validation-error-msg-required="<span class='jq-error'>{{__('messages.tos_accept')}}</span>" /><strong><a href="{{URL::to('tos')}}" target="_blank"> {{__('messages.tos_agree')}}* </a></strong>
@@ -312,8 +313,12 @@
             return false;
         }
     });
-    $('#discount_code').change(function(){
-        var code = $(this).val();
+    $('#discount_code').focus(function(){
+        $('.check_code').removeClass('hide');
+    });
+    $('.check_code').click(function(e){
+        e.preventDefault();
+        var code =$('#discount_code').val();
         console.log(code);
         var csrf_token = "{!! csrf_token() !!}";
 
@@ -326,6 +331,7 @@
             success:function(data) {
                 console.log(data);
                 if(data.msg == "not_exist"){
+                    alert("{{__('messages.code_error')}}");
                     $('.discount_error').removeClass('hide');
                     var old = {{ $selected_car->price }};
                     $('.old_price').text(old);
@@ -343,12 +349,14 @@
                     var new_price = old - data.discount;
                     $('.old_price').text(new_price);
                     var lang = document.documentElement.lang;
-                    console.log(lang);
                     if(lang == "ar"){
+                        alert("  تم إضافه كود خصم بمبلغ"+data.discount+" ريال ");
                         $('.new_msg').text("سعر التذكرة بعد الخصم /");
 
                     }else{
+                        alert("Discount code with value "+data.discount+" added");
                         $('.new_msg').text("Ticket price after discount /");
+
 
                     }
                 }

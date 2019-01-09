@@ -113,3 +113,12 @@ footer{
 #myTabContent .has-validation-callback .time_period_warp{
 	direction: ltr !important;
 }
+button.btn.btn-primary {
+    background: #c60751;
+    border:0 none;
+    color:#fff;
+    width: 175px;
+    height: 53px;
+    margin-left: 20px;
+
+}
