@@ -12,7 +12,7 @@
 */
 Route::get('lang/{lang}', ['as' => 'lang.switch', 'uses' => 'LanguageController@switchLang']);
 
-Route::post('/test', 'DiscountCodeController@test');
+Route::get('/test', 'HomeController@test');
 Route::get('/tos', 'HomeController@tosList');
 Route::get('/contact', 'ContactUsController@index');
 Route::get('/policy', 'HomeController@policy');

@@ -31,6 +31,7 @@ class ReservationCreatedMail extends Mailable
     public function build()
     {
         $pdf = PDF::loadView('pdf.ticket',['reservation' => $this->reservation]);
-        return $this->view('mail.reservation_created',['reservation' => $this->reservation])->attachData($pdf->output(),'ticket.pdf');
+        $subj = "Reservation : " .$this->reservation->slug;
+        return $this->view('mail.reservation_created',['reservation' => $this->reservation])->subject($subj)->attachData($pdf->output(),'ticket.pdf');
     }
 }

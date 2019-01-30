@@ -19,6 +19,9 @@ use PDF;
 use Log;
 use App\PayTabs\PayTabs;
 use Session;
+use App\Mail\ReservationCreatedMail;
+use Illuminate\Support\Facades\Mail;
+
 
 
 class ReservationController extends Controller
@@ -237,6 +240,8 @@ class ReservationController extends Controller
             $msg .= ' , الرجاء الحضور مبكراً بخمسة دقائق و احضار استماره المركبة. حريصين كل الحرص لخدمتك في وقت موعدك #عزز_موقفك_بموعد';
             $mobile_number = $reservation->user->mobile_number;
             SendSms($mobile_number,$msg);
+            Mail::to($reservation->user->email)
+            ->send(new ReservationCreatedMail($reservation));
         return redirect()->route('reservation.show',['reservation' => $payment->reservation ]);
       }
       return redirect()->route('home')->with('status', 'payment_faild');

@@ -51,9 +51,10 @@ class ReservationService{
                     'register_expire_date' => $dataArray['register_expire_date']
                 ]);
         }
-
+        $str = uniqid();
+        $uniqid = substr($str,0,7);
         $reservation = Reservation::create([
-            'slug' => 'D-'.uniqid(),
+            'slug' => 'D-'.$uniqid,
             'user_id' => $user->id,
             'car_id' => $car->id,
             'inspection_center_id' => $dataArray['inspection_center_id'],

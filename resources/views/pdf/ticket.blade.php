@@ -31,258 +31,94 @@
     }
 
     .ticket-design small {
-    display: block;
-    font-size: 11px;
-    color: #a2a9b3;
-    margin-bottom: 2px;
+        display: block;
+        font-size: 11px;
+        color: #a2a9b3;
+        margin-bottom: 2px;
     }
 
-.ticket-design header {
-	height: 90px;
-	background-color: #c81e54;
-	padding-top: 12px;
-	padding-right: 20px;
-	padding-bottom: 12px;
-    padding-left: 20px;
-    text-align:center;
-}
+    .ticket-design header {
+        height: 90px;
+        background-color: #c81e54;
+        padding-top: 12px;
+        padding-right: 20px;
+        padding-bottom: 12px;
+        padding-left: 20px;
+        text-align:center;
+    }
 
-.ticket-design header .logo img {
-	max-height:76px;
-	float: none;
-	margin: auto;
-	clear: both;
-	display: block;
-}
-.ticket-design header .logo span {
-	float: right;
-	font-size: 24px;
-	color: #FFFFFF;
-	text-transform: uppercase;
-	padding-right: 20px;
-}
+    .ticket-design header .logo img {
+        max-height:76px;
+        float: none;
+        margin: auto;
+        clear: both;
+        display: block;
+    }
+    .ticket-design header .logo span {
+        float: right;
+        font-size: 24px;
+        color: #FFFFFF;
+        text-transform: uppercase;
+        padding-right: 20px;
+    }
 
-.ticket-design .rightSection .eventDetails {
-  position: relative; text-align:right
-}
+    .ticket-design .rightSection .eventDetails {
+    position: relative; text-align:right
+    }
 
-.ticket-design .mainSection:after,
-.ticket-design .mainSection .leftSection::after,
-.ticket-design .mainSection .times::after,
-.ticket-design .rightSection .infos:after,
-.ticket-design .rightSection .eventDetails::after,
-.ticket-design .rightSection .infos .places::after,
-.ticket-design .rightSection .infos .times::after,
-.ticket-design .strap::after {
-  content: '';
-  display: table;
-  clear: both;
-}
+    .ticket-design .mainSection:after,
+    .ticket-design .mainSection .leftSection::after,
+    .ticket-design .mainSection .times::after,
+    .ticket-design .rightSection .infos:after,
+    .ticket-design .rightSection .eventDetails::after,
+    .ticket-design .rightSection .infos .places::after,
+    .ticket-design .rightSection .infos .times::after,
+    .ticket-design .strap::after {
+    content: '';
+    display: table;
+    clear: both;
+    }
 
-.ticket-design .rightSection .eventDetails .eventDetail {
-  padding: 20px 18px;
-  float: right;
-}
-.ticket-design .rightSection .eventDetails .general {
-	float: right;
-	padding-top: 0px;
-	padding-right: 18px;
-	padding-bottom: 0px;
-	padding-left: 18px;
-}
+    .ticket-design .rightSection .eventDetails .eventDetail {
+    padding: 20px 18px;
+    float: right;
+    }
+    .ticket-design .rightSection .eventDetails .general {
+        float: right;
+        padding-top: 0px;
+        padding-right: 18px;
+        padding-bottom: 0px;
+        padding-left: 18px;
+    }
 
-.ticket-design .rightSection .eventDetails .eventDetail:nth-child(2) {
-  float: left;
-}
+    .ticket-design .rightSection .eventDetails .eventDetail:nth-child(2) {
+    float: left;
+    }
 
-.ticket-design .rightSection .eventDetails .eventDetail strong {
-  font-size: 20px;
-  font-weight: 300;
-  line-height: 1;
-}
+    .ticket-design .rightSection .eventDetails .eventDetail strong {
+    font-size: 20px;
+    font-weight: 300;
+    line-height: 1;
+    }
 
-.ticket-design .rightSection .eventDetails .eventDetail small {
-  margin-bottom: 0;
-  margin-right: 3px;
-}
+    .ticket-design .rightSection .eventDetails .eventDetail small {
+    margin-bottom: 0;
+    margin-right: 3px;
+    }
 
-.ticket-design .rightSection .infos {
-	width: 100%;
-	border-top-width: 1px;
-	border-bottom-width: 1px;
-	border-top-style: dashed;
-	border-bottom-style: dashed;
-	border-top-color: #d44572;
-	border-bottom-color: #d44572;
-}
-
-.ticket-design .rightSection .infos .places,
-.ticket-design .rightSection .infos .times {
-  width: 50%;
-  height: 80px;
-  padding: 10px 0;
-}
-
-.ticket-design .rightSection .infos .places {
-  float: right;
-}
-
-.ticket-design .rightSection .infos .times {
-  float: left;
-}
-
-.ticket-design .rightSection .infos .times strong {
-  transform: scale(0.9);
-  transform-origin: right bottom;
-}
-
-.ticket-design .rightSection .infos .places {
-	border-left-width: 5px;
-	border-left-style: solid;
-	border-left-color: #d44572;
-}
-
-.ticket-design .rightSection .infos .places small {
-  color: #97a1ad;
-}
-
-.ticket-design .rightSection .infos .box {
-  padding: 10px 20px 10px;
-  float: right; text-align:right
-}
-
-.ticket-design .rightSection .infos .box small {
-  font-size: 10px;
-  width: 100%;
-}
-.ticket-design .rightSection .infos .times .box{
-    position: absolute;
-  }
-
-.ticket-design .mainSection {
-	position: relative;
-	border-top-width: 2px;
-	border-top-style: solid;
-	border-top-color: #d44572;
-}
-
-.ticket-design .mainSection .leftSection {
-	width: 20%;
-	position: absolute;
-	left: 0;
-	right: 0;
-	top: 0;
-	bottom: 0;
-	border-right-width: 1px;
-	border-right-style: dashed;
-	border-right-color: #d44572;
-}
-
-.ticket-design .mainSection .leftSection .qrcode img {
-  width: auto;
-  height: auto;
-  position: absolute;
-  left: 0;
-  right: 0;
-  margin: auto;
-}
-
-.ticket-design .mainSection .rightSection {
-  width: 100%;
-  float: left;
-}
-
-.ticket-design .mainSection .times strong {
-  transform: scale(0.9);
-  transform-origin: right bottom;
-}
-
-.ticket-design .mainSection .box {
-  padding: 10px 20px 10px;
-  float: right;
-  font-size: 13px;
-}
-
-.ticket-design .mainSection .box small {
-  font-size: 10px;
-}
-
-.ticket-design .strap {
-  clear: both;
-  position: relative; text-align:right
-  /*border-top: 1px solid #99d298;*/
-}
-.ticket-design .strap2 {
-  clear: both;
-  position: relative;
-  /*border-top: 1px solid #99d298;*/
-}
-
-.ticket-design .strap img {
-	clear: both;
-	position: relative;
-	margin: auto;
-	float: none;  /*border-top: 1px solid #99d298;*/
-	display: block;
-}
-
-.ticket-design .strap .box {
-	padding-top: 23px;
-	padding-right: 20;
-	padding-bottom: 20px;
-	padding-left: 0px;
-}
-
-.ticket-design .strap .box div {
-  margin-bottom: 15px;
-}
-
-.ticket-design .strap .box div small {
-  font-size: 10px;
-}
-
-.ticket-design .strap .box div strong {
-  font-size: 13px;
-}
-
-.ticket-design .strap .box sup {
-  font-size: 8px;
-  position: relative;
-  top: -5px;
-}
-.ico{
-	float: right;
-	height: 40px;
-	width: 40px;
-}
-
-.ticket-design .strap .eventLogo img {
-	position: relative;
-	width: 100px;
-	height: 100px;
-	float: none;
-	text-align:center;
-	clear: both;
-	display: block;
-	margin-top: 20px;
-	margin-right: auto;
-	margin-bottom: 20px;
-	margin-left: auto;
-}
-
-.ticket-design .rightSection .infos {
-    width: 100%;
-    border-top-width: 1px;
-    border-bottom-width: 1px;
-    border-top-style: dashed;
-    border-bottom-style: dashed;
-    border-top-color: #d44572;
-    border-bottom-color: #d44572;
+    .ticket-design .rightSection .infos {
+        width: 100%;
+        border-top-width: 1px;
+        border-bottom-width: 1px;
+        border-top-style: dashed;
+        border-bottom-style: dashed;
+        border-top-color: #d44572;
+        border-bottom-color: #d44572;
     }
 
     .ticket-design .rightSection .infos .places,
     .ticket-design .rightSection .infos .times {
-    width: 49%;
+    width: 50%;
     height: 80px;
     padding: 10px 0;
     }
@@ -301,9 +137,9 @@
     }
 
     .ticket-design .rightSection .infos .places {
-    border-left-width: 5px;
-    border-left-style: solid;
-    border-left-color: #d44572;
+        border-left-width: 5px;
+        border-left-style: solid;
+        border-left-color: #d44572;
     }
 
     .ticket-design .rightSection .infos .places small {
@@ -319,6 +155,170 @@
     font-size: 10px;
     width: 100%;
     }
+    .ticket-design .rightSection .infos .times .box{
+        position: absolute;
+    }
+
+    .ticket-design .mainSection {
+        position: relative;
+        border-top-width: 2px;
+        border-top-style: solid;
+        border-top-color: #d44572;
+    }
+
+    .ticket-design .mainSection .leftSection {
+        width: 20%;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        border-right-width: 1px;
+        border-right-style: dashed;
+        border-right-color: #d44572;
+    }
+
+    .ticket-design .mainSection .leftSection .qrcode img {
+    width: auto;
+    height: auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: auto;
+    }
+
+    .ticket-design .mainSection .rightSection {
+    width: 100%;
+    float: left;
+    }
+
+    .ticket-design .mainSection .times strong {
+    transform: scale(0.9);
+    transform-origin: right bottom;
+    }
+
+    .ticket-design .mainSection .box {
+    padding: 10px 20px 10px;
+    float: right;
+    font-size: 13px;
+    }
+
+    .ticket-design .mainSection .box small {
+    font-size: 10px;
+    }
+
+    .ticket-design .strap {
+    clear: both;
+    position: relative; text-align:right
+    /*border-top: 1px solid #99d298;*/
+    }
+    .ticket-design .strap2 {
+    clear: both;
+    position: relative;
+    /*border-top: 1px solid #99d298;*/
+    }
+
+    .ticket-design .strap img {
+        clear: both;
+        position: relative;
+        margin: auto;
+        float: none;  /*border-top: 1px solid #99d298;*/
+        display: block;
+    }
+
+    .ticket-design .strap .box {
+        padding-top: 23px;
+        padding-right: 20;
+        padding-bottom: 20px;
+        padding-left: 0px;
+    }
+
+    .ticket-design .strap .box div {
+    margin-bottom: 15px;
+    }
+
+    .ticket-design .strap .box div small {
+    font-size: 10px;
+    }
+
+    .ticket-design .strap .box div strong {
+    font-size: 13px;
+    }
+
+    .ticket-design .strap .box sup {
+    font-size: 8px;
+    position: relative;
+    top: -5px;
+    }
+    .ico{
+        float: right;
+        height: 40px;
+        width: 40px;
+    }
+
+    .ticket-design .strap .eventLogo img {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        float: none;
+        text-align:center;
+        clear: both;
+        display: block;
+        margin-top: 20px;
+        margin-right: auto;
+        margin-bottom: 20px;
+        margin-left: auto;
+    }
+
+    .ticket-design .rightSection .infos {
+        width: 100%;
+        border-top-width: 1px;
+        border-bottom-width: 1px;
+        border-top-style: dashed;
+        border-bottom-style: dashed;
+        border-top-color: #d44572;
+        border-bottom-color: #d44572;
+        }
+
+        .ticket-design .rightSection .infos .places,
+        .ticket-design .rightSection .infos .times {
+        width: 49%;
+        height: 80px;
+        padding: 10px 0;
+        }
+
+        .ticket-design .rightSection .infos .places {
+        float: right;
+        }
+
+        .ticket-design .rightSection .infos .times {
+        float: left;
+        }
+
+        .ticket-design .rightSection .infos .times strong {
+        transform: scale(0.9);
+        transform-origin: right bottom;
+        }
+
+        .ticket-design .rightSection .infos .places {
+        border-left-width: 5px;
+        border-left-style: solid;
+        border-left-color: #d44572;
+        }
+
+        .ticket-design .rightSection .infos .places small {
+        color: #97a1ad;
+        }
+
+        .ticket-design .rightSection .infos .box {
+        padding: 10px 20px 10px;
+        float: right; text-align:right
+        }
+
+        .ticket-design .rightSection .infos .box small {
+        font-size: 10px;
+        width: 100%;
+        }
 
 </style>
 
@@ -413,8 +413,7 @@
       <div class="eventDetail eventLogo" style="float:left; text-align:center">
             @if(isset($reservation->inspection_center->ad_img))
                   <img src="{{$reservation->img_code}}" class="img-fluid" style="width: 300px;height: 250px;">
-            @else
-                <img src="" class="img-fluid"></div>
+        
             @endif
 
       <div class="general" style="margin-top:100px">
